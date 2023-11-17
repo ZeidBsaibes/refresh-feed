@@ -49,6 +49,7 @@ datasource db {
       image         String?
       accounts      Account[]
       sessions      Session[]
+      savedLocation SavedLocation[]
     }
     
     model VerificationToken {
@@ -58,3 +59,15 @@ datasource db {
     
       @@unique([identifier, token])
     }
+
+    model SavedLocation {
+  id             Int      @id @default(autoincrement())
+  userId         String   @map("user_id")
+  latitude       Float
+  longitude      Float
+  locationName String
+  notes          String?
+  user           User     @relation(fields: [userId], references: [id])
+
+  @@map("saved_locations")
+}
