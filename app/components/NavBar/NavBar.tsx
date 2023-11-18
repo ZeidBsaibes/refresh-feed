@@ -13,10 +13,11 @@ import { useSession } from "next-auth/react";
 import Image from "next/image";
 
 const navigation = [
-  { name: "Dashboard", href: "#", current: true },
-  { name: "Team", href: "#", current: false },
-  { name: "Projects", href: "#", current: false },
-  { name: "Calendar", href: "#", current: false },
+  { name: "Home", href: "/", current: false },
+  { name: "My Locations", href: "/locations", current: true },
+  { name: "Friends", href: "#", current: false },
+  { name: "Add Location", href: "/add-location", current: false },
+  { name: "Locations", href: "/locations", current: false },
 ];
 
 function classNames(...classes) {
@@ -149,7 +150,7 @@ export default function NavBar() {
               </div>
             </div>
             <nav
-              className="hidden lg:flex lg:space-x-8 lg:py-2"
+              className="hidden lg:flex lg:space-x-8 lg:py-2 lg:justify-end"
               aria-label="Global"
             >
               {navigation.map((item) => (
