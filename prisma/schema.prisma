@@ -60,14 +60,54 @@ datasource db {
       @@unique([identifier, token])
     }
 
-    model SavedLocation {
-  id             Int      @id @default(autoincrement())
-  userId         String   @map("user_id")
-  latitude       Float
-  longitude      Float
+model SavedLocation {
+  id           String       @id @default(cuid())
+  userId       String       @map("user_id")
+  placeName    String
+  googleId     String       @unique
+  lat          Float
+  lng          Float
+  city         String
+  country      String
+  visited      Json     
+  visitedId    Int
+  rating       Float
+  waitingTime  Float
+  cuisines     Json       
+  dishes       Dish[]       
+  photos       Photo[]    
   locationName String
-  notes          String?
-  user           User     @relation(fields: [userId], references: [id])
+  notes        String?
+  user         User         @relation(fields: [userId], references: [id], onDelete: Cascade)
 
-  @@map("saved_locations")
+
+}
+
+model Photo {
+  id                 String         @id @default(cuid())
+  height             Int?
+  width              Int?
+  html_attributions  String?
+  url                String?
+  location           SavedLocation  @relation(fields: [locationId], references: [id], onDelete: Cascade)
+  locationId         String     
+}
+
+model Dish {
+  id           String         @id @default(cuid())
+  label        String?
+  location     SavedLocation  @relation(fields: [locationId], references: [id], onDelete: Cascade)
+  locationId   String 
+}
+
+model Visited {
+  id        Int        @id @default(autoincrement())
+  title     String
+
+}
+
+model Cuisine {
+  id        Int       @id @default(autoincrement())
+  label     String    @unique
+
 }

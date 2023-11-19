@@ -4,7 +4,7 @@ import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 
 export const GET = async (req, { params }) => {
-  const locationId = Number(params.locationId);
+  const locationId = params.locationId;
 
   try {
     const record = await prisma.savedLocation.findUnique({

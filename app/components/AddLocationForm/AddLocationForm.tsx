@@ -8,6 +8,7 @@ import InputWithIcon from "../InputWithIcon/InputWithIcon";
 import InputWithCreate from "../InputWithCreate/InputWithCreate";
 import InputWithFixed from "../InputWithFixed/InputWithFixed";
 import Button from "../Button/Button";
+import FreeTextInput from "../FreeTextInput/FreeTextInput";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -21,6 +22,7 @@ export default function AddLocationForm() {
   const [locationType, setLocationType] = useState(null);
   const [waitingTime, setWaitingTime] = useState(null);
   const [dishes, setDishes] = useState(null);
+  const [notes, setNotes] = useState(null);
 
   const handleLocationInput = (locationObject) => {
     setLocationData(locationObject);
@@ -48,6 +50,10 @@ export default function AddLocationForm() {
 
   const handleDishesInput = (dishes) => {
     setDishes(dishes);
+  };
+
+  const handleNotesInput = (notes) => {
+    setNotes(notes);
   };
 
   const handleFormSubmit = (event) => {
@@ -123,6 +129,12 @@ export default function AddLocationForm() {
               { value: "chicken", label: "Chicken" },
               { value: "duck", label: "Duck" },
             ]}
+          />
+          <FreeTextInput
+            label=""
+            title="Notes"
+            placeholder="Add anything you want to mention"
+            onInput={handleNotesInput}
           />
         </div>
       </div>
