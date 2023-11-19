@@ -2,18 +2,11 @@ import { useState, useEffect } from "react";
 import { CheckIcon, ChevronUpDownIcon } from "@heroicons/react/20/solid";
 import { Combobox } from "@headlessui/react";
 
-const options = [
-  // More users...
-  { id: 1, name: "Korean" },
-  { id: 2, name: "Lebanese" },
-  { id: 3, name: "Fried Chicken" },
-];
-
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
-export default function DropdownSelect() {
+export default function DropdownSelect({ options, placeholder, label }) {
   const [query, setQuery] = useState("");
   const [selectedOption, setSelectedOption] = useState(null);
   const [selectedOptions, setSelectedOptions] = useState([]);
@@ -38,14 +31,14 @@ export default function DropdownSelect() {
   return (
     <Combobox as="div" value={selectedOption} onChange={setSelectedOption}>
       <Combobox.Label className="block text-sm font-medium leading-6 text-gray-900">
-        Assigned to
+        {label}
       </Combobox.Label>
       <div className="relative mt-2">
         <Combobox.Input
           className="w-full rounded-md border-0 bg-white py-1.5 pl-3 pr-10 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
           onChange={(event) => setQuery(event.target.value)}
           displayValue={(person) => person?.name}
-          placeholder="Select cuisine(s)"
+          placeholder={placeholder}
         />
         <Combobox.Button className="absolute inset-y-0 right-0 flex items-center rounded-r-md px-2 focus:outline-none">
           <ChevronUpDownIcon

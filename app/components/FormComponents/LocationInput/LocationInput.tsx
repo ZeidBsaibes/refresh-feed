@@ -1,5 +1,7 @@
 "use client";
 
+import ReactGoogleAutocomplete from "react-google-autocomplete";
+
 export default function LocationInput({ label, placeholder }) {
   return (
     <>
