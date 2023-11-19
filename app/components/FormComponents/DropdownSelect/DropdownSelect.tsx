@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { CheckIcon, ChevronUpDownIcon } from "@heroicons/react/20/solid";
 import { Combobox } from "@headlessui/react";
 
-const people = [
+const options = [
   // More users...
   { id: 1, name: "Korean" },
   { id: 2, name: "Lebanese" },
@@ -15,14 +15,14 @@ function classNames(...classes) {
 
 export default function DropdownSelect() {
   const [query, setQuery] = useState("");
-  const [selectedPerson, setSelectedPerson] = useState(null);
+  const [selectedOption, setSelectedOption] = useState(null);
   const [selectedOptions, setSelectedOptions] = useState([]);
 
   const filteredPeople =
     query === ""
-      ? people
-      : people.filter((person) => {
-          return person.name.toLowerCase().includes(query.toLowerCase());
+      ? options
+      : options.filter((option) => {
+          return option.name.toLowerCase().includes(query.toLowerCase());
         });
 
   const handleSelect = (choice) => {
@@ -32,11 +32,11 @@ export default function DropdownSelect() {
   };
 
   useEffect(() => {
-    handleSelect(selectedPerson);
-  }, [selectedPerson]);
+    handleSelect(selectedOption);
+  }, [selectedOption]);
 
   return (
-    <Combobox as="div" value={selectedPerson} onChange={setSelectedPerson}>
+    <Combobox as="div" value={selectedOption} onChange={setSelectedOption}>
       <Combobox.Label className="block text-sm font-medium leading-6 text-gray-900">
         Assigned to
       </Combobox.Label>

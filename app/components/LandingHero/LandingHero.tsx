@@ -1,3 +1,4 @@
+import LocationsMap from "../LocationsMap/LocationsMap";
 import TestMap from "../TestMap/TestMap";
 
 export default function LandingHero() {
@@ -54,7 +55,8 @@ export default function LandingHero() {
             alt=""
           /> */}
 
-          <TestMap />
+          {/* <TestMap /> */}
+          <LocationsMap />
         </div>
       </div>
     </div>

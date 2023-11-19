@@ -6,6 +6,7 @@ import { getServerSession } from "next-auth/next";
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import Provider from "./context/context-provider";
 import Head from "next/head";
+import "mapbox-gl/dist/mapbox-gl.css";
 
 const inter = Inter({ subsets: ["latin"] });
 

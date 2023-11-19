@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { PhotoIcon, UserCircleIcon } from "@heroicons/react/24/solid";
-import SimpleInput from "../FormComponents/SimpleInput/LocationInput";
+import LocationInput from "../FormComponents/LocationInput/LocationInput";
 import DropdownSelect from "../FormComponents/DropdownSelect/DropdownSelect";
 
 function classNames(...classes) {
@@ -16,7 +16,7 @@ export default function AddLocationForm() {
     <form>
       <div className="mt-6 flex items-center justify-end gap-x-6">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <SimpleInput
+          <LocationInput
             label="Location"
             placeholder="Start by entering a location name"
           />
