@@ -1,9 +1,22 @@
+"use client";
+
+import { useState, useEffect } from "react";
+
 const options = [
   { id: "visited", title: "I've been here" },
   { id: "wishlist", title: "I want to go here" },
 ];
 
-export default function RadioGroup({ title, subtitle }) {
+export default function RadioGroup({ title, subtitle, onInput }) {
+  const [selectedOption, setSelectedOption] = useState({
+    id: "visited",
+    title: "I've been here",
+  });
+
+  useEffect(() => {
+    onInput(selectedOption);
+  }, [selectedOption, onInput]);
+
   return (
     <div>
       <label className="text-base font-semibold text-gray-900">{title}</label>
@@ -14,10 +27,13 @@ export default function RadioGroup({ title, subtitle }) {
           {options.map((option) => (
             <div key={option.id} className="flex items-center">
               <input
+                onChange={() => {
+                  setSelectedOption({ id: option.id, title: option.title });
+                }}
                 id={option.id}
-                name="notification-method"
+                name="visited-status"
                 type="radio"
-                defaultChecked={option.id === "email"}
+                defaultChecked={option.id === "visited"}
                 className="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600"
               />
               <label

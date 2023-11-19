@@ -1,13 +1,19 @@
-import { useState } from "react";
+"use client";
 
-const NumberSlider = () => {
+import { useState, useEffect } from "react";
+
+const NumberSlider = ({ onInput }) => {
   // State for the slider value
-  const [value, setValue] = useState(50);
+  const [value, setValue] = useState(5);
 
   // Handle change event
   const handleChange = (event) => {
-    setValue(event.target.value);
+    setValue(Number(event.target.value));
   };
+
+  useEffect(() => {
+    onInput(value);
+  }, [value, onInput]);
 
   return (
     <>
@@ -21,7 +27,6 @@ const NumberSlider = () => {
           className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700"
         />
       </div>
-      {value && <p>{value}</p>}
     </>
   );
 };

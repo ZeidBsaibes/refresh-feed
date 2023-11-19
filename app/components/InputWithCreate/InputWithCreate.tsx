@@ -1,21 +1,29 @@
-import CreatableSelect from "react-select/creatable";
-import { useState } from "react";
+"use client";
 
-export default function InputWithCreate({ data }) {
-  const [selectedOptions, setSelectedOptions] = useState([]);
+import CreatableSelect from "react-select/creatable";
+import { useState, useEffect, useId } from "react";
+
+export default function InputWithCreate({ data, title, onInput, placeholder }) {
+  const [selectedOptions, setSelectedOptions] = useState(null);
 
   const handleChange = (options) => {
-    setSelectedOptions(options || []);
-    console.log(options);
+    setSelectedOptions(options);
   };
+
+  useEffect(() => {
+    onInput(selectedOptions);
+  }, [selectedOptions, onInput]);
 
   return (
     <>
+      {title}
       <CreatableSelect
+        instanceId={useId()}
         isMulti
         onChange={handleChange}
         value={selectedOptions}
         options={data}
+        placeholder={placeholder}
       />
     </>
   );

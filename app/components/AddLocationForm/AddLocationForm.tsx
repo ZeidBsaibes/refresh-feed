@@ -1,46 +1,94 @@
 "use client";
 
 import { useState } from "react";
-import { PhotoIcon, UserCircleIcon } from "@heroicons/react/24/solid";
-import LocationInput from "../FormComponents/LocationInput/LocationInput";
-import DropdownSelect from "../FormComponents/DropdownSelect/DropdownSelect";
 import GoogleMapsAutoComplete from "../GoogleMapsAutoComplete/GoogleMapsAutoComplete";
-import Toggle from "../Toggle/Toggle";
 import RadioGroup from "../RadioGroup/RadioGroup";
 import NumberSlider from "../NumberSlider/NumberSlider";
 import InputWithIcon from "../InputWithIcon/InputWithIcon";
 import InputWithCreate from "../InputWithCreate/InputWithCreate";
 import InputWithFixed from "../InputWithFixed/InputWithFixed";
+import Button from "../Button/Button";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
 export default function AddLocationForm() {
-  const [visited, setVisited] = useState(true);
+  const [locationData, setLocationData] = useState(null);
+  const [visitedData, setVisitedData] = useState(null);
+  const [rating, setRating] = useState(0.5);
+  const [cuisines, setCuisines] = useState(null);
+  const [locationType, setLocationType] = useState(null);
+  const [waitingTime, setWaitingTime] = useState(null);
+  const [dishes, setDishes] = useState(null);
+
+  const handleLocationInput = (locationObject) => {
+    setLocationData(locationObject);
+  };
+
+  const handleVistedInput = (visitedObject) => {
+    setVisitedData(visitedObject);
+  };
+
+  const handleRatingInput = (rating) => {
+    setRating(rating);
+  };
+
+  const handleCuisineInput = (cuisineObject) => {
+    setCuisines(cuisineObject);
+  };
+
+  const handleLocationTypeInput = (locationTypeObject) => {
+    setLocationType(locationTypeObject);
+  };
+
+  const handleWaitingTimeInput = (time) => {
+    setWaitingTime(time);
+  };
+
+  const handleDishesInput = (dishes) => {
+    setDishes(dishes);
+  };
+
+  const handleFormSubmit = (event) => {
+    event.preventDefault();
+    console.log(
+      "location",
+      locationData,
+      "visited",
+      visitedData,
+      "rating",
+      rating,
+      "cuisines",
+      cuisines,
+      "locationtype",
+      locationType,
+      "waitingtime",
+      waitingTime,
+      "dishes",
+      dishes
+    );
+  };
 
   return (
-    <form>
+    <form onSubmit={handleFormSubmit}>
       <div className="mt-6 flex items-center justify-end gap-x-6">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <GoogleMapsAutoComplete
             apiKey={`${process.env.NEXT_PUBLIC_GOOGLE_MAPS_API}`}
+            onInput={(locationObject) => {
+              handleLocationInput(locationObject);
+            }}
           />
-          <RadioGroup title="" subtitle="have you been here before" />
-          <NumberSlider />
-          <DropdownSelect
-            label={"Cuisine"}
-            placeholder={"Start typing cuisine, e.g. Dim Sum"}
-            options={[
-              // More users...
-              { id: 1, name: "Korean" },
-              { id: 2, name: "Lebanese" },
-              { id: 3, name: "Fried Chicken" },
-              { id: 4, name: "Dim Sum" },
-            ]}
+          <RadioGroup
+            title=""
+            subtitle="have you been here before"
+            onInput={handleVistedInput}
           />
-          Cuisine
+          <NumberSlider onInput={handleRatingInput} />
           <InputWithFixed
+            onInput={handleCuisineInput}
+            title="Cuisine"
             data={[
               // More users...
               { value: 1, label: "Korean" },
@@ -49,8 +97,9 @@ export default function AddLocationForm() {
               { value: 4, label: "Dim Sum" },
             ]}
           />
-          Location Type
           <InputWithFixed
+            onInput={handleLocationTypeInput}
+            title="Location Type"
             data={[
               { value: "restaurant", label: "Restaurant" },
               { value: "takeaway", label: "Takeaway" },
@@ -59,20 +108,17 @@ export default function AddLocationForm() {
               { value: "pub", label: "Pub" },
             ]}
           />
-          <DropdownSelect
-            label={"Location Type"}
-            placeholder={"Select Location Type(s)"}
-            options={[
-              // More users...
-              { id: 1, name: "Restaurant" },
-              { id: 1, name: "Takeaway" },
-              { id: 2, name: "Bar" },
-              { id: 3, name: "Cafe" },
-              { id: 4, name: "Pub" },
-            ]}
+          <InputWithIcon
+            title="Waiting Time"
+            placeholder="Waiting Time"
+            icon={"\u231B"}
+            onInput={handleWaitingTimeInput}
           />
-          <InputWithIcon />
+          Favourite Dishes
           <InputWithCreate
+            placeholder="Add menu items you'd recommend"
+            title="Dishes/Drinks you'd recommend"
+            onInput={handleDishesInput}
             data={[
               { value: "chicken", label: "Chicken" },
               { value: "duck", label: "Duck" },
@@ -80,6 +126,20 @@ export default function AddLocationForm() {
           />
         </div>
       </div>
+      <Button text="Add Place" type="submit" size="lg" variant="primary" />
+      <Button text="Cancel" type="button" size="lg" variant="seconary" />
+      {locationData && <p>{locationData.placeName}</p>}
+      {locationData && <p>{locationData.city}</p>}
+      {visitedData && <p> {visitedData.title}</p>}
+      {rating && <p>{rating}</p>}
+      {cuisines && <p>{cuisines[0]?.label}</p>}
+      {cuisines && <p>{cuisines[1]?.label}</p>}
+      {cuisines && <p>{cuisines[2]?.label}</p>}
+      {cuisines && <p>{cuisines[3]?.label}</p>}
+      {locationType && <p>{locationType[0]?.label}</p>}
+      {locationType && <p>{locationType[1]?.label}</p>}
+      {locationType && <p>{locationType[2]?.label}</p>}
+      {waitingTime && <p>{waitingTime}</p>}
     </form>
   );
 }
