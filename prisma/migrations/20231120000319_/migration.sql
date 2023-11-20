@@ -61,7 +61,6 @@ CREATE TABLE "SavedLocation" (
     "rating" DOUBLE PRECISION NOT NULL,
     "waitingTime" DOUBLE PRECISION NOT NULL,
     "cuisines" JSONB NOT NULL,
-    "locationName" TEXT NOT NULL,
     "notes" TEXT,
 
     CONSTRAINT "SavedLocation_pkey" PRIMARY KEY ("id")
@@ -118,9 +117,6 @@ CREATE UNIQUE INDEX "VerificationToken_token_key" ON "VerificationToken"("token"
 
 -- CreateIndex
 CREATE UNIQUE INDEX "VerificationToken_identifier_token_key" ON "VerificationToken"("identifier", "token");
-
--- CreateIndex
-CREATE UNIQUE INDEX "SavedLocation_googleId_key" ON "SavedLocation"("googleId");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "Cuisine_label_key" ON "Cuisine"("label");

@@ -64,7 +64,7 @@ model SavedLocation {
   id           String       @id @default(cuid())
   userId       String       @map("user_id")
   placeName    String
-  googleId     String       @unique
+  googleId     String       // this could be made unique to avoid dupes
   lat          Float
   lng          Float
   city         String
@@ -76,7 +76,6 @@ model SavedLocation {
   cuisines     Json       
   dishes       Dish[]       
   photos       Photo[]    
-  locationName String
   notes        String?
   user         User         @relation(fields: [userId], references: [id], onDelete: Cascade)
 

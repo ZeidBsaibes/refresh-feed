@@ -14,9 +14,9 @@ export const GET = async (req, { params }) => {
     });
 
     if (record) {
-      return NextResponse.json(record);
+      return Response.json(record);
     } else {
-      return NextResponse.json({ message: `location with this id not found` });
+      return Response.json({ message: `location with this id not found` });
     }
   } catch (error) {
     console.error(error);
