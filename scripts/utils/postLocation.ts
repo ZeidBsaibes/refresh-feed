@@ -2,10 +2,7 @@ import axios from "axios";
 
 const postLocation = async (data) => {
   try {
-    const response = await axios.post(
-      `${process.env.NEXT_PUBLIC_BASE_URL}/add-location`,
-      data
-    );
+    const response = await axios.post(`api/add-location`, data);
     console.log(data);
     return response.data;
   } catch (error) {
