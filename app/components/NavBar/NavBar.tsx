@@ -26,7 +26,8 @@ function classNames(...classes) {
 
 export default function NavBar() {
   const { data: session } = useSession();
-  console.log(session);
+  // console.log(session);
+  console.log(process.env.NEXT_PUBLIC_BASE_URL);
 
   const userNavigation = [
     { name: "Your Profile", href: "#" },

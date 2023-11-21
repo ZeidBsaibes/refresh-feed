@@ -25,7 +25,7 @@ const TestMap = () => {
       mapStyle="mapbox://styles/mapbox/streets-v9"
     >
       <Marker longitude={lng} latitude={lat}>
-        <MapPinIcon style={{ fontSize: "30px", color: "red", zIndex:  }} />
+        <MapPinIcon style={{ fontSize: "30px", color: "red" }} />
       </Marker>
     </Map>
   );

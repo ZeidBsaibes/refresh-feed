@@ -3,7 +3,7 @@ import axios from "axios";
 const postLocation = async (data) => {
   try {
     const response = await axios.post(
-      `http://localhost:3000/api/add-location`,
+      `${process.env.NEXT_PUBLIC_BASE_URL}/add-location`,
       data
     );
     console.log(data);

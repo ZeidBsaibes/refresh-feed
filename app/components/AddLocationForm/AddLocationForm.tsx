@@ -109,7 +109,7 @@ export default function AddLocationForm() {
     };
     try {
       const response = await postLocation(formData);
-      // console.log(process.env.BASE_URL);
+
     } catch (error) {
       console.error(error);
     }
