@@ -1,0 +1,2 @@
+-- AlterTable
+ALTER TABLE "SavedLocation" ADD COLUMN     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP;

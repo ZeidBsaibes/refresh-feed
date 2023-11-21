@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useSession } from "next-auth/react";
 import GoogleMapsAutoComplete from "../GoogleMapsAutoComplete/GoogleMapsAutoComplete";
 import RadioGroup from "../RadioGroup/RadioGroup";
 import NumberSlider from "../NumberSlider/NumberSlider";
@@ -9,20 +10,42 @@ import InputWithCreate from "../InputWithCreate/InputWithCreate";
 import InputWithFixed from "../InputWithFixed/InputWithFixed";
 import Button from "../Button/Button";
 import FreeTextInput from "../FreeTextInput/FreeTextInput";
+import postLocation from "@/scripts/utils/postLocation";
+import getCuisines from "@/scripts/utils/getCuisines";
+import getLocationTypes from "@/scripts/utils/getLocationTypes";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
 export default function AddLocationForm() {
+  const [availableLocationTypes, setAvailableLocationTypes] = useState(null);
+  const [availableCuisines, setAvailableCuisines] = useState(null);
   const [locationData, setLocationData] = useState(null);
   const [visitedData, setVisitedData] = useState(null);
   const [rating, setRating] = useState(0.5);
   const [cuisines, setCuisines] = useState(null);
-  const [locationType, setLocationType] = useState(null);
+  const [locationTypes, setLocationTypes] = useState(null);
   const [waitingTime, setWaitingTime] = useState(null);
   const [dishes, setDishes] = useState(null);
   const [notes, setNotes] = useState(null);
+
+  const { data: session } = useSession();
+
+  const getAndSetCuisines = async () => {
+    const data = await getCuisines();
+    setAvailableCuisines(data);
+  };
+
+  const getAndSetLocationTypes = async () => {
+    const data = await getLocationTypes();
+    setAvailableLocationTypes(data);
+  };
+
+  useEffect(() => {
+    getAndSetCuisines();
+    getAndSetLocationTypes();
+  }, []);
 
   const handleLocationInput = (locationObject) => {
     setLocationData(locationObject);
@@ -41,7 +64,7 @@ export default function AddLocationForm() {
   };
 
   const handleLocationTypeInput = (locationTypeObject) => {
-    setLocationType(locationTypeObject);
+    setLocationTypes(locationTypeObject);
   };
 
   const handleWaitingTimeInput = (time) => {
@@ -56,24 +79,32 @@ export default function AddLocationForm() {
     setNotes(notes);
   };
 
-  const handleFormSubmit = (event) => {
+  const handleFormSubmit = async (event) => {
     event.preventDefault();
-    console.log(
-      "location",
-      locationData,
-      "visited",
-      visitedData,
-      "rating",
+    const formData = {
+      userId: session.user.userId,
+      placeName: locationData.placeName,
+      googleId: locationData.googleId,
+      lat: locationData.lat,
+      lng: locationData.lng,
+      city: locationData.city,
+      country: locationData.country,
+      // visitedData make tis return a boolean
       rating,
-      "cuisines",
-      cuisines,
-      "locationtype",
-      locationType,
-      "waitingtime",
       waitingTime,
-      "dishes",
-      dishes
-    );
+      cuisines,
+      locationTypes,
+      // photos need adding with separeate join table
+
+      notes,
+      dishes,
+    };
+    try {
+      const response = await postLocation(formData);
+      // console.log(process.env.BASE_URL);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (
@@ -95,24 +126,12 @@ export default function AddLocationForm() {
           <InputWithFixed
             onInput={handleCuisineInput}
             title="Cuisine"
-            data={[
-              // More users...
-              { value: 1, label: "Korean" },
-              { value: 2, label: "Lebanese" },
-              { value: 3, label: "Fried Chicken" },
-              { value: 4, label: "Dim Sum" },
-            ]}
+            data={availableCuisines}
           />
           <InputWithFixed
             onInput={handleLocationTypeInput}
             title="Location Type"
-            data={[
-              { value: "restaurant", label: "Restaurant" },
-              { value: "takeaway", label: "Takeaway" },
-              { value: "bar", label: "Bar" },
-              { value: "cafe", label: "Cafe" },
-              { value: "pub", label: "Pub" },
-            ]}
+            data={availableLocationTypes}
           />
           <InputWithIcon
             title="Waiting Time"
@@ -148,9 +167,9 @@ export default function AddLocationForm() {
       {cuisines && <p>{cuisines[1]?.label}</p>}
       {cuisines && <p>{cuisines[2]?.label}</p>}
       {cuisines && <p>{cuisines[3]?.label}</p>}
-      {locationType && <p>{locationType[0]?.label}</p>}
-      {locationType && <p>{locationType[1]?.label}</p>}
-      {locationType && <p>{locationType[2]?.label}</p>}
+      {locationTypes && <p>{locationTypes[0]?.label}</p>}
+      {locationTypes && <p>{locationTypes[1]?.label}</p>}
+      {locationTypes && <p>{locationTypes[2]?.label}</p>}
       {waitingTime && <p>{waitingTime}</p>}
     </form>
   );

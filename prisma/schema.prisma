@@ -6,107 +6,129 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
-  url = env("POSTGRES_PRISMA_URL") // uses connection pooling
+  provider  = "postgresql"
+  url       = env("POSTGRES_PRISMA_URL") // uses connection pooling
   directUrl = env("POSTGRES_URL_NON_POOLING") // uses a direct connection
 }
 
+model Account {
+  id                 String  @id @default(cuid())
+  userId             String
+  type               String
+  provider           String
+  providerAccountId  String
+  refresh_token      String? @db.Text
+  access_token       String? @db.Text
+  expires_at         Int?
+  token_type         String?
+  scope              String?
+  id_token           String? @db.Text
+  session_state      String?
+  oauth_token_secret String?
+  oauth_token        String?
 
- model Account {
-      id                 String  @id @default(cuid())
-      userId             String
-      type               String
-      provider           String
-      providerAccountId  String
-      refresh_token      String? @db.Text
-      access_token       String? @db.Text
-      expires_at         Int?
-      token_type         String?
-      scope              String?
-      id_token           String? @db.Text
-      session_state      String?
-      oauth_token_secret String?
-      oauth_token        String?
-    
-      user User @relation(fields: [userId], references: [id], onDelete: Cascade)
-    
-      @@unique([provider, providerAccountId])
-    }
-    
-    model Session {
-      id           String   @id @default(cuid())
-      sessionToken String   @unique
-      userId       String
-      expires      DateTime
-      user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-    }
-    
-    model User {
-      id            String    @id @default(cuid())
-      name          String?
-      email         String?   @unique
-      emailVerified DateTime?
-      image         String?
-      accounts      Account[]
-      sessions      Session[]
-      savedLocation SavedLocation[]
-    }
-    
-    model VerificationToken {
-      identifier String
-      token      String   @unique
-      expires    DateTime
-    
-      @@unique([identifier, token])
-    }
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
-model SavedLocation {
-  id           String       @id @default(cuid())
-  userId       String       @map("user_id")
-  placeName    String
-  googleId     String       // this could be made unique to avoid dupes
-  lat          Float
-  lng          Float
-  city         String
-  country      String
-  visited      Json     
-  visitedId    Int
-  rating       Float
-  waitingTime  Float
-  cuisines     Json       
-  dishes       Dish[]       
-  photos       Photo[]    
-  notes        String?
-  user         User         @relation(fields: [userId], references: [id], onDelete: Cascade)
-
-
+  @@unique([provider, providerAccountId])
 }
 
-model Photo {
-  id                 String         @id @default(cuid())
-  height             Int?
-  width              Int?
-  html_attributions  String?
-  url                String?
-  location           SavedLocation  @relation(fields: [locationId], references: [id], onDelete: Cascade)
-  locationId         String     
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model User {
+  id            String          @id @default(cuid())
+  name          String?
+  email         String?         @unique
+  emailVerified DateTime?
+  image         String?
+  accounts      Account[]
+  sessions      Session[]
+  savedLocation SavedLocation[]
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+}
+
+model SavedLocation {
+  createdAt     DateTime          @default(now())
+  id            String            @id @default(cuid())
+  userId        String            @map("user_id")
+  placeName     String
+  googleId      String
+  lat           Float
+  lng           Float
+  city          String
+  country       String
+  dishes        LocationDish[]
+  cuisines      LocationCuisine[]
+  locationTypes LocationType[]
+  // vistedStatus    Int
+  rating        Float
+  waitingTime   Float
+
+  // photos       Photo[]?    
+  notes String?
+  user  User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  LocationLocationType LocationLocationType[]
 }
 
 model Dish {
-  id           String         @id @default(cuid())
-  label        String?
-  location     SavedLocation  @relation(fields: [locationId], references: [id], onDelete: Cascade)
-  locationId   String 
+  id        String         @id @default(cuid())
+  name      String
+  locations LocationDish[]
 }
 
-model Visited {
-  id        Int        @id @default(autoincrement())
-  title     String
+model LocationDish {
+  locationId String
+  location   SavedLocation @relation(fields: [locationId], references: [id])
+  dishId     String
+  dish       Dish          @relation(fields: [dishId], references: [id])
 
+  @@id([locationId, dishId]) // Composite primary key
 }
 
 model Cuisine {
-  id        Int       @id @default(autoincrement())
-  label     String    @unique
+  id        Int               @id @default(autoincrement())
+  label     String            @unique
+  value     String            @unique
+  locations LocationCuisine[]
+}
 
+model LocationCuisine {
+  locationId String
+  location   SavedLocation @relation(fields: [locationId], references: [id])
+  cuisineId  Int
+  cuisine    Cuisine       @relation(fields: [cuisineId], references: [id])
+
+  @@id([locationId, cuisineId])
+}
+
+model LocationType {
+  id        Int                    @id @default(autoincrement())
+  label     String                 @unique
+  value     String                 @unique
+  locations LocationLocationType[]
+
+  SavedLocation   SavedLocation? @relation(fields: [savedLocationId], references: [id])
+  savedLocationId String?
+}
+
+model LocationLocationType {
+  locationId     String
+  location       SavedLocation @relation(fields: [locationId], references: [id])
+  locationTypeId Int
+  locationType   LocationType  @relation(fields: [locationTypeId], references: [id])
+
+  @@id([locationId, locationTypeId])
 }
