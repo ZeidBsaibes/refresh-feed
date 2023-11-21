@@ -1,7 +1,5 @@
-// @ts-nocheck
-
 "use client";
-
+import React from "react";
 import { Fragment } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { MagnifyingGlassIcon } from "@heroicons/react/20/solid";
@@ -27,7 +25,8 @@ export default function NavBar() {
     { name: "Home", href: "/", current: false },
     {
       name: "My Locations",
-      href: `/user/${session.user.userId}/locations`,
+      // @ts-ignore
+      href: session && `/user/${session?.user?.userId}/locations`,
       current: true,
     },
     { name: "Friends", href: "#", current: false },

@@ -1,5 +1,5 @@
 "use client";
-
+import React from "react";
 import { useParams } from "next/navigation";
 import { useState, useEffect } from "react";
 import getLocationsForUser from "@/scripts/utils/getLocationsForUser";
