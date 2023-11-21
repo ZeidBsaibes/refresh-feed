@@ -13,6 +13,7 @@ import FreeTextInput from "../FreeTextInput/FreeTextInput";
 import postLocation from "@/scripts/utils/postLocation";
 import getCuisines from "@/scripts/utils/getCuisines";
 import getLocationTypes from "@/scripts/utils/getLocationTypes";
+import getDishes from "@/scripts/utils/getDishes";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -21,6 +22,7 @@ function classNames(...classes) {
 export default function AddLocationForm() {
   const [availableLocationTypes, setAvailableLocationTypes] = useState(null);
   const [availableCuisines, setAvailableCuisines] = useState(null);
+  const [dishesAutocomplete, setDishesAutoComplete] = useState(null);
   const [locationData, setLocationData] = useState(null);
   const [visitedData, setVisitedData] = useState(null);
   const [rating, setRating] = useState(0.5);
@@ -29,6 +31,7 @@ export default function AddLocationForm() {
   const [waitingTime, setWaitingTime] = useState(null);
   const [dishes, setDishes] = useState(null);
   const [notes, setNotes] = useState(null);
+  const [photos, setPhotos] = useState(null);
 
   const { data: session } = useSession();
 
@@ -42,9 +45,15 @@ export default function AddLocationForm() {
     setAvailableLocationTypes(data);
   };
 
+  const getAndSetDishes = async () => {
+    const data = await getDishes();
+    setDishesAutoComplete(data);
+  };
+
   useEffect(() => {
     getAndSetCuisines();
     getAndSetLocationTypes();
+    getAndSetDishes();
   }, []);
 
   const handleLocationInput = (locationObject) => {
@@ -94,8 +103,7 @@ export default function AddLocationForm() {
       waitingTime,
       cuisines,
       locationTypes,
-      // photos need adding with separeate join table
-
+      photos: locationData.photos,
       notes,
       dishes,
     };
@@ -144,10 +152,7 @@ export default function AddLocationForm() {
             placeholder="Add menu items you'd recommend"
             title="Dishes/Drinks you'd recommend"
             onInput={handleDishesInput}
-            data={[
-              { value: "chicken", label: "Chicken" },
-              { value: "duck", label: "Duck" },
-            ]}
+            data={dishesAutocomplete && dishesAutocomplete}
           />
           <FreeTextInput
             label=""

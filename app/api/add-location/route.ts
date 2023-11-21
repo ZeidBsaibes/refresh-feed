@@ -23,6 +23,7 @@ export const POST = async (req: Request, res: NextResponse) => {
       dishes,
       notes,
       locationTypes,
+      photos,
     } = await req.json();
 
     console.log(`placename is`, placeName);
@@ -40,6 +41,7 @@ export const POST = async (req: Request, res: NextResponse) => {
           rating,
           waitingTime,
           notes,
+          photos,
         },
       });
 
@@ -47,7 +49,8 @@ export const POST = async (req: Request, res: NextResponse) => {
         const newDish = await prisma.dish.create({
           data: {
             id: cuid(),
-            name: dish.label,
+            label: dish.label,
+            value: dish.value,
           },
         });
 

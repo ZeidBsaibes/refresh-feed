@@ -75,6 +75,7 @@ model SavedLocation {
   // vistedStatus    Int
   rating        Float
   waitingTime   Float
+  photos        Json[]
 
   // photos       Photo[]?    
   notes String?
@@ -85,7 +86,8 @@ model SavedLocation {
 
 model Dish {
   id        String         @id @default(cuid())
-  name      String
+  label      String        @unique
+  value     String        @unique
   locations LocationDish[]
 }
 

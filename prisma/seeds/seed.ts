@@ -15,8 +15,11 @@ const locationTypeData = [
   { value: "pub", label: "Pub" },
 ];
 
+const DishData = [{ value: "pizza", label: "Pizza" }];
+
 async function main() {
   console.log(`Start seeding ...`);
+
   for (const c of cuisineData) {
     const cuisine = await prisma.cuisine.create({
       data: c,
@@ -29,6 +32,13 @@ async function main() {
       data: l,
     });
     console.log(`Created location with id: ${locationType.id}`);
+  }
+
+  for (const l of DishData) {
+    const dish = await prisma.dish.create({
+      data: l,
+    });
+    console.log(`Created location with id: ${dish.id}`);
   }
   console.log(`Seeding finished.`);
 }
