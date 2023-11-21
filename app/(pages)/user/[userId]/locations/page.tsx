@@ -25,15 +25,16 @@ export default function UserLocationsPage() {
   if (userLocations && userId !== "undefined") {
     const { savedLocation } = userLocations;
 
-    return savedLocation.map((savedLocation) => {
+    return savedLocation.map((location) => {
       return (
-        <div className="container mx-auto my-5 sm:px-6 lg:px-8">
-          <LocationCard data={savedLocation} />
+        <div
+          key={location.id}
+          className="container mx-auto my-5 sm:px-6 lg:px-8"
+        >
+          <LocationCard data={location} />
         </div>
       );
     });
-
-    return <></>;
   }
 
   return <div>loading...</div>;

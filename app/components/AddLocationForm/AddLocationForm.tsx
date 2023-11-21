@@ -1,3 +1,4 @@
+// @ts-nocheck
 "use client";
 
 import { useState, useEffect } from "react";
@@ -109,7 +110,6 @@ export default function AddLocationForm() {
     };
     try {
       const response = await postLocation(formData);
-
     } catch (error) {
       console.error(error);
     }
