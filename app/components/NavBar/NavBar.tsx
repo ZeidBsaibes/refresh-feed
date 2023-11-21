@@ -12,22 +12,26 @@ import {
 import { useSession } from "next-auth/react";
 import Image from "next/image";
 
-const navigation = [
-  { name: "Home", href: "/", current: false },
-  { name: "My Locations", href: "/locations", current: true },
-  { name: "Friends", href: "#", current: false },
-  { name: "Add Location", href: "/add-location", current: false },
-  { name: "Locations", href: "/locations", current: false },
-];
-
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
 export default function NavBar() {
   const { data: session } = useSession();
-  // console.log(session);
+  console.log(session);
   console.log(process.env.NEXT_PUBLIC_BASE_URL);
+
+  const navigation = [
+    { name: "Home", href: "/", current: false },
+    {
+      name: "My Locations",
+      href: `/user/${session.user.userId}/locations`,
+      current: true,
+    },
+    { name: "Friends", href: "#", current: false },
+    { name: "Add Location", href: "/add-location", current: false },
+    { name: "Locations", href: "/locations", current: false },
+  ];
 
   const userNavigation = [
     { name: "Your Profile", href: "#" },

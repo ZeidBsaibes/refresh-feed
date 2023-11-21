@@ -22,7 +22,7 @@ export default function UserLocationsPage() {
 
   console.log(params);
 
-  if (userLocations) {
+  if (userLocations && userId !== "undefined") {
     const { savedLocation } = userLocations;
 
     return savedLocation.map((savedLocation) => {
