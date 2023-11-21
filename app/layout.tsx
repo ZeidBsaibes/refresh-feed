@@ -3,7 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import NavBar from "./components/NavBar/NavBar";
 import { getServerSession } from "next-auth/next";
-import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+import { authOptions } from "../lib/auth";
 import Provider from "./context/context-provider";
 import Head from "next/head";
 import "mapbox-gl/dist/mapbox-gl.css";
