@@ -13,7 +13,25 @@ export const GET = async (req, { params }) => {
         id: userId,
       },
       include: {
-        savedLocation: true,
+        savedLocation: {
+          include: {
+            dishes: {
+              include: {
+                dish: true,
+              },
+            },
+            cuisines: {
+              include: {
+                cuisine: true,
+              },
+            },
+            LocationLocationType: {
+              include: {
+                locationType: true,
+              },
+            },
+          },
+        },
       },
     });
 

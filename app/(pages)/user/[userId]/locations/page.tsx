@@ -3,6 +3,7 @@
 import { useParams } from "next/navigation";
 import { useState, useEffect } from "react";
 import getLocationsForUser from "@/scripts/utils/getLocationsForUser";
+import LocationCard from "@/app/components/LocationCard/LocationCard";
 
 export default function UserLocationsPage() {
   const params = useParams();
@@ -10,16 +11,30 @@ export default function UserLocationsPage() {
 
   const [userLocations, setUserLocations] = useState(null);
 
-  const getAndSetUserLocations = async (userId) => {
-    const data = getLocationsForUser(userId);
+  const getAndSetUserLocations = async () => {
+    const data = await getLocationsForUser(userId);
+    console.log(data);
     setUserLocations(data);
   };
   useEffect(() => {
-    getAndSetUserLocations(userId);
-  }, [userId]);
+    getAndSetUserLocations();
+  }, []);
 
   console.log(params);
 
-  // const { userId } = router.query;
-  return <div>{`User locations page for user ${userId}`} </div>;
+  if (userLocations) {
+    const { savedLocation } = userLocations;
+
+    return savedLocation.map((savedLocation) => {
+      return (
+        <div className="container mx-auto my-5 sm:px-6 lg:px-8">
+          <LocationCard data={savedLocation} />
+        </div>
+      );
+    });
+
+    return <></>;
+  }
+
+  return <div>loading...</div>;
 }

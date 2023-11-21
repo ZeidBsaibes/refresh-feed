@@ -11,7 +11,7 @@ export const GET = async (req, { params }) => {
 
     const locationWithDetails = await prisma.savedLocation.findUnique({
       where: {
-        id: locationId, // Casting to string if necessary
+        id: locationId,
       },
       include: {
         cuisines: {
