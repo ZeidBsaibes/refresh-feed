@@ -1,5 +1,5 @@
 import { getServerSession } from "next-auth";
-import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+import { authOptions } from "../lib/auth";
 import LandingHero from "./components/LandingHero/LandingHero";
 import Head from "next/head";
 
