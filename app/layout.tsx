@@ -1,7 +1,8 @@
 import React from "react";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import "./globals.css";
+import "../styles/globals.css";
+import "../styles/mapbox.css";
 import NavBar from "./components/NavBar/NavBar";
 import { getServerSession } from "next-auth/next";
 import { authOptions } from "../lib/auth";

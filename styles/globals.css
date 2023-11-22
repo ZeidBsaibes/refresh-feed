@@ -1,4 +1,4 @@
-@import url("https://api.tiles.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.css");
+/* @import url("https://api.tiles.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.css"); */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -27,8 +27,12 @@ body {
     rgb(var(--background-start-rgb));
 }
 
-.map-container {
-  height: 100%;
+.mapbox__container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50vh;
+  width: 100%;
 
   &__marker {
     display: block;
@@ -37,4 +41,8 @@ body {
     cursor: pointer;
     padding: 0;
   }
+}
+
+.mapbox__children {
+  width: 100%;
 }

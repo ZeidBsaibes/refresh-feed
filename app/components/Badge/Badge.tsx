@@ -1,30 +1,25 @@
-export default function Example() {
+// BadgeComponent.jsx
+export default function Badge({ colour, text }) {
+  // Define a mapping of color names to their corresponding Tailwind CSS classes
+  const colorClasses = {
+    gray: "bg-gray-100 text-gray-600",
+    red: "bg-red-100 text-red-700",
+    yellow: "bg-yellow-100 text-yellow-800",
+    green: "bg-green-100 text-green-700",
+    blue: "bg-blue-100 text-blue-700",
+    indigo: "bg-indigo-100 text-indigo-700",
+    purple: "bg-purple-100 text-purple-700",
+    pink: "bg-pink-100 text-pink-700",
+  };
+
+  // Get the specific classes for the provided color
+  const classes = colorClasses[colour] || colorClasses.gray; // Default to gray if color is not found
+
   return (
-    <>
-      <span className="inline-flex items-center rounded-md bg-gray-100 px-1.5 py-0.5 text-xs font-medium text-gray-600">
-        Badge
-      </span>
-      <span className="inline-flex items-center rounded-md bg-red-100 px-1.5 py-0.5 text-xs font-medium text-red-700">
-        Badge
-      </span>
-      <span className="inline-flex items-center rounded-md bg-yellow-100 px-1.5 py-0.5 text-xs font-medium text-yellow-800">
-        Badge
-      </span>
-      <span className="inline-flex items-center rounded-md bg-green-100 px-1.5 py-0.5 text-xs font-medium text-green-700">
-        Badge
-      </span>
-      <span className="inline-flex items-center rounded-md bg-blue-100 px-1.5 py-0.5 text-xs font-medium text-blue-700">
-        Badge
-      </span>
-      <span className="inline-flex items-center rounded-md bg-indigo-100 px-1.5 py-0.5 text-xs font-medium text-indigo-700">
-        Badge
-      </span>
-      <span className="inline-flex items-center rounded-md bg-purple-100 px-1.5 py-0.5 text-xs font-medium text-purple-700">
-        Badge
-      </span>
-      <span className="inline-flex items-center rounded-md bg-pink-100 px-1.5 py-0.5 text-xs font-medium text-pink-700">
-        Badge
-      </span>
-    </>
+    <span
+      className={`inline-flex items-center rounded-md px-1.5 py-0.5 text-xs font-medium ${classes}`}
+    >
+      {text}
+    </span>
   );
 }

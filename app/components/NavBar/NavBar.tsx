@@ -251,7 +251,7 @@ export default function NavBar() {
         // @ts-ignore
         href: `/user/${session?.user?.userId}/locations`,
       },
-      { name: "Add Locations", href: "/add-location" },
+      { name: "Add A Location", href: "/add-location" },
       { name: "About", href: "/about" },
     ];
   } else {
@@ -261,7 +261,7 @@ export default function NavBar() {
   return (
     <header className="bg-gray-900">
       <nav
-        className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8"
+        className="mx-auto flex max-w-4xl items-center justify-between p-6 lg:px-8"
         aria-label="Global"
       >
         <div className="flex lg:flex-1">

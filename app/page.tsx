@@ -2,7 +2,6 @@ import React from "react";
 import { getServerSession } from "next-auth";
 import { authOptions } from "../lib/auth";
 import LandingHero from "./components/LandingHero/LandingHero";
-import Head from "next/head";
 
 export default async function Home() {
   const session = await getServerSession(authOptions);

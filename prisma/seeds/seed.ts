@@ -1,11 +1,7 @@
 const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
 
-const cuisineData = [
-  { value: "italian", label: "Italian" },
-  { value: "mexican", label: "Mexican" },
-  { value: "japanese", label: "Japanese" },
-];
+const cuisineData = require("../../lib/cuisines");
 
 const locationTypeData = [
   { value: "restaurant", label: "Restaurant" },
