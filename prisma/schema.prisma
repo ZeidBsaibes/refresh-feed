@@ -41,14 +41,15 @@ model Session {
 }
 
 model User {
-  id            String          @id @default(cuid())
+  id            String    @id @default(cuid())
   name          String?
-  email         String?         @unique
+  email         String?   @unique
   emailVerified DateTime?
   image         String?
   accounts      Account[]
   sessions      Session[]
-  savedLocation SavedLocation[]
+
+  SavedLocation SavedLocation[]
 }
 
 model VerificationToken {
@@ -60,34 +61,32 @@ model VerificationToken {
 }
 
 model SavedLocation {
-  createdAt     DateTime          @default(now())
-  id            String            @id @default(cuid())
-  userId        String            @map("user_id")
-  placeName     String
-  googleId      String
-  lat           Float
-  lng           Float
-  city          String
-  country       String
-  dishes        LocationDish[]
-  cuisines      LocationCuisine[]
-  locationTypes LocationType[]
+  createdAt            DateTime               @default(now())
+  id                   String                 @id @default(cuid())
+  userId               String                 @map("user_id")
+  placeName            String
+  googleId             String
+  lat                  Float
+  lng                  Float
+  city                 String
+  country              String
+  dishes               LocationDish[]
+  cuisines             LocationCuisine[]
+  locationTypes        LocationType[]
   // vistedStatus    Int
-  rating        Float
-  waitingTime   Float
-  photos        Json[]
+  rating               Float
+  waitingTime          Float
+  photos               Json[]
+  LocationLocationType LocationLocationType[]
 
-  // photos       Photo[]?    
   notes String?
   user  User    @relation(fields: [userId], references: [id], onDelete: Cascade)
-  
-  LocationLocationType LocationLocationType[]
 }
 
 model Dish {
   id        String         @id @default(cuid())
-  label      String        @unique
-  value     String        @unique
+  label     String
+  value     String
   locations LocationDish[]
 }
 

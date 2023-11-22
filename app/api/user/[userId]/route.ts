@@ -5,7 +5,7 @@ const prisma = new PrismaClient();
 
 export const GET = async (req, { params }) => {
   const userId = params.userId;
-  console.log(userId);
+  console.log(`user ID from prisma get`, userId);
 
   try {
     const userLocations = await prisma.user.findUnique({
@@ -13,7 +13,7 @@ export const GET = async (req, { params }) => {
         id: userId,
       },
       include: {
-        savedLocation: {
+        SavedLocation: {
           include: {
             dishes: {
               include: {

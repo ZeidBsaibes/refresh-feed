@@ -1,4 +1,5 @@
 "use client";
+
 import React from "react";
 import { useParams } from "next/navigation";
 import { useState, useEffect } from "react";
@@ -28,16 +29,8 @@ export default function UserLocationsPage() {
   if (userLocations && userId !== "undefined") {
     return (
       <div className="pb-24 pt-12 lg:grid lg:grid-cols-3 lg:gap-x-8 xl:grid-cols-4">
-        {userLocations.savedLocation.map((location) => {
-          return (
-            // <div
-            //   key={location.id}
-            //   className="container mx-auto my-5 sm:px-6 lg:px-8"
-            // >
-            //   <LocationCard data={location} />
-            // </div>
-            <LocationCardSmall key={location.id} data={location} />
-          );
+        {userLocations.SavedLocation.map((location) => {
+          return <LocationCardSmall key={location.id} data={location} />;
         })}
       </div>
     );

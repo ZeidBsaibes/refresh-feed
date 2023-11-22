@@ -121,18 +121,14 @@ export default function AddLocationForm() {
       dishes,
     };
 
-    setErrors(validateLocation(inputtedData));
-
-    if (errors) {
+    if (validateLocation(inputtedData)) {
+      setErrors(validateLocation(inputtedData));
       console.log(errors);
       return;
-    }
-
-    if (!errors) {
-      setFormData(inputtedData);
+    } else {
       try {
-        const response = await postLocation(formData);
-        console.log("successfully posted", formData);
+        const response = await postLocation(inputtedData);
+        console.log("posted", inputtedData);
         setIsModalOpen(true);
       } catch (error) {
         console.error(error);

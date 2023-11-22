@@ -17,5 +17,9 @@ export default function validateLocation(formData) {
   }
 
   console.log(`errors from validation`, errors);
-  return errors;
+
+  if (errors.length > 0) {
+    return errors;
+  }
+  return false;
 }
