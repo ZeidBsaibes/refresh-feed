@@ -44,12 +44,11 @@ export default function LocationCardSmall({ data }) {
           height="200px"
           alt=""
         /> */}
-        <Image
+        <img
           className="rounded-t-lg"
           src={photos[0].url}
           width={photos[0].width / 5}
           height={photos[0].height / 5}
-          objectFit="'cover"
           alt=""
         />
       </a>
