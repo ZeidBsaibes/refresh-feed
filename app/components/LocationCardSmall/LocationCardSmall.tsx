@@ -47,9 +47,11 @@ export default function LocationCardSmall({ data }) {
         <img
           className="rounded-t-lg"
           src={photos[0].url}
-          width={photos[0].width / 5}
-          height={photos[0].height / 5}
-          alt=""
+          width="100%"
+          height="100%"
+          loading="lazy"
+          object-fit="cover"
+          alt={`image of ${placeName} location`}
         />
       </a>
       <div className="p-5">
