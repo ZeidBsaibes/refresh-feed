@@ -1,11 +1,8 @@
 "use client";
-import React from "react";
 
-import { useSession } from "next-auth/react";
-
-function classNames(...classes) {
-  return classes.filter(Boolean).join(" ");
-}
+// function classNames(...classes) {
+//   return classes.filter(Boolean).join(" ");
+// }
 
 // export default function NavBar() {
 //   const { data: session } = useSession();
@@ -232,23 +229,34 @@ function classNames(...classes) {
 //     </Disclosure>
 //   );
 // }
-
+import React from "react";
+import { useSession } from "next-auth/react";
 import { useState } from "react";
 import { Dialog } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
-
-const navigation = [
-  { name: "Friends", href: "#" },
-  { name: "Your Locations", href: "#" },
-  { name: "Add Locations", href: "#" },
-  { name: "About", href: "#" },
-];
 
 export default function NavBar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const { data: session } = useSession();
-  console.log(session);
+  console.log(`session from nav`, session);
+
+  let navigation = [];
+
+  if (session) {
+    navigation = [
+      { name: "Friends", href: "#" },
+      {
+        name: "My Locations",
+        // @ts-ignore
+        href: `/user/${session?.user?.userId}/locations`,
+      },
+      { name: "Add Locations", href: "/add-location" },
+      { name: "About", href: "/about" },
+    ];
+  } else {
+    navigation = [{ name: "About", href: "/about" }];
+  }
 
   return (
     <header className="bg-gray-900">
@@ -257,7 +265,7 @@ export default function NavBar() {
         aria-label="Global"
       >
         <div className="flex lg:flex-1">
-          <a href="#" className="-m-1.5 p-1.5">
+          <a href="/" className="-m-1.5 p-1.5">
             <span className="sr-only">Your Company</span>
             <img
               className="h-8 w-auto"
@@ -288,8 +296,15 @@ export default function NavBar() {
           ))}
         </div>
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-          <a href="#" className="text-sm font-semibold leading-6 text-white">
-            Log in <span aria-hidden="true">&rarr;</span>
+          <a
+            href={session ? "api/auth/signout" : "/api/auth/signin"}
+            className="text-sm font-semibold leading-6 text-white"
+          >
+            {session ? "Sign Out" : "Sign In"}{" "}
+            <span aria-hidden="true">&rarr;</span>
+            <p className="text-sm">
+              {session?.user?.name && `${session.user.name}`}
+            </p>
           </a>
         </div>
       </nav>
@@ -302,7 +317,7 @@ export default function NavBar() {
         <div className="fixed inset-0 z-10" />
         <Dialog.Panel className="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-gray-900 px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-white/10">
           <div className="flex items-center justify-between">
-            <a href="#" className="-m-1.5 p-1.5">
+            <a href="/" className="-m-1.5 p-1.5">
               <span className="sr-only">Your Company</span>
               <img
                 className="h-8 w-auto"
@@ -334,10 +349,14 @@ export default function NavBar() {
               </div>
               <div className="py-6">
                 <a
-                  href="#"
-                  className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-white hover:bg-gray-800"
+                  href={session ? "api/auth/signout" : "/api/auth/signin"}
+                  className="text-sm font-semibold leading-6 text-white"
                 >
-                  Log in
+                  {session ? "Sign Out" : "Sign In"}{" "}
+                  <span aria-hidden="true">&rarr;</span>
+                  <p className="text-sm">
+                    {session?.user?.name && `${session?.user?.name}`}
+                  </p>
                 </a>
               </div>
             </div>
