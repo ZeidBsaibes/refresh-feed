@@ -5,7 +5,6 @@ import { useState, useEffect } from "react";
 import getLocationsForUser from "@/scripts/utils/getLocationsForUser";
 import LocationCard from "@/app/components/LocationCard/LocationCard";
 import LocationCardSmall from "@/app/components/LocationCardSmall/LocationCardSmall";
-import ResultsPage from "@/app/components/ResultsPage/ResultsPage";
 
 export default function UserLocationsPage() {
   const params = useParams();
