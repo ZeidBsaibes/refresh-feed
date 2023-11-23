@@ -48,7 +48,6 @@ model User {
   image         String?
   accounts      Account[]
   sessions      Session[]
-
   SavedLocation SavedLocation[]
 }
 
@@ -78,9 +77,8 @@ model SavedLocation {
   waitingTime          Float
   photos               Json[]
   LocationLocationType LocationLocationType[]
-
   notes String?
-  user  User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  user  User?    @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
 model Dish {
