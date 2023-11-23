@@ -40,6 +40,7 @@ export default function AddLocationForm() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [formData, setFormData] = useState(null);
   const [errors, setErrors] = useState(null);
+  const [submitButtonDisabled, setSubmitButtonDisabled] = useState(false);
 
   const { data: session } = useSession();
 
@@ -126,6 +127,7 @@ export default function AddLocationForm() {
       console.log(errors);
       return;
     } else {
+      setSubmitButtonDisabled(true);
       try {
         const response = await postLocation(inputtedData);
         console.log("posted", inputtedData);
@@ -141,7 +143,7 @@ export default function AddLocationForm() {
       <div className="space-y-12">
         <div className="border-b border-gray-900/10 pb-12">
           <h2 className="text-base font-semibold leading-7 text-gray-900">
-            Profile
+            Add a location to your saved list
           </h2>
           <p className="mt-1 text-sm leading-6 text-gray-600">
             This information will be displayed publicly so be careful what you
@@ -154,7 +156,7 @@ export default function AddLocationForm() {
                 htmlFor="locationSearch"
                 className="block text-sm font-medium leading-6 text-gray-900"
               >
-                Search for a Location
+                Start typing the name of the establishment
               </label>
               <div className="mt-2">
                 <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
@@ -265,7 +267,13 @@ export default function AddLocationForm() {
       </div>
       <div className="mt-6 flex items-center justify-end gap-x-6">
         <Button text="Cancel" type="button" size="lg" variant="seconary" />
-        <Button text="Add Place" type="submit" size="lg" variant="primary" />
+        <Button
+          text="Add Place"
+          type="submit"
+          size="lg"
+          variant="primary"
+          disabled={submitButtonDisabled}
+        />
       </div>
       <Modal show={isModalOpen} data={locationData} handleOpen={handleModal} />
     </form>

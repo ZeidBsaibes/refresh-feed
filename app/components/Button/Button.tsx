@@ -1,5 +1,6 @@
 import React from "react";
 import classNames from "classnames";
+import ButtonLoader from "../ButtonLoader/ButtonLoader";
 
 export default function Button({
   text,
@@ -7,6 +8,7 @@ export default function Button({
   size = "sm",
   rounded = true,
   variant = "primary",
+  disabled,
 }) {
   const buttonClass = classNames(
     {
@@ -29,8 +31,8 @@ export default function Button({
   );
 
   return (
-    <button type={type} className={buttonClass}>
-      {text}
+    <button type={type} className={buttonClass} disabled={disabled}>
+      {disabled && type === "submit" ? <ButtonLoader /> : text}
     </button>
   );
 }

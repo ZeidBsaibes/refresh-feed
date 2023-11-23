@@ -5,8 +5,16 @@ import { useState, useEffect } from "react";
 
 export default function GoogleMapsAutoComplete({ apiKey, onInput }) {
   const [placeSelected, setPlaceSelected] = useState(null);
-  const [gps, setGPS] = useState(null);
+  const [userLocation, setUserLocation] = useState(null);
   const [placeObject, setPlaceObject] = useState(null);
+
+  const fieldStyle = {
+    width: "100%",
+    border: "1px solid #cbd5e1",
+    borderRadius: "4px",
+  };
+
+  const mapCentre = { lat: 51.5072, lng: 0.1276 };
 
   const handlePlaceSelected = (place) => {
     if (place) {
@@ -54,18 +62,29 @@ export default function GoogleMapsAutoComplete({ apiKey, onInput }) {
       "reviews",
       "types",
       "website",
-    ], // specify fields from PlaceResult to be included
+    ],
+    bounds: {
+      north: mapCentre.lat + 0.5,
+      south: mapCentre.lat - 0.5,
+
+      east: mapCentre.lng + 0.5,
+      west: mapCentre.lng - 0.5,
+    },
+    // componentRestrictions: {
+    //   country: "gb",
+    // },
+    strictBounds: false,
   };
 
   return (
     <>
       <Autocomplete
         apiKey={apiKey}
-        style={{ color: "black" }}
+        style={fieldStyle}
         // onPlaceSelected={(place) => {
         //   handlePlaceSelected(place);
         // }}
-
+        placeholder="Start typing the location name"
         onPlaceSelected={(place) => {
           setPlaceSelected(place);
         }}
