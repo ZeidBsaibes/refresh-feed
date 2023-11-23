@@ -41,15 +41,17 @@ export default function LocationsMap({ data }) {
       //   handleMapClick();
       // }}
     >
-      {data.map((location) => {
-        return (
-          <MapMarker
-            key={location.id}
-            location={location}
-            onClick={handlePopupClick}
-          />
-        );
-      })}
+      {data &&
+        data.map((location) => {
+          return (
+            <MapMarker
+              key={location.id}
+              location={location}
+              onClick={handlePopupClick}
+            />
+          );
+        })}
+
       {popUpIsOpen && (
         <MapPopUp
           index={clickedLocation.id}
