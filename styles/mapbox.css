@@ -655,7 +655,7 @@ a.mapboxgl-ctrl-logo.mapboxgl-compact {
 }
 .mapboxgl-scroll-zoom-blocker-show,
 .mapboxgl-touch-pan-blocker-show {
-  opacity: 1;
+  /* opacity: 1; */
   transition: opacity 0.1s ease-in-out;
 }
 .mapboxgl-canvas-container.mapboxgl-touch-pan-blocker-override.mapboxgl-scrollable-page,

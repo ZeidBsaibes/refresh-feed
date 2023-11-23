@@ -110,9 +110,7 @@ export default function LandingHero() {
       </div>
       <div className="relative isolate pt-8">
         <div className="lg:pb-0">
-          <div className="mapbox__container">
-            <LocationsMap />
-          </div>
+          <div className="mapbox__container">{/* <LocationsMap /> */}</div>
         </div>
       </div>
     </div>

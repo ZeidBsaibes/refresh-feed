@@ -7,7 +7,6 @@ import Badge from "../Badge/Badge";
 import Star from "../Star/Star";
 
 export default function LocationCardSmall({ data }) {
-  console.log("from location card", data);
   const {
     city,
     country,
