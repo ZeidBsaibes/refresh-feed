@@ -74,7 +74,7 @@ model SavedLocation {
   locationTypes        LocationType[]
   // vistedStatus    Int
   rating               Float
-  waitingTime          Float
+  waitingTime          Float?
   photos               Json[]
   LocationLocationType LocationLocationType[]
   notes String?

@@ -39,7 +39,6 @@ export const POST = async (req: Request, res: NextResponse) => {
           city,
           country,
           rating,
-          waitingTime,
           notes,
           photos,
           user: {

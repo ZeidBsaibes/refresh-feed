@@ -299,7 +299,7 @@ export default function AddLocationForm() {
                 data={availableCuisines}
               />
             </div>
-            <div className="col-span-full">
+            {/* <div className="col-span-full">
               <label
                 htmlFor="cover-photo"
                 className=" my-4 block text-sm font-medium leading-6 text-gray-900"
@@ -311,7 +311,7 @@ export default function AddLocationForm() {
                 icon={"\u231B"}
                 onInput={handleWaitingTimeInput}
               />
-            </div>
+            </div> */}
             <div className="col-span-full">
               <label
                 htmlFor="cover-photo"
