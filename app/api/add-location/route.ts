@@ -46,22 +46,23 @@ export const POST = async (req: Request, res: NextResponse) => {
           },
         },
       });
+      if (dishes) {
+        for (const dish of dishes) {
+          const newDish = await prisma.dish.create({
+            data: {
+              id: cuid(),
+              label: dish.label,
+              value: dish.value,
+            },
+          });
 
-      for (const dish of dishes) {
-        const newDish = await prisma.dish.create({
-          data: {
-            id: cuid(),
-            label: dish.label,
-            value: dish.value,
-          },
-        });
-
-        await prisma.locationDish.create({
-          data: {
-            locationId: newLocation.id,
-            dishId: newDish.id,
-          },
-        });
+          await prisma.locationDish.create({
+            data: {
+              locationId: newLocation.id,
+              dishId: newDish.id,
+            },
+          });
+        }
       }
 
       await Promise.all(
