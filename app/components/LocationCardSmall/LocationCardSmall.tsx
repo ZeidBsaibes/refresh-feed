@@ -19,32 +19,10 @@ export default function LocationCardSmall({ data }) {
     rating,
     id,
   } = data;
-  //   return (
-  //     <li key={id} className="flex space-x-6 py-6">
-  //       <img
-  //         src={photos[0].url}
-  //         alt="alt text"
-  //         className="h-24 w-24 flex-none rounded-md bg-gray-100 object-cover object-center"
-  //       />
-  //       <div className="flex-auto space-y-1">
-  //         <h3 className="text-gray-900">
-  //           <a href="/">{placeName}</a>
-  //         </h3>
-  //         <p>{`Added: ${moment(createdAt).fromNow()}`}</p>
-  //       </div>
-  //       <p classNameName="flex-none font-medium text-gray-900"></p>
-  //     </li>
-  //   );
 
   return (
     <div className="max-w-sm my-4 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 ">
       <a href="#">
-        {/* <img
-          className="rounded-t-lg"
-          src={photos[0].url}
-          height="200px"
-          alt=""
-        /> */}
         <img
           className="rounded-t-lg"
           src={photos[0].url}
@@ -68,7 +46,9 @@ export default function LocationCardSmall({ data }) {
           {`Added: ${moment(createdAt).fromNow()}`}
         </p>
         {cuisines.map(({ cuisine }) => {
-          return <Badge key={id} colour={"grey"} text={cuisine.label} />;
+          return (
+            <Badge key={cuisine.id} colour={"grey"} text={cuisine.label} />
+          );
         })}
         <Star rating={parseFloat(rating).toFixed(1)} />
       </div>
