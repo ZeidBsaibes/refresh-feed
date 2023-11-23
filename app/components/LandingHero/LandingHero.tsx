@@ -64,14 +64,14 @@ export default function LandingHero() {
     //   </div>
     // </div>
 
-    <div className="bg-white">
-      <div className="relative isolate pt-8">
+    <div className="bg-white container mx-auto lg:px-8 ">
+      <div className="relative isolate pt-8 sm: px-2">
         <div
           className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
           aria-hidden="true"
         ></div>
         <div className="py-8 sm:py-8 lg:pb-0">
-          <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          <div className="mx-auto max-w-7xl lg:px-8">
             <div className="mx-auto max-w-2xl text-center">
               <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
                 <span className="underline decoration-solid decoration-indigo-600">
@@ -102,14 +102,14 @@ export default function LandingHero() {
                 </a>
               </div>
             </div>
-            <div className="mt-16 flow-root sm:mt-24">
+            <div>
               <div className="relative lg:col-span-5 lg:-mr-8 xl:absolute xl:inset-0 xl:left-1/2 xl:mr-0"></div>
             </div>
           </div>
         </div>
       </div>
-      <div className="relative isolate">
-        <div className="py-8 sm:py-8 lg:pb-0">
+      <div className="relative isolate pt-8">
+        <div className="lg:pb-0">
           <div className="mapbox__container">
             <LocationsMap />
           </div>

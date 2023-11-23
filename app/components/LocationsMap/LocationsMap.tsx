@@ -13,7 +13,7 @@ export default function LocationsMap() {
         latitude: 51.52636,
         zoom: 12,
       }}
-      style={{ width: 600, height: "100%" }}
+      style={{ width: "100%", height: "100%" }}
       mapStyle="mapbox://styles/mapbox/streets-v9"
     >
       <Marker longitude={-0.08} latitude={51.52636} anchor="bottom">
