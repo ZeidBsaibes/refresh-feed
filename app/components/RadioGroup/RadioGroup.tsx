@@ -3,15 +3,12 @@
 import { useState, useEffect } from "react";
 
 const options = [
-  { id: "visited", title: "I've been here" },
-  { id: "wishlist", title: "I want to go here" },
+  { id: "visited", title: "I've been here", visited: true },
+  { id: "wishlist", title: "I want to go here", visited: false },
 ];
 
 export default function RadioGroup({ title, subtitle, onInput }) {
-  const [selectedOption, setSelectedOption] = useState({
-    id: "visited",
-    title: "I've been here",
-  });
+  const [selectedOption, setSelectedOption] = useState(true);
 
   useEffect(() => {
     onInput(selectedOption);
@@ -28,7 +25,7 @@ export default function RadioGroup({ title, subtitle, onInput }) {
             <div key={option.id} className="flex items-center">
               <input
                 onChange={() => {
-                  setSelectedOption({ id: option.id, title: option.title });
+                  setSelectedOption(!selectedOption);
                 }}
                 id={option.id}
                 name="visited-status"

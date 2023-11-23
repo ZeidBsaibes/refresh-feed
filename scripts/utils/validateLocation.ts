@@ -13,7 +13,7 @@ export default function validateLocation(formData) {
   }
 
   if (!formData.locationTypes) {
-    errors.push({ if: "4", error: "Add at least one location type" });
+    errors.push({ id: "4", error: "Add at least one location type" });
   }
 
   console.log(`errors from validation`, errors);

@@ -29,7 +29,7 @@ export default function AddLocationForm() {
   const [availableCuisines, setAvailableCuisines] = useState(null);
   const [dishesAutocomplete, setDishesAutoComplete] = useState(null);
   const [locationData, setLocationData] = useState(null);
-  const [visitedData, setVisitedData] = useState(null);
+  const [visited, setVisited] = useState(null);
   const [rating, setRating] = useState(0.5);
   const [cuisines, setCuisines] = useState(null);
   const [locationTypes, setLocationTypes] = useState(null);
@@ -73,7 +73,7 @@ export default function AddLocationForm() {
   };
 
   const handleVistedInput = (visitedObject) => {
-    setVisitedData(visitedObject);
+    setVisited(visitedObject);
   };
 
   const handleRatingInput = (rating) => {
@@ -111,7 +111,7 @@ export default function AddLocationForm() {
       lng: locationData?.lng,
       city: locationData?.city,
       country: locationData?.country,
-      // visitedData make tis return a boolean
+      visited,
       rating,
       waitingTime,
       cuisines,
@@ -137,68 +137,6 @@ export default function AddLocationForm() {
   };
 
   return (
-    // <form onSubmit={handleFormSubmit}>
-    //   <div className="mt-6 flex items-center justify-end gap-x-6">
-    //     <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-    //       <GoogleMapsAutoComplete
-    //         apiKey={`${process.env.NEXT_PUBLIC_GOOGLE_MAPS_API}`}
-    //         onInput={(locationObject) => {
-    //           handleLocationInput(locationObject);
-    //         }}
-    //       />
-    //       <RadioGroup
-    //         title=""
-    //         subtitle="have you been here before"
-    //         onInput={handleVistedInput}
-    //       />
-    //       <NumberSlider onInput={handleRatingInput} />
-    //       <InputWithFixed
-    //         onInput={handleCuisineInput}
-    //         title="Cuisine"
-    //         data={availableCuisines}
-    //       />
-    //       <InputWithFixed
-    //         onInput={handleLocationTypeInput}
-    //         title="Location Type"
-    //         data={availableLocationTypes}
-    //       />
-    //       <InputWithIcon
-    //         title="Waiting Time"
-    //         placeholder="Waiting Time"
-    //         icon={"\u231B"}
-    //         onInput={handleWaitingTimeInput}
-    //       />
-    //       Favourite Dishes
-    //       <InputWithCreate
-    //         placeholder="Add menu items you'd recommend"
-    //         title="Dishes/Drinks you'd recommend"
-    //         onInput={handleDishesInput}
-    //         data={dishesAutocomplete && dishesAutocomplete}
-    //       />
-    //       <FreeTextInput
-    //         label=""
-    //         title="Notes"
-    //         placeholder="Add anything you want to mention"
-    //         onInput={handleNotesInput}
-    //       />
-    //     </div>
-    //   </div>
-    //   <Button text="Add Place" type="submit" size="lg" variant="primary" />
-    //   <Button text="Cancel" type="button" size="lg" variant="seconary" />
-    //   {locationData && <p>{locationData.placeName}</p>}
-    //   {locationData && <p>{locationData.city}</p>}
-    //   {visitedData && <p> {visitedData.title}</p>}
-    //   {rating && <p>{rating}</p>}
-    //   {cuisines && <p>{cuisines[0]?.label}</p>}
-    //   {cuisines && <p>{cuisines[1]?.label}</p>}
-    //   {cuisines && <p>{cuisines[2]?.label}</p>}
-    //   {cuisines && <p>{cuisines[3]?.label}</p>}
-    //   {locationTypes && <p>{locationTypes[0]?.label}</p>}
-    //   {locationTypes && <p>{locationTypes[1]?.label}</p>}
-    //   {locationTypes && <p>{locationTypes[2]?.label}</p>}
-    //   {waitingTime && <p>{waitingTime}</p>}
-    // </form>
-
     <form onSubmit={handleFormSubmit} className="bg-white px-8 py-8 ">
       <div className="space-y-12">
         <div className="border-b border-gray-900/10 pb-12">
@@ -253,27 +191,6 @@ export default function AddLocationForm() {
               </label>
               <NumberSlider onInput={handleRatingInput} />
             </div>
-
-            {/* <div className="col-span-full">
-              <label
-                htmlFor="photo"
-                className="block text-sm font-medium leading-6 text-gray-900"
-              >
-                Photo
-              </label>
-              <div className="mt-2 flex items-center gap-x-3">
-                <UserCircleIcon
-                  className="h-12 w-12 text-gray-300"
-                  aria-hidden="true"
-                />
-                <button
-                  type="button"
-                  className="rounded-md bg-white px-2.5 py-1.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
-                >
-                  Change
-                </button>
-              </div>
-            </div> */}
 
             <div className="col-span-full">
               <label

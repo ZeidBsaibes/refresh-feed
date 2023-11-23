@@ -72,7 +72,7 @@ model SavedLocation {
   dishes               LocationDish[]
   cuisines             LocationCuisine[]
   locationTypes        LocationType[]
-  // vistedStatus    Int
+  visited              Boolean              @default(true)
   rating               Float
   waitingTime          Float?
   photos               Json[]

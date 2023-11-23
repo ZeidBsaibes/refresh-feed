@@ -41,6 +41,7 @@ export const POST = async (req: Request, res: NextResponse) => {
           rating,
           notes,
           photos,
+          visited,
           user: {
             connect: { id: userId },
           },
