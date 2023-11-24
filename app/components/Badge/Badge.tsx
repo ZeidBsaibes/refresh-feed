@@ -17,7 +17,7 @@ export default function Badge({ colour, text }) {
 
   return (
     <span
-      className={`inline-flex items-center rounded-md px-1.5 py-0.5 text-xs font-medium ${classes}`}
+      className={`inline-flex items-center rounded-md mx-1 px-1.5 py-0.5 text-xs font-medium ${classes}`}
     >
       {text}
     </span>

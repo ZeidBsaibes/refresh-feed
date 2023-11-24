@@ -1,11 +1,10 @@
 "use client";
 
 import React from "react";
-import { useParams } from "next/navigation";
+import { useParams, useSearchParams } from "next/navigation";
 import { useState, useEffect } from "react";
 import getLocationsForUser from "@/scripts/utils/getLocationsForUser";
-import LocationCard from "@/app/components/LocationCard/LocationCard";
-import LocationCardSmall from "@/app/components/LocationCardSmall/LocationCardSmall";
+
 import LocationsMap from "@/app/components/LocationsMap/LocationsMap";
 import Loading from "./loading";
 import { Suspense } from "react";
@@ -13,6 +12,11 @@ import LocationCardHoriz from "@/app/components/LocationCardHoriz/LocationCardHo
 
 export default function UserLocationsPage() {
   const params = useParams();
+  const searchParams = useSearchParams();
+  console.log(searchParams.get("wishlist"));
+
+  console.log(`these are the search params`, searchParams);
+  console.log(`these are the  params`, params);
   const { userId } = params;
 
   const [userLocations, setUserLocations] = useState(null);
@@ -60,13 +64,13 @@ export default function UserLocationsPage() {
 
   return (
     <>
-      {/* <Loading />
       <Loading />
       <Loading />
       <Loading />
       <Loading />
       <Loading />
-      <Loading /> */}
+      <Loading />
+      <Loading />
     </>
   );
 }

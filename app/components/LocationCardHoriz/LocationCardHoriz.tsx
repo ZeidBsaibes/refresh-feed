@@ -15,40 +15,39 @@ export default function LocationCardHoriz({ data }) {
     photos,
     rating,
     id,
+    notes,
+    name,
   } = data;
   return (
-    <a
-      href="#"
-      className="flex flex-col my-4 items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700"
-    >
-      {/* <img
-        className="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-s-lg"
-        src={photos[0].url}
-        alt=""
-        height="500px"
-        width="500px"
-      /> */}
-      {}
-      <div className="flex flex-col justify-between p-4 leading-normal">
-        <h5 className="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">
-          {placeName}
-        </h5>
-        <h5 className="mb-2 text-sm  tracking-tight text-gray-600 dark:text-white">
-          {city}
-        </h5>
-        <p className="mb-1  text-xs font-normal text-gray-500 dark:text-gray-400">
-          {`Added: ${moment(createdAt).fromNow()}`}
-        </p>
-        {cuisines.map(({ cuisine }) => {
-          return (
-            <Badge key={cuisine.id} colour={"grey"} text={cuisine.label} />
-          );
-        })}
-        <Star rating={parseFloat(rating).toFixed(1)} />
-        <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
-          Here are the biggest enterprise technology acquisitions of 2021 so
-          far, in reverse chronological order.
-        </p>
+    <a href={`/location/${id}`}>
+      <div className="flex my-6 flex-col justify-center">
+        <div className=" w- full relative flex flex-col  rounded-xl shadow-lg p-3 max-w-xs md:max-w-3xl mx-auto border border-white bg-white">
+          <div className="w-full  bg-white flex flex-col space-y-2 p-3">
+            <div className="flex justify-between item-center"></div>
+            <p className="md:text-sm text-gray-500 text-base">{city}</p>
+            <h3 className="font-black text-gray-800 md:text-3xl text-xl">
+              {placeName}
+              <Star rating={parseFloat(rating).toFixed(2)} />
+            </h3>
+            <p className="md:text-sm text-gray-500 text-base">
+              {`Added: ${moment(createdAt).fromNow()}`}
+            </p>
+            <div className="flex items-center text-2xl text-gray-500 font-normal">
+              {LocationLocationType.map((location) => (
+                <Badge
+                  key={location.locationType.id}
+                  colour="blue"
+                  text={location.locationType.label}
+                />
+              ))}
+            </div>
+            <div className="flex items-center text-2xl text-gray-500 font-normal">
+              {cuisines.map(({ cuisine }) => (
+                <Badge key={cuisine.id} colour="green" text={cuisine.label} />
+              ))}
+            </div>
+          </div>
+        </div>
       </div>
     </a>
   );

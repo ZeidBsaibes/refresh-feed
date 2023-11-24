@@ -79,7 +79,7 @@ model SavedLocation {
   photos               Json[]
   LocationLocationType LocationLocationType[]
   notes String?
-  user  User?    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  user  User?   @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
 model Dish {
