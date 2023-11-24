@@ -1,3 +1,23 @@
+/* Start custom Mapbox CSS */
+
+.mapbox__children {
+  width: 100%;
+}
+
+.mapbox__popup {
+  /* background-color: purple; */
+  background: none;
+  border-radius: 10px;
+}
+
+.mapbox__popup-content {
+  /* background-color: purple; */
+  background: none;
+  border-radius: 10px;
+}
+
+/* End custom Mapbox CSS */
+
 .mapboxgl-map {
   -webkit-tap-highlight-color: rgb(0 0 0/0);
   font: 12px/20px Helvetica Neue, Arial, Helvetica, sans-serif;

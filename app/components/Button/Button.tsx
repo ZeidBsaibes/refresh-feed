@@ -1,6 +1,7 @@
 import React from "react";
 import classNames from "classnames";
 import ButtonLoader from "../ButtonLoader/ButtonLoader";
+import { signIn, signOut } from "next-auth/react";
 
 export default function Button({
   text,
@@ -8,7 +9,8 @@ export default function Button({
   size = "sm",
   rounded = true,
   variant = "primary",
-  disabled,
+  disabled = false,
+  onClick,
 }) {
   const buttonClass = classNames(
     {
@@ -31,7 +33,12 @@ export default function Button({
   );
 
   return (
-    <button type={type} className={buttonClass} disabled={disabled}>
+    <button
+      type={type}
+      className={buttonClass}
+      disabled={disabled}
+      onClick={onClick}
+    >
       {disabled && type === "submit" ? <ButtonLoader /> : text}
     </button>
   );

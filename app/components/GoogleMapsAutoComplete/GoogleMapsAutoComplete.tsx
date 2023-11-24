@@ -25,6 +25,7 @@ export default function GoogleMapsAutoComplete({ apiKey, onInput }) {
         lng: place.geometry.location.lng(),
         city: place.address_components[2].long_name,
         country: place.address_components[5].long_name,
+        website: place.website,
         photos: place.photos.slice(0, 3).map((photo) => {
           return {
             height: photo.height,

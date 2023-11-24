@@ -5,11 +5,11 @@
 
 :root {
   --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  /* --background-start-rgb: 214, 219, 220; */
+  /* --background-end-rgb: 255, 255, 255; */
 }
 
-@media (prefers-color-scheme: dark) {
+@media (prefers-color-scheme: light) {
   :root {
     --foreground-rgb: 255, 255, 255;
     --background-start-rgb: 0, 0, 0;
@@ -43,22 +43,7 @@ body {
   }
 }
 
-.mapbox__children {
-  width: 100%;
-}
-
-.mapbox__popup {
-  /* background-color: purple; */
-  background: none;
-  border-radius: 10px;
-}
-
-.mapbox__popup-content {
-  /* background-color: purple; */
-  background: none;
-  border-radius: 10px;
-}
-
+/* Button Spinner CSS  */
 .spinner {
   margin: 0px auto 0;
   width: 70px;
@@ -109,3 +94,5 @@ body {
     transform: scale(1);
   }
 }
+
+/* Custom Range Input Slider Select CSS for dark mode */

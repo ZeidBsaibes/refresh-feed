@@ -153,6 +153,7 @@ const seedCuisines = [
   { value: "sao_tomean", label: "Sao Tomean" },
   { value: "saudi_arabian", label: "Saudi Arabian" },
   { value: "senegalese", label: "Senegalese" },
+  { value: "coffee", label: "Coffee" },
 ];
 
 const seedDishes = [
@@ -270,22 +271,40 @@ async function main() {
   console.log(`Start seeding ...`);
 
   for (const c of seedCuisines) {
-    const cuisine = await prisma.cuisine.create({
-      data: c,
+    const cuisine = await prisma.cuisine.upsert({
+      where: { value: c.value },
+      update: {},
+      create: c,
     });
     console.log(`Created cuisine with id: ${cuisine.id}`);
   }
 
   for (const l of locationTypeData) {
-    const locationType = await prisma.locationType.create({
-      data: l,
+    const locationType = await prisma.locationType.upsert({
+      where: { value: l.value },
+      update: {},
+      create: l,
     });
     console.log(`Created location with id: ${locationType.id}`);
   }
 
-  for (const l of seedDishes) {
+  const deleteDishes = await prisma.dish.findMany({
+    where: {
+      location: {
+        none: {},
+      },
+    },
+  });
+
+  for (const dish in deleteDishes) {
+    await prisma.dish.delete({
+      where: {},
+    });
+  }
+
+  for (const d of seedDishes) {
     const dish = await prisma.dish.create({
-      data: l,
+      data: d,
     });
     console.log(`Created dish with id: ${dish.id}`);
   }

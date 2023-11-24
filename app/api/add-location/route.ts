@@ -24,6 +24,7 @@ export const POST = async (req: Request, res: NextResponse) => {
       notes,
       locationTypes,
       photos,
+      website,
     } = await req.json();
 
     console.log(`placename is`, placeName);
@@ -42,6 +43,7 @@ export const POST = async (req: Request, res: NextResponse) => {
           notes,
           photos,
           visited,
+          website,
           user: {
             connect: { id: userId },
           },

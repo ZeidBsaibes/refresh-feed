@@ -75,6 +75,7 @@ model SavedLocation {
   visited              Boolean              @default(true)
   rating               Float
   waitingTime          Float?
+  website              String?
   photos               Json[]
   LocationLocationType LocationLocationType[]
   notes String?
@@ -82,6 +83,7 @@ model SavedLocation {
 }
 
 model Dish {
+  createdAt            DateTime               @default(now())
   id        String         @id @default(cuid())
   label     String
   value     String

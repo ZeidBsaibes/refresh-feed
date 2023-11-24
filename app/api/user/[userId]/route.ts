@@ -12,8 +12,12 @@ export const GET = async (req, { params }) => {
       where: {
         id: userId,
       },
+
       include: {
         SavedLocation: {
+          orderBy: {
+            createdAt: "desc",
+          },
           include: {
             dishes: {
               include: {

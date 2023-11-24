@@ -7,6 +7,9 @@ import getLocationsForUser from "@/scripts/utils/getLocationsForUser";
 import LocationCard from "@/app/components/LocationCard/LocationCard";
 import LocationCardSmall from "@/app/components/LocationCardSmall/LocationCardSmall";
 import LocationsMap from "@/app/components/LocationsMap/LocationsMap";
+import Loading from "./loading";
+import { Suspense } from "react";
+import LocationCardHoriz from "@/app/components/LocationCardHoriz/LocationCardHoriz";
 
 export default function UserLocationsPage() {
   const params = useParams();
@@ -32,8 +35,12 @@ export default function UserLocationsPage() {
         <div className="container mx-auto p-4">
           <div className="flex flex-col md:flex-row ">
             <div className="md:flex-1 p-2 overflow-auto h-[100vh]">
+              <h1 className="mb-2 text-3xl font-bold tracking-tight text-gray-900 dark:text-white">
+                Your Saved Locations
+              </h1>
               {userLocations.SavedLocation.map((location) => {
-                return <LocationCardSmall key={location.id} data={location} />;
+                // return <LocationCardSmall key={location.id} data={location} />;
+                return <LocationCardHoriz key={location.id} data={location} />;
               })}
             </div>
             <div className="md:flex-1 p-2 h-[100vh]">
@@ -51,5 +58,15 @@ export default function UserLocationsPage() {
     );
   }
 
-  return <div>loading...</div>;
+  return (
+    <>
+      {/* <Loading />
+      <Loading />
+      <Loading />
+      <Loading />
+      <Loading />
+      <Loading />
+      <Loading /> */}
+    </>
+  );
 }

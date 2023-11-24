@@ -120,6 +120,7 @@ export default function AddLocationForm() {
       photos: locationData?.photos,
       notes,
       dishes,
+      website: locationData.website,
     };
 
     if (validateLocation(inputtedData)) {
