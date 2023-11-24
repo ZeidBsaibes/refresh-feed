@@ -23,7 +23,7 @@ export default function InputWithFixed({ data, title, onInput }) {
         onChange={handleChange}
         name="colors"
         options={data}
-        className="basic-multi-select"
+        className="basic-multi-select text-black"
         classNamePrefix="select"
       />
     </>

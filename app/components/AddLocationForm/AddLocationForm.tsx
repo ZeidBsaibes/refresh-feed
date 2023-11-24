@@ -267,7 +267,7 @@ export default function AddLocationForm() {
           })}
       </div>
       <div className="mt-6 flex items-center justify-end gap-x-6">
-        <Button text="Cancel" type="button" size="lg" variant="seconary" />
+        <Button text="Cancel" type="button" size="lg" variant="secondary" />
         <Button
           text="Add Place"
           type="submit"

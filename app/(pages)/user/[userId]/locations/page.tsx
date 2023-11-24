@@ -43,7 +43,6 @@ export default function UserLocationsPage() {
                 Your Saved Locations
               </h1>
               {userLocations.SavedLocation.map((location) => {
-                // return <LocationCardSmall key={location.id} data={location} />;
                 return <LocationCardHoriz key={location.id} data={location} />;
               })}
             </div>

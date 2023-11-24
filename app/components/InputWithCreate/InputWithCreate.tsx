@@ -24,6 +24,7 @@ export default function InputWithCreate({ data, title, onInput, placeholder }) {
         value={selectedOptions}
         options={data}
         placeholder={placeholder}
+        className="text-black"
       />
     </>
   );

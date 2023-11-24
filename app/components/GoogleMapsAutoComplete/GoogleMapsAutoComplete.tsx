@@ -12,6 +12,7 @@ export default function GoogleMapsAutoComplete({ apiKey, onInput }) {
     width: "100%",
     border: "1px solid #cbd5e1",
     borderRadius: "4px",
+    color: "black",
   };
 
   const mapCentre = { lat: 51.5072, lng: 0.1276 };

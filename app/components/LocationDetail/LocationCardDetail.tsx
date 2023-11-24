@@ -5,6 +5,7 @@ import Star from "../Star/Star";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import getUser from "@/scripts/utils/getUser";
+import LoadingDetailSkeleton from "../LoadingSkeletons/LocationDetailPage/LoadingDetailSkeleton";
 
 export default function LocationCardDetail({ data }) {
   const {
@@ -34,6 +35,10 @@ export default function LocationCardDetail({ data }) {
     getAndSetUser();
   }, []);
 
+  if (!data || !user) {
+    return <p>Loading</p>;
+  }
+
   if (data && user) {
     return (
       <>
@@ -47,10 +52,10 @@ export default function LocationCardDetail({ data }) {
           ))}
         </h3>
 
-        <h1 className="text-3xl mx-4 leading-7 font-bold text-gray-900">
+        <h1 className="text-3xl mx-4 leading-7 font-bold dark:text-white text-gray-900">
           {placeName}
         </h1>
-        <p className="mx-4 text-xs leading-7 text-gray-600">
+        <p className="mx-4 text-xs leading-7 dark:text-white text-gray-600">
           {" "}
           {`Added: ${moment(createdAt).fromNow()} by ${user.name}`}
         </p>

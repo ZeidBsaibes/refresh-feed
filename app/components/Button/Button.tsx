@@ -15,7 +15,7 @@ export default function Button({
   const buttonClass = classNames(
     {
       // Primary button styles
-      "bg-indigo-600 text-white hover:bg-indigo-500": variant === "primary",
+      "bg-indigo-600 text-indigo hover:bg-indigo-500": variant === "primary",
       // Secondary button styles
       "bg-indigo-50 text-indigo-600 hover:bg-indigo-100":
         variant === "secondary",
