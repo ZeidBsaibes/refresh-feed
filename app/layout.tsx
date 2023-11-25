@@ -10,6 +10,7 @@ import Provider from "./context/context-provider";
 import Head from "next/head";
 import "mapbox-gl/dist/mapbox-gl.css";
 import Footer from "./components/Footer/Footer";
+import NavBarBottomSticky from "./components/NavBarBottomSticky/NavBarBottomSticky";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -30,6 +31,7 @@ export default async function RootLayout({
       <body className={inter.className}>
         <Provider session={session}>
           <NavBar />
+          <NavBarBottomSticky />
           <div className="mx-auto max-w-7xl lg:px-8 dark:bg-black bg-white">
             {children}
           </div>

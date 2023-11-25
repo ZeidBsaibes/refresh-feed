@@ -7,7 +7,13 @@ const prisma = new PrismaClient();
 export async function GET(req, res) {
   // Do whatever you want
   try {
-    const users = await prisma.user.findMany();
+    const users = await prisma.user.findMany({
+      include: {
+        _count: {
+          select: { SavedLocation: true },
+        },
+      },
+    });
     return NextResponse.json(users);
   } catch (error) {
     console.error(error);

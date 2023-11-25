@@ -62,6 +62,7 @@ model VerificationToken {
 model SavedLocation {
   createdAt            DateTime               @default(now())
   id                   String                 @id @default(cuid())
+  
   userId               String                 @map("user_id")
   placeName            String
   googleId             String
@@ -69,7 +70,7 @@ model SavedLocation {
   lng                  Float
   city                 String
   country              String
-  dishes               LocationDish[]
+  dishes               LocationDish[] 
   cuisines             LocationCuisine[]
   locationTypes        LocationType[]
   visited              Boolean              @default(true)
@@ -92,9 +93,9 @@ model Dish {
 
 model LocationDish {
   locationId String
-  location   SavedLocation @relation(fields: [locationId], references: [id])
+  location   SavedLocation @relation(fields: [locationId], references: [id], onDelete: Cascade)
   dishId     String
-  dish       Dish          @relation(fields: [dishId], references: [id])
+  dish       Dish          @relation(fields: [dishId], references: [id] )
 
   @@id([locationId, dishId]) // Composite primary key
 }
@@ -108,7 +109,7 @@ model Cuisine {
 
 model LocationCuisine {
   locationId String
-  location   SavedLocation @relation(fields: [locationId], references: [id])
+  location   SavedLocation @relation(fields: [locationId], references: [id] , onDelete: Cascade)
   cuisineId  Int
   cuisine    Cuisine       @relation(fields: [cuisineId], references: [id])
 
@@ -127,7 +128,7 @@ model LocationType {
 
 model LocationLocationType {
   locationId     String
-  location       SavedLocation @relation(fields: [locationId], references: [id])
+  location       SavedLocation @relation(fields: [locationId], references: [id] , onDelete: Cascade)
   locationTypeId Int
   locationType   LocationType  @relation(fields: [locationTypeId], references: [id])
 

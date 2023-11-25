@@ -1,8 +1,8 @@
 import axios from "axios";
 
-const getCuisines = async () => {
+const getAllUsers = async () => {
   try {
-    const response = await axios.get("/api/get-cuisines");
+    const response = await axios.get("api/users");
     // console.log(response.data);
 
     return response.data;
@@ -11,4 +11,4 @@ const getCuisines = async () => {
   }
 };
 
-export default getCuisines;
+export default getAllUsers;
