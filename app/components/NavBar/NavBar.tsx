@@ -70,7 +70,8 @@ export default function NavBar() {
                       My Locations
                     </a>
                     <a
-                      href="/wishlist"
+                      //@ts-ignore
+                      href={`/user/${session?.user?.userId}/wishlist`}
                       className="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
                     >
                       Wishlist
@@ -227,7 +228,7 @@ export default function NavBar() {
               <Disclosure.Button
                 as="a"
                 // @ts-ignore
-                href="/wishlist"
+                href={`/user/${session?.user?.userId}/wishlist`}
                 aria-label="see wishlist link"
                 className="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
               >

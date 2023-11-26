@@ -27,15 +27,6 @@ export default function UserLocationsPage() {
     setUserLocations(data);
   };
 
-  // const isUserOwner = () => {
-  //   // @ts-ignore
-  //   const currentUser = session?.user?.userId;
-  //   const currentPageOwnedBy = params.userId;
-  //   if (currentUser === currentPageOwnedBy) {
-  //     return true;
-  //   }
-  //   return false;
-  // };
   useEffect(() => {
     getAndSetUserLocations();
   }, []);

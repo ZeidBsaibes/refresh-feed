@@ -16,7 +16,7 @@ export const GET = async (req, { params }) => {
       include: {
         SavedLocation: {
           where: {
-            visited: true,
+            visited: false,
           },
           orderBy: {
             createdAt: "desc",
