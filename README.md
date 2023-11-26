@@ -22,6 +22,12 @@ This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-opti
 
 ## please add the .env file I have provided in a separate link when submitting this repo to BrainStation
 
+## Environments
+
+Main is public at refreshfeed.com
+
+.env variables have been added to Vercel depoloyment environment.
+
 ## Database
 
 The DB is PostGres and hosted on the Vercel Platform, there is only only databse environment

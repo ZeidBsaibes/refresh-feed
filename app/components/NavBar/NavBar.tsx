@@ -8,7 +8,7 @@ import { signIn, signOut } from "next-auth/react";
 import Button from "../Button/Button";
 import { Fragment } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
-import Lottie from "react-lottie";
+
 import {
   Bars3Icon,
   BellIcon,
