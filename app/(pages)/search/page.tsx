@@ -24,6 +24,8 @@ export default function SearchPage() {
     return (
       <h1 className="mb-2 text-3xl  tracking-tight text-gray-900 dark:text-white">
         Your Search: <span className="font-bold">{search}</span> had no results
+        <h2>THIS PAGE IS NOT YET WORKING</h2>
+        <h3>search bar and search query to backend are workings</h3>
       </h1>
     );
   }
@@ -35,6 +37,7 @@ export default function SearchPage() {
             <h1 className="mb-2 text-3xl font-bold tracking-tight text-gray-900 dark:text-white">
               You Searched for {search}
             </h1>
+            <h2>THIS PAGE IS NOT YET WORKING</h2>
             <section>
               {/* {searchResults.map((result) => {
                 return <LocationCardHoriz key={result.id} data={location} />;

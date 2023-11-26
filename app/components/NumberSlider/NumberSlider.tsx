@@ -3,10 +3,8 @@
 import { useState, useEffect } from "react";
 
 const NumberSlider = ({ onInput }) => {
-  // State for the slider value
   const [value, setValue] = useState(5);
 
-  // Handle change event
   const handleChange = (event) => {
     setValue(Number(event.target.value));
   };
@@ -17,17 +15,6 @@ const NumberSlider = ({ onInput }) => {
 
   return (
     <>
-      {/* <div className="flex items-center justify-center p-4">
-        <input
-          type="range"
-          min="0"
-          max="10"
-          value={value}
-          onChange={handleChange}
-          className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700"
-        />
-      </div> */}
-
       <div className="relative mb-8 w-full md:w-1/2">
         <label htmlFor="labels-range-input" className="sr-only">
           Labels range

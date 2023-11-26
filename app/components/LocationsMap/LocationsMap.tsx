@@ -37,9 +37,6 @@ export default function LocationsMap({ data }) {
       }}
       style={{ width: "100%", height: "100%" }}
       mapStyle="mapbox://styles/mapbox/streets-v9"
-      // onClick={() => {
-      //   handleMapClick();
-      // }}
     >
       {data &&
         data.map((location) => {

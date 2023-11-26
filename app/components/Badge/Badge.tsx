@@ -1,6 +1,4 @@
-// BadgeComponent.jsx
 export default function Badge({ colour, text }) {
-  // Define a mapping of color names to their corresponding Tailwind CSS classes
   const colorClasses = {
     gray: "bg-gray-100 text-gray-600",
     red: "bg-red-100 text-red-700",
@@ -12,8 +10,7 @@ export default function Badge({ colour, text }) {
     pink: "bg-pink-100 text-pink-700",
   };
 
-  // Get the specific classes for the provided color
-  const classes = colorClasses[colour] || colorClasses.gray; // Default to gray if color is not found
+  const classes = colorClasses[colour] || colorClasses.gray;
 
   return (
     <span

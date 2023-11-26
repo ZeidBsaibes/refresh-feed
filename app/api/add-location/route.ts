@@ -29,7 +29,6 @@ export const POST = async (req: Request, res: NextResponse) => {
     try {
       const newLocation = await prisma.savedLocation.create({
         data: {
-          // userId,
           placeName,
           googleId,
           lat,
