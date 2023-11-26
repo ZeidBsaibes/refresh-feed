@@ -58,12 +58,20 @@ export default function UserLocationsPage() {
                     : `${userLocations.name}'s Spots`
                 }
               </h1>
-              {userLocations.SavedLocation.map((location) => {
-                return <LocationCardHoriz key={location.id} data={location} />;
-              })}
+              <section>
+                {userLocations.SavedLocation.map((location) => {
+                  return (
+                    <LocationCardHoriz key={location.id} data={location} />
+                  );
+                })}
+              </section>
             </div>
-            <div className="md:flex-1 p-2 h-[100vh]">
-              <LocationsMap data={userLocations.SavedLocation} />
+            <div className="md:flex-1 p-2 overflow-auto h-[100vh]">
+              <section>
+                <div className="md:flex-1 p-2 h-[100vh]">
+                  <LocationsMap data={userLocations.SavedLocation} />
+                </div>
+              </section>
             </div>
           </div>
         </div>

@@ -21,7 +21,7 @@ export default function LandingHero() {
 
   return (
     <div className="bg-white container mx-auto lg:px-8 ">
-      <div className="relative isolate pt-8 sm: px-2">
+      <section className="relative isolate pt-8 sm: px-2">
         <div
           className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
           aria-hidden="true"
@@ -38,11 +38,11 @@ export default function LandingHero() {
                   your friends
                 </span>
               </h1>
-              <p className="mt-6 text-lg leading-8 text-gray-600">
+              <h2 className="mt-6 text-lg leading-8 text-gray-600">
                 Food and drink recommendations from friends. Forget search
                 engines, social media and food critics, go to the places tried
                 and tested by people you actually trust.
-              </p>
+              </h2>
               <div className="mt-10 flex items-center justify-center gap-x-6">
                 <a
                   href="/add-location"
@@ -63,16 +63,13 @@ export default function LandingHero() {
             </div>
           </div>
         </div>
-      </div>
-      <div className="relative isolate pt-8">
-        <div className="lg:pb-0">
-          <div className="mapbox__container">
-            {landingLocations?.SavedLocation && (
-              <LocationsMap data={landingLocations.SavedLocation} />
-            )}
-          </div>
-        </div>
-      </div>
+      </section>
+
+      <section className="mapbox__container lg:pb-0 relative isolate pt-8">
+        {landingLocations?.SavedLocation && (
+          <LocationsMap data={landingLocations.SavedLocation} />
+        )}
+      </section>
     </div>
   );
 }

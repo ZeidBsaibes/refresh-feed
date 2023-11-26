@@ -48,6 +48,7 @@ export default function LocationCardDetail({ data }) {
               key={location.locationType.id}
               colour="blue"
               text={location.locationType.label}
+              aria-label="location type badge badge"
             />
           ))}
         </h3>
@@ -59,14 +60,19 @@ export default function LocationCardDetail({ data }) {
           {" "}
           {`Added: ${moment(createdAt).fromNow()} by ${user.name}`}
         </p>
-        <p className="mx-4 text-sm leading-7 text-gray-400">{city}</p>
+        <h2 className="mx-4 text-sm leading-7 text-gray-400">{city}</h2>
         <h3 className=" text-lg mx-4 font-semibold leading-8 text-gray-900">
           {cuisines.map(({ cuisine }) => (
-            <Badge key={cuisine.id} colour="green" text={cuisine.label} />
+            <Badge
+              key={cuisine.id}
+              colour="green"
+              text={cuisine.label}
+              aria-label="cuisine badge"
+            />
           ))}
         </h3>
         <p className="mt mx-4 text-xs leading-7 text-gray-600"> {notes}</p>
-        <ul role="list" className="mt-6 flex gap-x-6"></ul>
+
         <p className="mx-4 text-sm leading-7 text-gray-400">
           <span className=" text-xs leading-7 text-gray-600">
             Dishes recommended by {user.name}:
@@ -75,7 +81,11 @@ export default function LocationCardDetail({ data }) {
           <ul>
             {dishes.map(({ dish }) => (
               <li key={dish.id}>
-                <Badge colour="purple" text={dish.label} />
+                <Badge
+                  colour="purple"
+                  text={dish.label}
+                  aria-label="dish badge"
+                />
               </li>
             ))}
           </ul>

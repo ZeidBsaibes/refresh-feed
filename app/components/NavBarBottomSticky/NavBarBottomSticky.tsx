@@ -11,9 +11,13 @@ import { useSession } from "next-auth/react";
 export default function NavBarBottomSticky() {
   const { data: session } = useSession();
   return (
-    <div className="md:invisible fixed bottom-0 left-0 z-50 w-full h-16 bg-gray-800 border-t border-gray-200 dark:bg-gray-800 dark:border-gray-600">
+    <div
+      aria-label="sticky bottom nav mobile"
+      className="md:invisible fixed bottom-0 left-0 z-50 w-full h-16 bg-gray-800 border-t border-gray-200 dark:bg-gray-800 dark:border-gray-600"
+    >
       <div className="grid h-full max-w-lg grid-cols-4 mx-auto font-medium">
         <a
+          aria-label="Add Spot"
           href="/add-location"
           className="inline-flex flex-col items-center justify-center px-2 py-2 hover:bg-gray-50 dark:hover:bg-gray-800 group"
         >
@@ -23,6 +27,7 @@ export default function NavBarBottomSticky() {
           </span>
         </a>
         <a
+          aria-label="Friends"
           href="/friends"
           className="inline-flex flex-col items-center justify-center px-2 py-2 hover:bg-gray-50 dark:hover:bg-gray-800 group"
         >
@@ -33,6 +38,7 @@ export default function NavBarBottomSticky() {
         </a>
         <a
           href="/wishlist"
+          aria-label="Wish List"
           className="inline-flex flex-col items-center justify-center px-2 py-2 hover:bg-gray-50 dark:hover:bg-gray-800 group"
         >
           <SparklesIcon height={30} color={"rgb(107 114 128)"} />
@@ -43,6 +49,7 @@ export default function NavBarBottomSticky() {
         <a
           // @ts-ignore
           href={`/user/${session?.user?.userId}/locations`}
+          aria-label="Your List"
           className="inline-flex flex-col items-center justify-center px-2 py-2 hover:bg-gray-50 dark:hover:bg-gray-800 group"
         >
           <MapIcon height={30} color={"rgb(107 114 128)"} />

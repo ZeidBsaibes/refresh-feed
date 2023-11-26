@@ -29,6 +29,7 @@ export default function ImageGallery({ images }) {
             return (
               <div key={image.url}>
                 <button
+                  aria-label="expand image button"
                   onClick={() => {
                     handleImageClick(image.url);
                   }}

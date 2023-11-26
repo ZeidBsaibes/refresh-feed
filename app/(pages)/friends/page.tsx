@@ -17,7 +17,11 @@ export default function Friends() {
   }, []);
 
   if (!users) {
-    return <LoadingFriendsSkeleton count={20} />;
+    return (
+      <div aria-busy="true" aria-live="polite">
+        <LoadingFriendsSkeleton count={20} />
+      </div>
+    );
   }
 
   if (users) {
@@ -34,12 +38,14 @@ export default function Friends() {
             className="mx-auto mt-8 grid max-w-2xl grid-cols-2 gap-x-8 gap-y-16 text-center sm:grid-cols-3 md:grid-cols-4 lg:mx-0 lg:max-w-none lg:grid-cols-5 xl:grid-cols-6"
           >
             {users.map((user) => (
-              <Link key={user.id} href={`/user/${user.id}/locations`}>
-                <li>
+              <li key={user.id}>
+                <Link key={user.id} href={`/user/${user.id}/locations`}>
                   <img
                     className="mx-auto h-24 w-24 rounded-full"
                     src={user.image}
-                    alt=""
+                    alt={`${user.name}'s profile image`}
+                    width="24px"
+                    height="24px"
                   />
                   <h3 className="mt-6 text-base font-semibold leading-7 tracking-tight text-gray-900 dark:text-white">
                     {user.name}
@@ -51,8 +57,8 @@ export default function Friends() {
                     {user?._count.SavedLocation === 1 &&
                       `${user?._count.SavedLocation} locations`}
                   </p>
-                </li>
-              </Link>
+                </Link>
+              </li>
             ))}
           </ul>
         </div>

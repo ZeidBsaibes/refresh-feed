@@ -44,122 +44,6 @@ export default function NavBar() {
   }
 
   return (
-    // <header className="bg-gray-900">
-    //   <nav
-    //     className="mx-auto flex max-w-4xl items-center justify-between p-6 lg:px-8"
-    //     aria-label="Global"
-    //   >
-    //     <div className="flex lg:flex-1">
-    //       <a href="/" className="-m-1.5 p-1.5">
-    //         <span className="sr-only">Your Company</span>
-    //         <img
-    //           className="h-8 w-auto"
-    //           src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
-    //           alt=""
-    //         />
-    //       </a>
-    //     </div>
-    //     <div className="flex lg:hidden">
-    //       <button
-    //         type="button"
-    //         className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-400"
-    //         onClick={() => setMobileMenuOpen(true)}
-    //       >
-    //         <span className="sr-only">Open main menu</span>
-    //         <Bars3Icon className="h-6 w-6" aria-hidden="true" />
-    //       </button>
-    //     </div>
-    //     <div className="hidden lg:flex lg:gap-x-12">
-    //       {navigation.map((item) => (
-    //         <a
-    //           key={item.name}
-    //           href={item.href}
-    //           className="text-sm font-semibold leading-6 text-white"
-    //         >
-    //           {item.name}
-    //         </a>
-    //       ))}
-    //     </div>
-
-    //     <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-    //       {/* <a
-    //         href={session ? "/api/auth/signout" : "/api/auth/signin"}
-    //         className="text-sm font-semibold leading-6 text-white"
-    //       >
-
-    //         {session ? "Sign Out" : "Sign In"}{" "}
-    //         <span aria-hidden="true">&rarr;</span>
-    //         <p className="text-sm">
-    //           {session?.user?.name && `${session.user.name}`}
-    //         </p>
-    //       </a> */}
-    //       {session ? (
-    //         <Button variant="primary" size="xl" text="Sign Out" type="button" />
-    //       ) : (
-    //         <Button variant="primary" size="xl" text="Sign In" type="button" />
-    //       )}
-    //       <p className="text-sm px-1 py-2.5 font-semibold text-white">
-    //         {session?.user?.name && `${session.user.name}`}
-    //       </p>
-    //     </div>
-    //   </nav>
-    //   <Dialog
-    //     as="div"
-    //     className="lg:hidden"
-    //     open={mobileMenuOpen}
-    //     onClose={setMobileMenuOpen}
-    //   >
-    //     <div className="fixed inset-0 z-10" />
-    //     <Dialog.Panel className="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-gray-900 px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-white/10">
-    //       <div className="flex items-center justify-between">
-    //         <a href="/" className="-m-1.5 p-1.5">
-    //           <span className="sr-only">Your Company</span>
-    //           <img
-    //             className="h-8 w-auto"
-    //             src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
-    //             alt=""
-    //           />
-    //         </a>
-    //         <button
-    //           type="button"
-    //           className="-m-2.5 rounded-md p-2.5 text-gray-400"
-    //           onClick={() => setMobileMenuOpen(false)}
-    //         >
-    //           <span className="sr-only">Close menu</span>
-    //           <XMarkIcon className="h-6 w-6" aria-hidden="true" />
-    //         </button>
-    //       </div>
-    //       <div className="mt-6 flow-root">
-    //         <div className="-my-6 divide-y divide-gray-500/25">
-    //           <div className="space-y-2 py-6">
-    //             {navigation.map((item) => (
-    //               <a
-    //                 key={item.name}
-    //                 href={item.href}
-    //                 className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-white hover:bg-gray-800"
-    //               >
-    //                 {item.name}
-    //               </a>
-    //             ))}
-    //           </div>
-    //           <div className="py-6">
-    //             <a
-    //               href={session ? "api/auth/signout" : "/api/auth/signin"}
-    //               className="text-sm font-semibold leading-6 text-white"
-    //             >
-    //               {session ? "Sign Out" : "Sign In"}{" "}
-    //               <span aria-hidden="true">&rarr;</span>
-    //               <p className="text-sm">
-    //                 {session?.user?.name && `${session?.user?.name}`}
-    //               </p>
-    //             </a>
-    //           </div>
-    //         </div>
-    //       </div>
-    //     </Dialog.Panel>
-    //   </Dialog>
-    // </header>
-
     <Disclosure as="nav" className="bg-gray-800 w-full z-50">
       {({ open }) => (
         <>
@@ -229,7 +113,6 @@ export default function NavBar() {
                 </div>
               </div>
               <div className="flex lg:hidden">
-                {/* Mobile menu button */}
                 <Disclosure.Button className="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
                   <span className="absolute -inset-0.5" />
                   <span className="sr-only">Open main menu</span>
@@ -242,21 +125,13 @@ export default function NavBar() {
               </div>
               <div className="hidden lg:ml-4 lg:block">
                 <div className="flex items-center">
-                  {/* <button
-                    type="button"
-                    className="relative flex-shrink-0 rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
-                  >
-                    <span className="absolute -inset-1.5" />
-                    <span className="sr-only">View notifications</span>
-                    <BellIcon className="h-6 w-6" aria-hidden="true" />
-                  </button> */}
-
                   {/* Profile dropdown */}
                   <Menu as="div" className="relative ml-4 flex-shrink-0">
                     <div>
                       {session ? (
                         <Button
                           text="Sign Out"
+                          aria-label="Sign out Button"
                           variant="secondary"
                           size="lg"
                           type="button"
@@ -265,6 +140,7 @@ export default function NavBar() {
                       ) : (
                         <Button
                           variant="primary"
+                          aria-label="Sign In Button"
                           text="Sign In"
                           size="lg"
                           type="button"
@@ -333,6 +209,7 @@ export default function NavBar() {
             <div className="space-y-1 px-2 pb-3 pt-2">
               <Disclosure.Button
                 as="a"
+                aria-label="add Location  link"
                 href={`/add-location`}
                 className="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
               >
@@ -342,6 +219,7 @@ export default function NavBar() {
                 as="a"
                 // @ts-ignore
                 href={`/user/${session?.user?.userId}/locations`}
+                aria-label="See your location link"
                 className="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
               >
                 My Locations
@@ -350,12 +228,14 @@ export default function NavBar() {
                 as="a"
                 // @ts-ignore
                 href="/wishlist"
+                aria-label="see wishlist link"
                 className="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
               >
                 Wishlist
               </Disclosure.Button>
               <Disclosure.Button
                 as="a"
+                aria-label="see friends link"
                 href="/friends"
                 className="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
               >
@@ -364,6 +244,7 @@ export default function NavBar() {
               <Disclosure.Button
                 as="a"
                 href="/about"
+                aria-label="about page link"
                 className="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
               >
                 About
@@ -378,6 +259,7 @@ export default function NavBar() {
                       variant="secondary"
                       size="lg"
                       type="button"
+                      aria-label="sign in button"
                       onClick={() => signOut()}
                     />
                   ) : (
@@ -386,25 +268,29 @@ export default function NavBar() {
                       text="Sign In"
                       size="lg"
                       type="button"
+                      aria-label="sign out button"
                       onClick={() => signIn()}
                     />
                   )}
                 </div>
                 <div className="ml-3">
                   <div className="text-base font-medium text-white">
-                    {session ? session?.user?.name : ""}
+                    <p>{session ? session?.user?.name : ""}</p>
                   </div>
                   <div className="text-sm font-medium text-gray-400">
-                    {session ? session?.user?.email : ""}
+                    <p>{session ? session?.user?.email : ""}</p>
                   </div>
                 </div>
                 <button
                   type="button"
+                  aria-label="notifications button bell icon"
                   className="relative ml-auto flex-shrink-0 rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
                 >
                   <span className="absolute -inset-1.5" />
                   <span className="sr-only">View notifications</span>
-                  <BellIcon className="h-6 w-6" aria-hidden="true" />
+                  <button aria-label="notifications button bell icon">
+                    <BellIcon className="h-6 w-6" aria-hidden="true" />
+                  </button>
                 </button>
               </div>
             </div>

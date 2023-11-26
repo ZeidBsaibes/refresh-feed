@@ -39,56 +39,65 @@ export default function LocationCardHoriz({ data }) {
   };
 
   return (
-    <div className="flex my-6 flex-col justify-center">
-      <ModalDelete
-        show={isModalOpen}
-        data={data}
-        handleOpen={handleModal}
-        handleDelete={handleDeleteLocation}
-      />
-      <div className=" w- full relative flex flex-col  rounded-xl shadow-lg p-3 max-w-xs md:max-w-3xl mx-auto border border-white bg-white">
-        <a href={`/location/${id}`}>
-          <div className="w-full  bg-white flex flex-col space-y-2 p-3">
-            <p className="md:text-sm text-gray-500 text-base">{city}</p>
-            <h3 className="font-black text-gray-800 md:text-3xl text-xl">
-              {placeName}
-              <Star rating={parseFloat(rating).toFixed(2)} />
-            </h3>
-            <p className="md:text-sm text-gray-500 text-base">
-              {`Added: ${moment(createdAt).fromNow()}`}
-            </p>
-            <div className="flex items-center text-2xl text-gray-500 font-normal">
-              {LocationLocationType.map((location) => (
-                <Badge
-                  key={location.locationType.id}
-                  colour="blue"
-                  text={location.locationType.label}
-                />
-              ))}
+    <article>
+      <div className="flex my-6 flex-col justify-center">
+        <ModalDelete
+          show={isModalOpen}
+          data={data}
+          handleOpen={handleModal}
+          handleDelete={handleDeleteLocation}
+        />
+        <div className=" w- full relative flex flex-col  rounded-xl shadow-lg p-3 max-w-xs md:max-w-3xl mx-auto border border-white bg-white">
+          <a href={`/location/${id}`} aria-label="location card">
+            <div className="w-full  bg-white flex flex-col space-y-2 p-3">
+              <p className="md:text-sm text-gray-500 text-base">{city}</p>
+              <h2 className="font-black text-gray-800 md:text-3xl text-xl">
+                {placeName}
+                <Star rating={parseFloat(rating).toFixed(2)} />
+              </h2>
+              <p className="md:text-sm text-gray-500 text-base">
+                {`Added: ${moment(createdAt).fromNow()}`}
+              </p>
+              <h3 className="flex items-center text-2xl text-gray-500 font-normal">
+                {LocationLocationType.map((location) => (
+                  <Badge
+                    aria-label=" location type badges"
+                    key={location.locationType.id}
+                    colour="blue"
+                    text={location.locationType.label}
+                  />
+                ))}
+              </h3>
+              <h3 className="flex items-center text-2xl text-gray-500 font-normal">
+                {cuisines.map(({ cuisine }) => (
+                  <Badge
+                    key={cuisine.id}
+                    colour="green"
+                    aria-label=" cuisine badges"
+                    text={cuisine.label}
+                  />
+                ))}
+              </h3>
             </div>
-            <div className="flex items-center text-2xl text-gray-500 font-normal">
-              {cuisines.map(({ cuisine }) => (
-                <Badge key={cuisine.id} colour="green" text={cuisine.label} />
-              ))}
-            </div>
+          </a>
+          <div className="flex items-center text-2xl text-gray-500 font-normal">
+            {
+              //@ts-ignore
+              isUserOwner(params.userId, session?.user?.userId) ? (
+                <button
+                  //@ts-ignore
+                  onClick={handleModal}
+                  aria-label=" trash icon delete button"
+                >
+                  <TrashIcon color={"red"} height={20} />
+                </button>
+              ) : (
+                ""
+              )
+            }
           </div>
-        </a>
-        <div className="flex items-center text-2xl text-gray-500 font-normal">
-          {
-            //@ts-ignore
-            isUserOwner(params.userId, session?.user?.userId) ? (
-              <button
-                //@ts-ignore
-                onClick={handleModal}
-              >
-                <TrashIcon color={"red"} height={20} />
-              </button>
-            ) : (
-              ""
-            )
-          }
         </div>
       </div>
-    </div>
+    </article>
   );
 }
