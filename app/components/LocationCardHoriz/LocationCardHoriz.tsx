@@ -7,8 +7,11 @@ import { TrashIcon } from "@heroicons/react/24/outline";
 import { useParams } from "next/navigation";
 import { useSession } from "next-auth/react";
 import deleteLocation from "@/scripts/utils/deleteLocation";
+import { useState } from "react";
+import ModalDelete from "../ModalDelete/ModalDelete";
 
 export default function LocationCardHoriz({ data }) {
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const { data: session } = useSession();
   const params = useParams();
   const {
@@ -27,13 +30,22 @@ export default function LocationCardHoriz({ data }) {
   } = data;
 
   const handleDeleteLocation = async (locationId, loggedInUserId) => {
-    event.stopPropagation();
     const response = await deleteLocation(locationId, loggedInUserId);
     return response;
   };
 
+  const handleModal = () => {
+    setIsModalOpen(!isModalOpen);
+  };
+
   return (
     <div className="flex my-6 flex-col justify-center">
+      <ModalDelete
+        show={isModalOpen}
+        data={data}
+        handleOpen={handleModal}
+        handleDelete={handleDeleteLocation}
+      />
       <div className=" w- full relative flex flex-col  rounded-xl shadow-lg p-3 max-w-xs md:max-w-3xl mx-auto border border-white bg-white">
         <a href={`/location/${id}`}>
           <div className="w-full  bg-white flex flex-col space-y-2 p-3">
@@ -66,20 +78,13 @@ export default function LocationCardHoriz({ data }) {
             //@ts-ignore
             isUserOwner(params.userId, session?.user?.userId) ? (
               <button
-                className="z-50"
                 //@ts-ignore
-                onClick={() => handleDeleteLocation(id, session?.user?.userId)}
+                onClick={handleModal}
               >
                 <TrashIcon color={"red"} height={20} />
               </button>
             ) : (
-              <button
-                className="z-50"
-                //@ts-ignore
-                onClick={() => handleDeleteLocation(id, session?.user?.userId)}
-              >
-                <TrashIcon color={"red"} height={20} />
-              </button>
+              ""
             )
           }
         </div>
