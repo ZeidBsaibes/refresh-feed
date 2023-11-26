@@ -1,21 +1,20 @@
 "use client";
 
 import React from "react";
-import { useParams, useSearchParams } from "next/navigation";
+import { useParams } from "next/navigation";
 import { useState, useEffect } from "react";
 import getLocationsForUser from "@/scripts/utils/getLocationsForUser";
-
+import { useSession } from "next-auth/react";
 import LocationsMap from "@/app/components/LocationsMap/LocationsMap";
 import Loading from "./loading";
-import { Suspense } from "react";
+import isUserOwner from "@/scripts/utils/isUserOwner";
+
 import LocationCardHoriz from "@/app/components/LocationCardHoriz/LocationCardHoriz";
 
 export default function UserLocationsPage() {
+  const { data: session } = useSession();
   const params = useParams();
-  const searchParams = useSearchParams();
-  console.log(searchParams.get("wishlist"));
 
-  console.log(`these are the search params`, searchParams);
   console.log(`these are the  params`, params);
   const { userId } = params;
 
@@ -27,11 +26,23 @@ export default function UserLocationsPage() {
 
     setUserLocations(data);
   };
+
+  // const isUserOwner = () => {
+  //   // @ts-ignore
+  //   const currentUser = session?.user?.userId;
+  //   const currentPageOwnedBy = params.userId;
+  //   if (currentUser === currentPageOwnedBy) {
+  //     return true;
+  //   }
+  //   return false;
+  // };
   useEffect(() => {
     getAndSetUserLocations();
   }, []);
 
-  console.log(params);
+  console.log(`page params are`, params.userId);
+  // @ts-ignore
+  console.log(`this is the user id`, session?.user?.userId);
 
   if (userLocations && userId !== "undefined") {
     return (
@@ -40,7 +51,12 @@ export default function UserLocationsPage() {
           <div className="flex flex-col md:flex-row ">
             <div className="md:flex-1 p-2 overflow-auto h-[100vh]">
               <h1 className="mb-2 text-3xl font-bold tracking-tight text-gray-900 dark:text-white">
-                Your Saved Locations
+                {
+                  // @ts-ignore
+                  isUserOwner(params.userId, session?.user?.userId)
+                    ? "Your Saved Spots"
+                    : `${userLocations.name}'s Spots`
+                }
               </h1>
               {userLocations.SavedLocation.map((location) => {
                 return <LocationCardHoriz key={location.id} data={location} />;
@@ -52,12 +68,6 @@ export default function UserLocationsPage() {
           </div>
         </div>
       </>
-
-      // <div className="pb-24 pt-12 lg:grid lg:grid-cols-3 lg:gap-x-8 xl:grid-cols-4">
-      //   {userLocations.SavedLocation.map((location) => {
-      //     return <LocationCardSmall key={location.id} data={location} />;
-      //   })}
-      // </div>
     );
   }
 
