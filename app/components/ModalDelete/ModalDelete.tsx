@@ -20,7 +20,7 @@ export default function ModalDelete({ show, data, handleOpen, handleDelete }) {
     handleDelete(data.id, session?.user?.userId);
     handleOpen();
     // @ts-ignore
-    router.push(`user/${session?.user?.userId}/locations`);
+    router.push(`/user/${session?.user?.userId}/locations`);
     location.reload();
   };
 
@@ -69,7 +69,7 @@ export default function ModalDelete({ show, data, handleOpen, handleDelete }) {
                         as="h3"
                         className="text-base font-semibold leading-6 text-gray-900"
                       >
-                        `Delete {data.placeName}`
+                        Delete {data.placeName}
                       </Dialog.Title>
                       <div className="mt-2">
                         <p className="text-sm text-gray-500">
