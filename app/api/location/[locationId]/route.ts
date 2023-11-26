@@ -7,7 +7,7 @@ const prisma = new PrismaClient();
 
 export const GET = async (req, { params }) => {
   const locationId = params.locationId;
-  console.log(locationId);
+
   try {
     // Extracting locationId from the URL parameters
 

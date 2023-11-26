@@ -16,7 +16,6 @@ export default function UserLocationsPage() {
   const { data: session } = useSession();
   const params = useParams();
 
-  console.log(`these are the  params`, params);
   const { userId } = params;
 
   const [userLocations, setUserLocations] = useState(null);
@@ -32,9 +31,7 @@ export default function UserLocationsPage() {
     getAndSetUserLocations();
   }, []);
 
-  console.log(`page params are`, params.userId);
   // @ts-ignore
-  console.log(`this is the user id`, session?.user?.userId);
 
   if (userLocations && userId !== "undefined") {
     return (

@@ -6,7 +6,6 @@ const prisma = new PrismaClient();
 
 export const POST = async (req: Request, res: NextResponse) => {
   if (req.method === "POST") {
-    // console.log("this is the req", req);
     const {
       userId,
       placeName,
@@ -26,8 +25,6 @@ export const POST = async (req: Request, res: NextResponse) => {
       photos,
       website,
     } = await req.json();
-
-    console.log(`placename is`, placeName);
 
     try {
       const newLocation = await prisma.savedLocation.create({

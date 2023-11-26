@@ -12,7 +12,7 @@ export default function LocationsMap({ data }) {
   const [clickedLocation, setClickedLocation] = useState(null);
   const handlePopupClick = (location) => {
     setClickedLocation(location);
-    console.log(location);
+
     setPopUpIsOpen(true);
   };
 

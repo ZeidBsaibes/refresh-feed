@@ -8,7 +8,6 @@ const moment = require("moment");
 const capitalize = require("capitalize");
 
 export default function LocationCard({ data }) {
-  console.log("from location card", data);
   const {
     city,
     country,

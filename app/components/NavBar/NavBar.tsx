@@ -8,6 +8,7 @@ import { signIn, signOut } from "next-auth/react";
 import Button from "../Button/Button";
 import { Fragment } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
+import Lottie from "react-lottie";
 import {
   Bars3Icon,
   BellIcon,
@@ -15,6 +16,7 @@ import {
   MagnifyingGlassIcon,
 } from "@heroicons/react/24/outline";
 import { PlusIcon } from "@heroicons/react/20/solid";
+import SearchInput from "../SearchInput/SearchInput";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -24,7 +26,6 @@ export default function NavBar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const { data: session } = useSession();
-  console.log(`session from nav`, session);
 
   let navigation = [];
 
@@ -50,14 +51,8 @@ export default function NavBar() {
           <div className="mx-auto max-w-7xl px-2 sm:px-4 lg:px-8">
             <div className="relative flex h-16 items-center justify-between">
               <div className="flex items-center px-2 lg:px-0">
-                <div className="flex-shrink-0">
-                  <a href="/">
-                    <img
-                      className="h-8 w-auto"
-                      src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
-                      alt="Your Company"
-                    />
-                  </a>
+                <div className="flex-shrink-0 font-extrabold">
+                  <a href="/">Refresh|Feed</a>
                 </div>
                 <div className="hidden lg:ml-6 lg:block">
                   <div className="flex space-x-4">
@@ -68,6 +63,12 @@ export default function NavBar() {
                       className="rounded-md bg-gray-900 px-3 py-2 text-sm font-medium text-white"
                     >
                       My Locations
+                    </a>
+                    <a
+                      href="/add-location"
+                      className="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
+                    >
+                      Add Location
                     </a>
                     <a
                       //@ts-ignore
@@ -91,28 +92,7 @@ export default function NavBar() {
                   </div>
                 </div>
               </div>
-              <div className="flex flex-1 justify-center px-2 lg:ml-6 lg:justify-end">
-                <div className="w-full max-w-lg lg:max-w-xs">
-                  <label htmlFor="search" className="sr-only">
-                    Search
-                  </label>
-                  <div className="relative">
-                    <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
-                      <MagnifyingGlassIcon
-                        className="h-5 w-5 text-gray-400"
-                        aria-hidden="true"
-                      />
-                    </div>
-                    <input
-                      id="search"
-                      name="search"
-                      className="block w-full rounded-md border-0 bg-gray-700 py-1.5 pl-10 pr-3 text-gray-300 placeholder:text-gray-400 focus:bg-white focus:text-gray-900 focus:ring-0 sm:text-sm sm:leading-6"
-                      placeholder="Search"
-                      type="search"
-                    />
-                  </div>
-                </div>
-              </div>
+              <SearchInput />
               <div className="flex lg:hidden">
                 <Disclosure.Button className="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
                   <span className="absolute -inset-0.5" />

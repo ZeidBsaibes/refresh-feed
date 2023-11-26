@@ -125,7 +125,7 @@ export default function AddLocationForm() {
 
     if (validateLocation(inputtedData)) {
       setErrors(validateLocation(inputtedData));
-      console.log(errors);
+
       return;
     } else {
       setSubmitButtonDisabled(true);
