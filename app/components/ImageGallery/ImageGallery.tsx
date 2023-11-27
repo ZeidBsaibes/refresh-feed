@@ -5,6 +5,7 @@ import ModalImage from "../ModalImage/ModalImage";
 import axios from "axios";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
+import Image from "next/image";
 
 export default function ImageGallery({ locationGoogleId }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -22,7 +23,6 @@ export default function ImageGallery({ locationGoogleId }) {
 
   const getAndSetImageReferences = async (id) => {
     const response = await axios.get(`/api/get-google-images/${id}`);
-    console.log(response.data.length);
 
     setGooglePlaceImages(response.data);
   };
@@ -62,10 +62,15 @@ export default function ImageGallery({ locationGoogleId }) {
                         handleImageClick(source);
                       }}
                     >
-                      <img
+                      <Image
                         className="h-auto max-w-full rounded-lg max-h-60"
                         src={source}
+                        height={400}
+                        width={600}
                         alt="image"
+                        quality={50}
+                        loading={"lazy"}
+                        priority={false}
                       />
                     </button>
                   </div>

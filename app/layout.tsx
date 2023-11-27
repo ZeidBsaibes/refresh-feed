@@ -30,12 +30,14 @@ export default async function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <Provider session={session}>
-          <NavBar />
-          <NavBarBottomSticky />
-          <div className="mx-auto max-w-7xl lg:px-8 dark:bg-black bg-white">
-            {children}
+          <div className="h-screen justify-between">
+            <NavBar />
+            <NavBarBottomSticky />
+            <div className="mb-10 mt-20 h-screen mx-auto max-w-7xl lg:px-8 dark:bg-black bg-white">
+              {children}
+            </div>
+            <Footer />
           </div>
-          <Footer />
         </Provider>
       </body>
     </html>

@@ -11,8 +11,8 @@ export default function ModalDelete({ show, data, handleOpen, handleDelete }) {
   const router = useRouter();
   const cancelButtonRef = useRef(null);
 
-  const handleCancel = () => {
-    handleOpen();
+  const handleCancel = (event) => {
+    handleOpen(event);
   };
 
   const handleConfirm = () => {

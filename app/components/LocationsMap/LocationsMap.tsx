@@ -31,8 +31,8 @@ export default function LocationsMap({ data }) {
     <Map
       mapboxAccessToken={process.env.NEXT_PUBLIC_MAPBOX_TOKEN}
       initialViewState={{
-        longitude: -0.08049,
-        latitude: 51.52636,
+        longitude: -0.1276,
+        latitude: 51.5072,
         zoom: 11,
       }}
       style={{ width: "100%", height: "100%" }}
