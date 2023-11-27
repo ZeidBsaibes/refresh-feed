@@ -31,6 +31,7 @@ export const GET = async (req, { params }) => {
             locationType: true,
           },
         },
+        user: true,
       },
     });
 

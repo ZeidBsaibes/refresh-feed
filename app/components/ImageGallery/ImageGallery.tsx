@@ -65,10 +65,10 @@ export default function ImageGallery({ locationGoogleId }) {
                       <Image
                         className="h-auto max-w-full rounded-lg max-h-60"
                         src={source}
-                        height={400}
-                        width={600}
-                        alt="image"
-                        quality={50}
+                        height={600}
+                        width={800}
+                        alt="image of restaurant "
+                        quality={30}
                         loading={"lazy"}
                         priority={false}
                       />

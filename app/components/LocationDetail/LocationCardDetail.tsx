@@ -21,19 +21,20 @@ export default function LocationCardDetail({ data }) {
     id,
     notes,
     userId,
+    user,
   } = data;
 
-  const [user, setUser] = useState(null);
+  // const [user, setUser] = useState(null);
 
-  const getAndSetUser = async () => {
-    const data = await getUser(userId);
-    console.log(data);
-    setUser(data);
-  };
+  // const getAndSetUser = async () => {
+  //   const data = await getUser(userId);
+  //   console.log(data);
+  //   setUser(data);
+  // };
 
-  useEffect(() => {
-    getAndSetUser();
-  }, []);
+  // useEffect(() => {
+  //   getAndSetUser();
+  // }, []);
 
   if (!data || !user) {
     return <p>Loading</p>;
