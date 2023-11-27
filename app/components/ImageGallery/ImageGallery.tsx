@@ -43,7 +43,6 @@ export default function ImageGallery({ locationGoogleId }) {
           autoPlay={true}
           emulateTouch={true}
           showThumbs={false}
-          renderThumbs={false}
           showStatus={false}
           onClickItem={() => {
             console.log("clicked", item);
