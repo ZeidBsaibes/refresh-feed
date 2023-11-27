@@ -31,6 +31,7 @@ export const GET = async (req, { params }) => {
                 cuisine: true,
               },
             },
+            user: true,
             LocationLocationType: {
               include: {
                 locationType: true,

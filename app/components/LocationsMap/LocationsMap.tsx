@@ -3,7 +3,7 @@
 import { MapPinIcon } from "@heroicons/react/20/solid";
 import { useState } from "react";
 import * as React from "react";
-import Map, { Marker } from "react-map-gl";
+import Map, { Marker, FullscreenControl } from "react-map-gl";
 import MapMarker from "../MapMarker/MapMarker";
 import MapPopUp from "../MapPopUp/MapPopUp";
 
@@ -56,6 +56,7 @@ export default function LocationsMap({ data }) {
           onClose={handlePopupClose}
         />
       )}
+      <FullscreenControl />
     </Map>
   );
 }
