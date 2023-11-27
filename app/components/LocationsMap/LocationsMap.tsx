@@ -33,7 +33,7 @@ export default function LocationsMap({ data }) {
       initialViewState={{
         longitude: -0.08049,
         latitude: 51.52636,
-        zoom: 12,
+        zoom: 11,
       }}
       style={{ width: "100%", height: "100%" }}
       mapStyle="mapbox://styles/mapbox/streets-v9"

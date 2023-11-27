@@ -11,6 +11,8 @@ import LocationCardHoriz from "@/app/components/LocationCardHoriz/LocationCardHo
 import getLocationsForUser from "@/scripts/utils/getLocationsForUser";
 import getWishlistLocationsForUser from "@/scripts/utils/getWishlistLocationsForUser";
 import Button from "../Button/Button";
+import { PlusIcon } from "@heroicons/react/24/outline";
+import EmptyStateList from "../EmptyStateList/EmptyStateList";
 
 export default function ListAndMap({ type }) {
   const { data: session } = useSession();
@@ -48,7 +50,15 @@ export default function ListAndMap({ type }) {
     }
   };
 
-  // @ts-ignore
+  if (userLocations && userLocations.SavedLocation.length === 0) {
+    return (
+      <div className="container mx-auto p-4">
+        <div className="flex flex-col md:flex-row ">
+          <EmptyStateList />
+        </div>
+      </div>
+    );
+  }
 
   if (userLocations && userId !== "undefined") {
     return (
