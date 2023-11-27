@@ -56,10 +56,10 @@ export default function LocationCardDetail({ data }) {
         <h1 className="text-3xl mx-4 leading-7 font-bold dark:text-white text-gray-900">
           {placeName}
         </h1>
-        <p className="mx-4 text-xs leading-7 dark:text-white text-gray-600">
+        <h3 className="mx-4 text-xs leading-7 dark:text-white text-gray-600">
           {" "}
           {`Added: ${moment(createdAt).fromNow()} by ${user.name}`}
-        </p>
+        </h3>
         <h2 className="mx-4 text-sm leading-7 text-gray-400">{city}</h2>
         <h3 className=" text-lg mx-4 font-semibold leading-8 text-gray-900">
           {cuisines.map(({ cuisine }) => (

@@ -18,11 +18,10 @@ export default function ImageGallery({ locationGoogleId }) {
     setIsModalOpen(false);
   };
 
-  const getAndSetImageReferences = async (locationGoogleId) => {
-    const response = await axios.get(
-      `/api/get-google-images/${locationGoogleId}`
-    );
-    console.log(response.data);
+  const getAndSetImageReferences = async (id) => {
+    const response = await axios.get(`/api/get-google-images/${id}`);
+    console.log(response.data.length);
+
     setGooglePlaceImages(response.data);
   };
 
@@ -39,7 +38,7 @@ export default function ImageGallery({ locationGoogleId }) {
       />
       <div className="flex overflow-x-auto space-x-4 p-4">
         {googlePlaceImages &&
-          googlePlaceImages.slice(0, 6).map((image) => {
+          googlePlaceImages.slice(0, googlePlaceImages.length).map((image) => {
             const source = `https://maps.googleapis.com/maps/api/place/photo?maxwidth=600&photo_reference=${image.photo_reference}&key=${process.env.NEXT_PUBLIC_GOOGLE_MAPS_API}`;
 
             return (

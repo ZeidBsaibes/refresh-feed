@@ -20,7 +20,7 @@ function LocationDetailPage() {
 
   useEffect(() => {
     getAndSetLocationData();
-  }, []);
+  }, [getAndSetLocationData]);
 
   if (locationData) {
     return (
