@@ -44,9 +44,7 @@ export default function ImageGallery({ locationGoogleId }) {
           emulateTouch={true}
           showThumbs={false}
           showStatus={false}
-          onClickItem={() => {
-            console.log("clicked", item);
-          }}
+          onClickItem={() => {}}
         >
           {googlePlaceImages &&
             googlePlaceImages
