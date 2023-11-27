@@ -45,6 +45,8 @@ export default function ImageGallery({ locationGoogleId }) {
           showThumbs={false}
           showStatus={false}
           onClickItem={() => {}}
+          infiniteLoop={true}
+          dynamicHeight={true}
         >
           {googlePlaceImages &&
             googlePlaceImages

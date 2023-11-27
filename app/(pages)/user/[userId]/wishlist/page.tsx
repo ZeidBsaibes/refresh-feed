@@ -57,7 +57,7 @@ export default function UserLocationsPage() {
             </div>
             <div className="md:flex-1 p-2 overflow-auto h-[100vh]">
               <section>
-                <div className="md:flex-1 p-2 h-[100vh]">
+                <div className="md:flex-1 p-2 h-[100vh]sm:hidden">
                   <LocationsMap data={userLocations.SavedLocation} />
                 </div>
               </section>

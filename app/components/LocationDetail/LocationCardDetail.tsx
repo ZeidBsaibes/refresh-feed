@@ -3,7 +3,7 @@ const capitalize = require("capitalize");
 import Badge from "../Badge/Badge";
 import Star from "../Star/Star";
 import { useEffect, useState } from "react";
-import axios from "axios";
+import { GlobeAltIcon } from "@heroicons/react/24/outline";
 import getUser from "@/scripts/utils/getUser";
 import LoadingDetailSkeleton from "../LoadingSkeletons/LocationDetailPage/LoadingDetailSkeleton";
 
@@ -73,11 +73,11 @@ export default function LocationCardDetail({ data }) {
         </h3>
         <p className="mt mx-4 text-xs leading-7 text-gray-600"> {notes}</p>
 
-        <span className="mx-4 -bottom-6text-xs leading-7 text-gray-600">
+        <span className="mx-4 bottom-6text-xs leading-7 text-gray-600">
           Dishes recommended by {user.name}:
         </span>
 
-        <ul>
+        <ul className="mx-4">
           {dishes.map(({ dish }) => (
             <li key={dish.id}>
               <Badge
@@ -88,6 +88,10 @@ export default function LocationCardDetail({ data }) {
             </li>
           ))}
         </ul>
+        <span className="mx-8 bottom-6text-xs leading-7 text-gray-600">
+          <GlobeAltIcon height={20} />
+          <h3>Visit Website</h3>
+        </span>
       </>
     );
   }
