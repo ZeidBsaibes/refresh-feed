@@ -46,6 +46,7 @@ export default function Friends() {
                     alt={`${user.name}'s profile image`}
                     width="24px"
                     height="24px"
+                    referrerPolicy="no-referrer"
                   />
                   <h3 className="mt-6 text-base font-semibold leading-7 tracking-tight text-gray-900 dark:text-white">
                     {user.name}

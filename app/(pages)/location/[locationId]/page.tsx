@@ -25,7 +25,7 @@ function LocationDetailPage() {
   if (locationData) {
     return (
       <>
-        <ImageGallery images={locationData.photos} />
+        <ImageGallery locationGoogleId={locationData.googleId} />
         <LocationCardDetail data={locationData} />
       </>
     );

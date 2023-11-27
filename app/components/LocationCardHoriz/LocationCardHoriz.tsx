@@ -48,7 +48,7 @@ export default function LocationCardHoriz({ data, page = "default" }) {
           handleOpen={handleModal}
           handleDelete={handleDeleteLocation}
         />
-        <div className=" w- full relative flex flex-col  rounded-xl shadow-lg p-3 max-w-xs md:max-w-3xl mx-auto border border-white bg-white">
+        <div className=" w-full relative flex flex-col  rounded-xl shadow-lg p-3 max-w-xs md:max-w-3xl mx-auto border border-white bg-white">
           <a href={`/location/${id}`} aria-label="location card">
             <div className="w-full  bg-white flex flex-col space-y-2 p-3">
               <p className="md:text-sm text-gray-500 text-base">{city}</p>

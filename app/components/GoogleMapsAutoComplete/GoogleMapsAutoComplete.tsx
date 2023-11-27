@@ -72,9 +72,7 @@ export default function GoogleMapsAutoComplete({ apiKey, onInput }) {
       east: mapCentre.lng + 0.5,
       west: mapCentre.lng - 0.5,
     },
-    // componentRestrictions: {
-    //   country: "gb",
-    // },
+
     strictBounds: false,
   };
 
@@ -83,9 +81,6 @@ export default function GoogleMapsAutoComplete({ apiKey, onInput }) {
       <Autocomplete
         apiKey={apiKey}
         style={fieldStyle}
-        // onPlaceSelected={(place) => {
-        //   handlePlaceSelected(place);
-        // }}
         placeholder="Start typing the location name"
         onPlaceSelected={(place) => {
           setPlaceSelected(place);

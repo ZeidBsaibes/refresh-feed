@@ -73,23 +73,21 @@ export default function LocationCardDetail({ data }) {
         </h3>
         <p className="mt mx-4 text-xs leading-7 text-gray-600"> {notes}</p>
 
-        <p className="mx-4 text-sm leading-7 text-gray-400">
-          <span className=" text-xs leading-7 text-gray-600">
-            Dishes recommended by {user.name}:
-          </span>
+        <span className="mx-4 -bottom-6text-xs leading-7 text-gray-600">
+          Dishes recommended by {user.name}:
+        </span>
 
-          <ul>
-            {dishes.map(({ dish }) => (
-              <li key={dish.id}>
-                <Badge
-                  colour="purple"
-                  text={dish.label}
-                  aria-label="dish badge"
-                />
-              </li>
-            ))}
-          </ul>
-        </p>
+        <ul>
+          {dishes.map(({ dish }) => (
+            <li key={dish.id}>
+              <Badge
+                colour="purple"
+                text={dish.label}
+                aria-label="dish badge"
+              />
+            </li>
+          ))}
+        </ul>
       </>
     );
   }

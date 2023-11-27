@@ -34,8 +34,8 @@ export default function SearchPage() {
         <div className="container mx-auto p-4">
           <div className="flex flex-col md:flex-row ">
             <div className="md:flex-1 p-2 overflow-auto h-[100vh]">
-              <h1 className="mb-2 text-3xl font-bold tracking-tight text-gray-900 dark:text-white">
-                You Searched for {search}
+              <h1 className="mb-2 text-3xl  tracking-tight text-gray-900 dark:text-white">
+                Showing results for: <span className="font-bold">{search}</span>
               </h1>
 
               <section>
