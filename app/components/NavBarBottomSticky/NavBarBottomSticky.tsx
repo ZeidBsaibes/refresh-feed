@@ -37,7 +37,8 @@ export default function NavBarBottomSticky() {
           </span>
         </a>
         <a
-          href="/wishlist"
+          //@ts-ignore
+          href={`/user/${session?.user?.userId}/wishlist`}
           aria-label="Wish List"
           className="inline-flex flex-col items-center justify-center px-2 py-2 hover:bg-gray-50 dark:hover:bg-gray-800 group"
         >
