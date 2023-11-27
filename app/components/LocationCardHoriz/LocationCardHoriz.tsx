@@ -10,7 +10,7 @@ import deleteLocation from "@/scripts/utils/deleteLocation";
 import { useState } from "react";
 import ModalDelete from "../ModalDelete/ModalDelete";
 
-export default function LocationCardHoriz({ data }) {
+export default function LocationCardHoriz({ data, page = "default" }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const { data: session } = useSession();
   const params = useParams();
@@ -27,6 +27,7 @@ export default function LocationCardHoriz({ data }) {
     id,
     notes,
     name,
+    user,
   } = data;
 
   const handleDeleteLocation = async (locationId, loggedInUserId) => {
@@ -56,7 +57,7 @@ export default function LocationCardHoriz({ data }) {
                 <Star rating={parseFloat(rating).toFixed(2)} />
               </h2>
               <p className="md:text-sm text-gray-500 text-base">
-                {`Added: ${moment(createdAt).fromNow()}`}
+                {`Added: ${moment(createdAt).fromNow()} by ${user?.name} `}
               </p>
               <h3 className="flex items-center text-2xl text-gray-500 font-normal">
                 {LocationLocationType.map((location) => (

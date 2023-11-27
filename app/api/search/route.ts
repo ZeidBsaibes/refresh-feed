@@ -43,7 +43,38 @@ export const GET = async (req) => {
               },
             },
           },
+          {
+            dishes: {
+              some: {
+                dish: {
+                  label: {
+                    contains: searchQuery,
+                    mode: "insensitive",
+                  },
+                },
+              },
+            },
+          },
         ],
+      },
+
+      include: {
+        user: true,
+        cuisines: {
+          include: {
+            cuisine: true,
+          },
+        },
+        dishes: {
+          include: {
+            dish: true,
+          },
+        },
+        LocationLocationType: {
+          include: {
+            locationType: true,
+          },
+        },
       },
     });
 

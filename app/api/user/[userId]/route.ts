@@ -26,6 +26,7 @@ export const GET = async (req, { params }) => {
                 dish: true,
               },
             },
+            user: true,
             cuisines: {
               include: {
                 cuisine: true,
