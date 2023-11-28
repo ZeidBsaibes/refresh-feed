@@ -13,6 +13,7 @@ import Star from "@/app/components/Star/Star";
 import Badge from "@/app/components/Badge/Badge";
 import { GlobeAltIcon } from "@heroicons/react/24/outline";
 import { MapIcon } from "@heroicons/react/24/outline";
+import LottieLoader from "@/app/components/LottieLoader/LottieLoader";
 
 function LocationDetailPage() {
   const { locationId } = useParams();
@@ -71,7 +72,6 @@ function LocationDetailPage() {
                       {placeName}
                     </h1>
                     <Star rating={parseFloat(rating).toFixed(2)} />
-                    <p className="text-2xl font-medium text-gray-900"></p>
                   </div>
 
                   <div className="items-center">
@@ -104,12 +104,12 @@ function LocationDetailPage() {
                 <div className="lg:col-span-5">
                   <div>
                     <h2 className="text-sm font-medium text-gray-900">
-                      <p className="text-xs leading-7 text-gray-600 dark:text-white">
+                      <div className="text-xs leading-7 text-gray-600 dark:text-white">
                         {notes?.length > 0 ? `${user.name} says:` : ""}
-                        <div className="italic text-sm">
+                        <p className="italic text-sm">
                           {notes?.length > 0 ? `"${notes}"` : ""}
-                        </div>
-                      </p>
+                        </p>
+                      </div>
 
                       <span className="bottom-6 text-xs leading-7  text-gray-600 dark:text-white">
                         {dishes?.length > 0
@@ -153,8 +153,9 @@ function LocationDetailPage() {
   } else {
     return (
       <>
-        <LoadingGallerySkeleton />
-        <LoadingDetailSkeleton />
+        <LottieLoader />
+        {/* <LoadingGallerySkeleton />
+        <LoadingDetailSkeleton /> */}
       </>
     );
   }
