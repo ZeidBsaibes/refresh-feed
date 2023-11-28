@@ -46,7 +46,6 @@ export default function LocationCardDetail({ data }) {
           {placeName}
         </h1>
         <h3 className="mx-4 text-xs leading-7 dark:text-white text-gray-600">
-          {" "}
           {`Added: ${moment(createdAt).fromNow()} by ${user.name}`}
         </h3>
         <h2 className="mx-4 text-sm leading-7 text-gray-400">{city}</h2>
@@ -62,8 +61,8 @@ export default function LocationCardDetail({ data }) {
         </h3>
         <p className="mt mx-4 text-xs leading-7 text-gray-600"> {notes}</p>
 
-        <span className="mx-4 bottom-6text-xs leading-7 text-gray-600">
-          Dishes recommended by {user.name}:
+        <span className="bottom-6 px-4 text-xs leading-7 text-gray-600">
+          Dishes recommended by {user.name}
         </span>
 
         <ul className="mx-4">

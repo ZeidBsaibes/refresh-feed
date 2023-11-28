@@ -377,6 +377,18 @@ const seedCuisines = [
   { value: "wine", label: "Wine" },
   { value: "cocktails", label: "Cocktails" },
   { value: "sake", label: "Sake" },
+  { value: "Pastry", label: "Pastry" },
+  { value: "HongKong", label: "Hong Kong" },
+  { value: "RoastMeat", label: "Roast Meat" },
+  { value: "Cantonese", label: "Cantonese" },
+  { value: "Bakery", label: "Bakery" },
+  { value: "MiddleEastern", label: "Middle Eastern" },
+  { value: "DimSum", label: "Dim Sum" },
+  { value: "Dumplings", label: "Dumplings" },
+  { value: "Steak", label: "Steak" },
+  { value: "Pizza", label: "Pizza" },
+  { value: "Burger", label: "Burger" },
+  { value: "Sushi", label: "Sushi" },
 ];
 
 const seedDishes = [

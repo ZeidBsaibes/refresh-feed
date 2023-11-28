@@ -12,6 +12,7 @@ import LoadingGallerySkeleton from "@/app/components/LoadingSkeletons/LoadingGal
 import Star from "@/app/components/Star/Star";
 import Badge from "@/app/components/Badge/Badge";
 import { GlobeAltIcon } from "@heroicons/react/24/outline";
+import { MapIcon } from "@heroicons/react/24/outline";
 
 function LocationDetailPage() {
   const { locationId } = useParams();
@@ -43,6 +44,7 @@ function LocationDetailPage() {
       userId,
       user,
       website,
+      googleId,
     } = locationData;
     return (
       <>
@@ -77,18 +79,6 @@ function LocationDetailPage() {
                       {`Added: ${moment(createdAt).fromNow()} by ${user.name}`}
                     </h3>
                     <h2 className="text-sm leading-7 text-gray-400">{city}</h2>
-
-                    <div className="ml-1 flex items-center"></div>
-                    <div
-                      aria-hidden="true"
-                      className="ml-4 text-sm text-gray-300"
-                    ></div>
-                    <div className="ml-4 flex">
-                      <a
-                        href="#"
-                        className="text-sm font-medium text-indigo-600 hover:text-indigo-500"
-                      ></a>
-                    </div>
                   </div>
                 </div>
                 <div className="lg:col-span-5 lg:col-start-8">
@@ -101,23 +91,6 @@ function LocationDetailPage() {
                         text={location.locationType.label}
                       />
                     ))}{" "}
-                    <div className="ml-4 flex">
-                      <span className="bottom-6 text-xs  text-gray-600">
-                        Dishes recommended by {user.name}:
-                      </span>
-
-                      <ul className="mx-4">
-                        {dishes.map(({ dish }) => (
-                          <li key={dish.id}>
-                            <Badge
-                              colour="purple"
-                              text={dish.label}
-                              aria-label="dish badge"
-                            />
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
                   </div>
                 </div>
 
@@ -128,33 +101,46 @@ function LocationDetailPage() {
                   <div className="grid grid-cols-1 lg:grid-cols-2 lg:grid-rows-3 lg:gap-8"></div>
                 </div>
 
-                <div className="mt-8 lg:col-span-5">
+                <div className="lg:col-span-5">
                   <div>
                     <h2 className="text-sm font-medium text-gray-900">
-                      <p className="mt mx-4 text-xs leading-7 text-gray-600">
-                        {" "}
-                        {notes}
+                      <p className="text-xs leading-7 text-gray-600 dark:text-white">
+                        {notes?.length > 0 ? `${user.name} says:` : ""}
+                        <div className="italic text-sm">
+                          {notes?.length > 0 ? `"${notes}"` : ""}
+                        </div>
                       </p>
 
-                      <span className="mx-4 bottom-6text-xs leading-7 text-gray-600">
-                        Dishes recommended by {user.name}:
+                      <span className="bottom-6 text-xs leading-7  text-gray-600 dark:text-white">
+                        {dishes?.length > 0
+                          ? `Items recommended by ${user.name}`
+                          : ""}
                       </span>
 
-                      <ul className="mx-4">
-                        {dishes.map(({ dish }) => (
-                          <li key={dish.id}>
-                            <Badge
-                              colour="purple"
-                              text={dish.label}
-                              aria-label="dish badge"
-                            />
-                          </li>
+                      <ul className="">
+                        {dishes?.map(({ dish }) => (
+                          <Badge
+                            key={dish.id}
+                            colour="purple"
+                            text={dish?.label}
+                            aria-label="dish badge"
+                          />
                         ))}
                       </ul>
-                      <span className="mx-8 bottom-6text-xs leading-7 text-gray-600">
-                        <GlobeAltIcon height={20} />
-                        <h3>Visit Website {website}</h3>
-                      </span>
+                      <div className="bottom-6 text-xs text-gray-600 dark:text-white">
+                        <a href={website}>
+                          <GlobeAltIcon height={20} />
+                          <h3>Visit Website</h3>
+                        </a>
+                      </div>
+                      <div className="bottom-6 text-xs text-gray-600 dark:text-white">
+                        <a
+                          href={`https://www.google.com/maps/place/?q=place_id:${googleId}`}
+                        >
+                          <MapIcon height={20} />
+                          <h3>Go There</h3>
+                        </a>
+                      </div>
                     </h2>
                   </div>
                 </div>
