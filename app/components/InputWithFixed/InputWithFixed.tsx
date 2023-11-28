@@ -3,7 +3,7 @@
 import Select from "react-select";
 import { useState, useEffect, useId } from "react";
 
-export default function InputWithFixed({ data, title, onInput }) {
+export default function InputWithFixed({ data, title, onInput, placeholder }) {
   const [selectedOptions, setSelectedOptions] = useState(null);
 
   const handleChange = (options) => {
@@ -18,6 +18,7 @@ export default function InputWithFixed({ data, title, onInput }) {
     <>
       {title}
       <Select
+        placeholder={placeholder}
         instanceId={useId()}
         isMulti
         onChange={handleChange}

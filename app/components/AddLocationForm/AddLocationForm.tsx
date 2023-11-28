@@ -206,6 +206,7 @@ export default function AddLocationForm() {
                 Location Type
               </label>
               <InputWithFixed
+                placeholder="Select at least one"
                 onInput={handleLocationTypeInput}
                 data={availableLocationTypes}
               />
@@ -218,7 +219,7 @@ export default function AddLocationForm() {
                 Cuisines
               </label>
               <InputWithFixed
-                placeholder="Select cuisine(s)"
+                placeholder="Select at least one cuisine"
                 onInput={handleCuisineInput}
                 data={availableCuisines}
               />
