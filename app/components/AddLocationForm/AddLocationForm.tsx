@@ -218,6 +218,7 @@ export default function AddLocationForm() {
                 Cuisines
               </label>
               <InputWithFixed
+                placeholder="Select cuisine(s)"
                 onInput={handleCuisineInput}
                 data={availableCuisines}
               />
@@ -231,7 +232,7 @@ export default function AddLocationForm() {
                 Recommendations
               </label>
               <InputWithCreate
-                placeholder="Add or create items you'd recommend"
+                placeholder="Select or create an item"
                 onInput={handleDishesInput}
                 data={dishesAutocomplete && dishesAutocomplete}
               />
