@@ -36,7 +36,7 @@ export default async function RootLayout({
             <div className="mb-10 mt-20 h-screen mx-auto max-w-7xl lg:px-8 dark:bg-black bg-white">
               {children}
             </div>
-            <Footer />
+            {/* <Footer /> */}
           </div>
         </Provider>
       </body>

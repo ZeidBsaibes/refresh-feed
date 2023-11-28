@@ -5,7 +5,6 @@ import { useState, useEffect } from "react";
 
 export default function GoogleMapsAutoComplete({ apiKey, onInput }) {
   const [placeSelected, setPlaceSelected] = useState(null);
-  const [userLocation, setUserLocation] = useState(null);
   const [placeObject, setPlaceObject] = useState(null);
 
   const fieldStyle = {
@@ -18,16 +17,22 @@ export default function GoogleMapsAutoComplete({ apiKey, onInput }) {
   const mapCentre = { lat: 51.5072, lng: 0.1276 };
 
   const handlePlaceSelected = (place) => {
-    if (place) {
+    console.log(`place from google is`, place);
+
+    if (typeof place?.place_id !== "undefined") {
       const placeAsObject = {
         placeName: place.name,
         googleId: place.place_id,
         lat: place.geometry.location.lat(),
         lng: place.geometry.location.lng(),
-        city: place.address_components[2].long_name,
-        country: place.address_components[5].long_name,
-        website: place.website,
-        photos: place.photos.slice(0, 3).map((photo) => {
+        city: place.address_components[3].long_name
+          ? place.address_components[3].long_name
+          : "",
+        country: place.address_components[5]?.long_name
+          ? place.address_components[5].long_name
+          : "",
+        website: place.website ? place.website : "",
+        photos: place.photos?.slice(0, 3).map((photo) => {
           return {
             height: photo.height,
             width: photo.width,
@@ -55,6 +60,7 @@ export default function GoogleMapsAutoComplete({ apiKey, onInput }) {
     fields: [
       "address_components",
       "formatted_address",
+      "adr_address",
       "geometry",
       "name",
       "opening_hours",
