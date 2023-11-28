@@ -35,7 +35,7 @@ export default function RadioGroup({ title, subtitle, onInput }) {
               />
               <label
                 htmlFor={option.id}
-                className="ml-3 block text-sm font-medium leading-6 text-gray-900"
+                className="ml-3 block text-sm font-medium leading-6 text-gray-900 dark:text-white"
               >
                 {option.title}
               </label>

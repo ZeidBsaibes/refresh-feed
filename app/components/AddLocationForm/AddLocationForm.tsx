@@ -142,14 +142,14 @@ export default function AddLocationForm() {
   return (
     <form
       onSubmit={handleFormSubmit}
-      className="bg-white px-8 py-20 h-full overflow-auto"
+      className="bg-white dark:bg-black px-8 pb-20 h-full overflow-auto"
     >
       <div className="space-y-12">
         <div className="border-b border-gray-900/10 pb-12">
-          <h2 className="text-base font-semibold leading-7 text-gray-900">
+          <h2 className="text-base font-semibold leading-7 text-gray-900 dark:text-white">
             Add a location to your saved list
           </h2>
-          <p className="mt-1 text-sm leading-6 text-gray-600">
+          <p className="mt-1 text-sm leading-6 text-gray-600 dark:text-white">
             This information will be displayed publicly so be careful what you
             share.
           </p>
@@ -158,7 +158,7 @@ export default function AddLocationForm() {
             <div className="sm:col-span-4">
               <label
                 htmlFor="locationSearch"
-                className="block text-sm font-medium leading-6 text-gray-900"
+                className="block text-sm font-medium leading-6 text-gray-900 dark:text-white"
               >
                 Start typing the name of the establishment
               </label>
@@ -191,7 +191,7 @@ export default function AddLocationForm() {
             <div className="col-span-full">
               <label
                 htmlFor="cover-photo"
-                className=" my-4 block text-sm font-medium leading-6 text-gray-900"
+                className=" my-4 block text-sm font-medium leading-6 text-gray-900 dark:text-white"
               >
                 Your Rating
               </label>
@@ -201,7 +201,7 @@ export default function AddLocationForm() {
             <div className="col-span-full">
               <label
                 htmlFor="cover-photo"
-                className=" my-4 block text-sm font-medium leading-6 text-gray-900"
+                className=" my-4 block text-sm font-medium leading-6 text-gray-900 dark:text-white"
               >
                 Location Type
               </label>
@@ -213,7 +213,7 @@ export default function AddLocationForm() {
             <div className="col-span-full">
               <label
                 htmlFor="cover-photo"
-                className=" my-4 block text-sm font-medium leading-6 text-gray-900"
+                className=" my-4 block text-sm font-medium leading-6 text-gray-900 dark:text-white"
               >
                 Cuisines
               </label>
@@ -222,23 +222,11 @@ export default function AddLocationForm() {
                 data={availableCuisines}
               />
             </div>
-            {/* <div className="col-span-full">
-              <label
-                htmlFor="cover-photo"
-                className=" my-4 block text-sm font-medium leading-6 text-gray-900"
-              >
-                Waiting Time
-              </label>
-              <InputWithIcon
-                placeholder="Waiting Time"
-                icon={"\u231B"}
-                onInput={handleWaitingTimeInput}
-              />
-            </div> */}
+
             <div className="col-span-full">
               <label
                 htmlFor="cover-photo"
-                className=" my-4 block text-sm font-medium leading-6 text-gray-900"
+                className=" my-4 block text-sm font-medium leading-6 text-gray-900 dark:text-white"
               >
                 Recommendations
               </label>
@@ -251,7 +239,7 @@ export default function AddLocationForm() {
             <div className="col-span-full">
               <label
                 htmlFor="cover-photo"
-                className=" my-4 block text-sm font-medium leading-6 text-gray-900"
+                className=" my-4 block text-sm font-medium leading-6 text-gray-900 dark:text-white"
               >
                 Notes
               </label>

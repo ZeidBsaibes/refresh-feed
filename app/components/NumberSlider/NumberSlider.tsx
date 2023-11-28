@@ -29,14 +29,14 @@ const NumberSlider = ({ onInput }) => {
           max="10"
           className="w-full h-6 bg-gray-200 rounded-xl ppearance-none cursor-pointer range-xl dark:bg-gray-700"
         />
-        <span className=" text-sm text-gray-500 dark:text-gray-400 absolute start-0 -bottom-6">
+        <span className=" text-sm text-gray-500 dark:text-white absolute start-0 -bottom-6">
           Terrible (0)
         </span>
-        <span className="text-sm text-gray-900 font-medium dark:text-gray-400 absolute start-1/2 -translate-x-1/2 rtl:translate-x-1/2 -bottom-6">
+        <span className="text-sm text-gray-900 font-medium dark:text-white absolute start-1/2 -translate-x-1/2 rtl:translate-x-1/2 -bottom-6">
           {value}
         </span>
-        <span className="text-sm text-gray-500 dark:text-gray-400 absolute start-2/3 -translate-x-1/2 rtl:translate-x-1/2 -bottom-6"></span>
-        <span className="text-sm text-gray-500 dark:text-gray-400 absolute end-0 -bottom-6">
+        <span className="text-sm text-gray-500 dark:text-white absolute start-2/3 -translate-x-1/2 rtl:translate-x-1/2 -bottom-6"></span>
+        <span className="text-sm text-gray-500 dark:text-white absolute end-0 -bottom-6">
           Incredible (10)
         </span>
       </div>

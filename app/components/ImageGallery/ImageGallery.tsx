@@ -47,6 +47,8 @@ export default function ImageGallery({ locationGoogleId }) {
           onClickItem={() => {}}
           infiniteLoop={true}
           dynamicHeight={true}
+          centerMode
+          centerSlidePercentage={75}
         >
           {googlePlaceImages &&
             googlePlaceImages
@@ -65,8 +67,8 @@ export default function ImageGallery({ locationGoogleId }) {
                       <Image
                         className="h-auto max-w-full rounded-lg max-h-60"
                         src={source}
-                        height={600}
-                        width={800}
+                        height={400}
+                        width={600}
                         alt="image of restaurant "
                         quality={30}
                         loading={"lazy"}
