@@ -36,18 +36,22 @@ export default function LocationCardHoriz({ data, page = "default" }) {
     return response;
   };
 
-  const handleModal = (event) => {
+  const handleModal = () => {
     setIsModalOpen(!isModalOpen);
-
-    event.preventDefault();
   };
 
   return (
     <>
+      <ModalDelete
+        show={isModalOpen}
+        data={data}
+        handleOpen={handleModal}
+        handleDelete={handleDeleteLocation}
+      />
       <article className="py-4 px-4">
         <div className="w-full pt-4 max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-          <Link href={`/location/${id}`} aria-label="location card">
-            <div className="px-5 pb-5">
+          <div className="px-5 pb-5">
+            <Link href={`/location/${id}`} aria-label="location card">
               <p className="text-xs text-gray-500">
                 {`Added: ${moment(createdAt).fromNow()} by ${user?.name} `}
               </p>
@@ -74,37 +78,37 @@ export default function LocationCardHoriz({ data, page = "default" }) {
                   </h3>
                 </span>
               </div>
-              <div className="flex items-center justify-between">
-                <span className="font-bold text-gray-900 dark:text-white mt-2.5">
-                  {LocationLocationType.map((location) => (
-                    <Badge
-                      aria-label=" location type badges"
-                      key={location.locationType.id}
-                      colour="blue"
-                      text={location.locationType.label}
-                    />
-                  ))}
-                </span>
-                <span className="font-bold text-gray-900 dark:text-white mt-2.5">
-                  {
-                    //@ts-ignore
-                    isUserOwner(params.userId, session?.user?.userId) ? (
-                      <button
-                        //@ts-ignore
-                        onClick={handleModal}
-                        aria-label=" trash icon delete button"
-                      >
-                        <TrashIcon color={"red"} height={20} />
-                      </button>
-                    ) : (
-                      ""
-                    )
-                  }
-                </span>
-              </div>
+            </Link>
+            <div className="flex items-center justify-between">
+              <span className="font-bold text-gray-900 dark:text-white mt-2.5">
+                {LocationLocationType.map((location) => (
+                  <Badge
+                    aria-label=" location type badges"
+                    key={location.locationType.id}
+                    colour="blue"
+                    text={location.locationType.label}
+                  />
+                ))}
+              </span>
+              {/* delete button */}
+              <span className="font-bold text-gray-900 dark:text-white mt-2.5">
+                {
+                  //@ts-ignore
+                  isUserOwner(params.userId, session?.user?.userId) ? (
+                    <button
+                      //@ts-ignore
+                      onClick={handleModal}
+                      aria-label=" trash icon delete button"
+                    >
+                      <TrashIcon color={"red"} height={20} />
+                    </button>
+                  ) : (
+                    ""
+                  )
+                }
+              </span>
             </div>
-          </Link>
-          <div className="px-5 py-0"></div>
+          </div>
         </div>
       </article>
     </>

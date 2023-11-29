@@ -51,6 +51,23 @@ model User {
   accounts      Account[]
   sessions      Session[]
   SavedLocation SavedLocation[]
+  sentFriendRequests    Friendship[] @relation("FriendRequestSender")
+  receivedFriendRequests Friendship[] @relation("FriendRequestReceiver")
+
+}
+
+model Friendship {
+  id        String   @id @default(cuid())
+  // User who sent the friend request
+  senderId  String
+  sender    User     @relation(fields: [senderId], references: [id], name: "FriendRequestSender")
+  // User who received the friend request
+  receiverId String
+  receiver   User     @relation(fields: [receiverId], references: [id], name: "FriendRequestReceiver")
+  status    String // e.g., 'pending', 'accepted', 'rejected', 'blocked'
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 model VerificationToken {

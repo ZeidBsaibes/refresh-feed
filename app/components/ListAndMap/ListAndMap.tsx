@@ -56,14 +56,14 @@ export default function ListAndMap({ type }) {
     if (type === "visited") {
       return (
         <a href={`/user/${userId}/wishlist`}>
-          <h2>See their wishlist</h2>
+          <h2>See wishlist</h2>
         </a>
       );
     }
     if (type === "wishlist") {
       return (
         <a href={`/user/${userId}/locations`}>
-          <h2>See their visited locations</h2>
+          <h2>See visited locations</h2>
         </a>
       );
     }
