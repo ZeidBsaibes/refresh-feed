@@ -1,9 +1,8 @@
 "use client";
 
 import { Player, Controls } from "@lottiefiles/react-lottie-player";
-import loading from "../../../lib/lottie/preparing food.json";
 
-export default function LottieLoader() {
+export default function LottieLoader({animation}) {
   const isBrowser = typeof window !== "undefined";
 
   return (
@@ -12,7 +11,7 @@ export default function LottieLoader() {
         <Player
           autoplay
           loop
-          src={loading}
+          src={animation}
           style={{ height: "300px", width: "300px" }}
         >
           <Controls visible={false} />

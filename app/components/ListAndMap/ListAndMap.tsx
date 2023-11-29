@@ -13,6 +13,8 @@ import getWishlistLocationsForUser from "@/scripts/utils/getWishlistLocationsFor
 import Button from "../Button/Button";
 import { PlusIcon } from "@heroicons/react/24/outline";
 import EmptyStateList from "../EmptyStateList/EmptyStateList";
+import LottieLoader from "../LottieLoader/LottieLoader";
+import searching from "../../../lib/lottie/cup-falling-orange.json";
 
 export default function ListAndMap({ type }) {
   const { data: session } = useSession();
@@ -50,11 +52,29 @@ export default function ListAndMap({ type }) {
     }
   };
 
+  const setSeeOtherLocations = (type) => {
+    if (type === "visited") {
+      return (
+        <a href={`/user/${userId}/wishlist`}>
+          <h2>See their wishlist</h2>
+        </a>
+      );
+    }
+    if (type === "wishlist") {
+      return (
+        <a href={`/user/${userId}/locations`}>
+          <h2>See their visited locations</h2>
+        </a>
+      );
+    }
+  };
+
   if (userLocations && userLocations.SavedLocation.length === 0) {
     return (
-      <div className="container mx-auto p-4">
-        <div className="flex flex-col md:flex-row ">
-          <EmptyStateList />
+      <div className="container mx-auto ">
+        <div className="flex flex-col md:flex-row justify-center items-center">
+          <h1 className="text-2xl con">No Locations Listed</h1>
+          <LottieLoader animation={searching} />
         </div>
       </div>
     );
@@ -63,9 +83,9 @@ export default function ListAndMap({ type }) {
   if (userLocations && userId !== "undefined") {
     return (
       <>
-        <div className="container mx-auto p-4">
+        <div className="container mx-auto">
           <div className="flex flex-col md:flex-row ">
-            <div className="md:flex-1 p-2 overflow-auto h-[100vh]">
+            <div className="md:flex-1 p-2 overflow-auto h-[100vh] px-6">
               <h1 className="mb-2 text-3xl font-bold tracking-tight text-gray-900 dark:text-white">
                 {
                   // @ts-ignore
@@ -74,6 +94,7 @@ export default function ListAndMap({ type }) {
                     : `${userLocations.name}'s ${setPageTitle(type)}`
                 }
               </h1>
+              {setSeeOtherLocations(type)}
               <div className="md:hidden">
                 <Button
                   type={"button"}
@@ -98,7 +119,7 @@ export default function ListAndMap({ type }) {
             </div>
             <div className="md:flex-1 p-2 overflow-auto h-[100vh]">
               <section>
-                <div id="map" className="md:flex-1 p-2 h-[100vh]">
+                <div id="map" className="md:flex-1 h-[100vh]">
                   <LocationsMap data={userLocations.SavedLocation} />
                 </div>
               </section>

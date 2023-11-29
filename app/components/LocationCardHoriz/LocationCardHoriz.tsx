@@ -44,7 +44,7 @@ export default function LocationCardHoriz({ data, page = "default" }) {
 
   return (
     <>
-      <article className="py-3">
+      <article className="py-4 px-4">
         <div className="w-full pt-4 max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
           <Link href={`/location/${id}`} aria-label="location card">
             <div className="px-5 pb-5">

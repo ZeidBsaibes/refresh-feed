@@ -21,7 +21,7 @@ const MapPopUp = ({ index, marker, onClose }) => {
     >
       <div className="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
         <a href={`/location/${marker.id}`}>
-          <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+          <h5 className="mb-2 text-lg font-bold tracking-tight text-gray-900 dark:text-white">
             {marker.placeName}
           </h5>
           <Star key={marker.id} rating={parseFloat(marker.rating).toFixed(1)} />

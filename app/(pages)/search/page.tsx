@@ -4,9 +4,13 @@ import handleSearch from "@/scripts/utils/handleSearch";
 import { useEffect, useState } from "react";
 import LocationCardHoriz from "@/app/components/LocationCardHoriz/LocationCardHoriz";
 import LocationsMap from "@/app/components/LocationsMap/LocationsMap";
+import LottieLoader from "@/app/components/LottieLoader/LottieLoader";
+import loading from "../../../lib/lottie/magnifying-glass-orange.json";
+
 export default function SearchPage() {
   const searchParams = useSearchParams();
   const [searchResults, setSearchResults] = useState(null);
+  const [showLoader, setShowLoader] = useState(true);
 
   const search = searchParams.get("search");
 
@@ -17,8 +21,24 @@ export default function SearchPage() {
   };
 
   useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowLoader(false);
+    }, 2000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  useEffect(() => {
     getAndSetSearchResults();
   }, [search]);
+
+  if (showLoader) {
+    return (
+      <>
+        <LottieLoader animation={loading} />
+      </>
+    );
+  }
 
   if (searchResults && searchResults.results.length === 0) {
     return (
@@ -31,7 +51,7 @@ export default function SearchPage() {
   if (searchResults) {
     return (
       <>
-        <div className="container mx-auto p-4">
+        <div className="container mx-auto">
           <div className="flex flex-col md:flex-row ">
             <div className="md:flex-1 p-2 overflow-auto h-[100vh]">
               <h1 className="mb-2 text-3xl  tracking-tight text-gray-900 dark:text-white">

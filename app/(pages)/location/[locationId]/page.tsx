@@ -14,6 +14,7 @@ import Badge from "@/app/components/Badge/Badge";
 import { GlobeAltIcon } from "@heroicons/react/24/outline";
 import { MapIcon } from "@heroicons/react/24/outline";
 import LottieLoader from "@/app/components/LottieLoader/LottieLoader";
+import preparingfood from "../../../../lib/lottie/preparing-food.json";
 
 function LocationDetailPage() {
   const { locationId } = useParams();
@@ -56,7 +57,7 @@ function LocationDetailPage() {
   } else {
     return (
       <>
-        <LottieLoader />
+        <LottieLoader animation={preparingfood} />
       </>
     );
   }
