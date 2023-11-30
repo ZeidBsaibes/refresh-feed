@@ -18,6 +18,8 @@ export default function Button({
       // Secondary button styles
       "bg-indigo-50 text-indigo-600 hover:bg-indigo-100":
         variant === "secondary",
+      // approve style
+      "bg-green-800 text-white hover:bg-indigo-100": variant === "approve",
     },
     "font-semibold shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600",
     {

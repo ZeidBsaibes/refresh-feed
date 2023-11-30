@@ -27,23 +27,6 @@ export default function NavBar() {
 
   const { data: session } = useSession();
 
-  let navigation = [];
-
-  if (session) {
-    navigation = [
-      { name: "Friends", href: "#" },
-      {
-        name: "My Locations",
-        // @ts-ignore
-        href: `/user/${session?.user?.userId}/locations`,
-      },
-      { name: "Add A Location", href: "/add-location" },
-      { name: "About", href: "/about", current: true },
-    ];
-  } else {
-    navigation = [{ name: "About", href: "/about" }];
-  }
-
   return (
     <Disclosure as="nav" className="bg-gray-800 w-full z-50 h-15 fixed top-0">
       {({ open }) => (
@@ -78,7 +61,8 @@ export default function NavBar() {
                       Wishlist
                     </a>
                     <a
-                      href="/friends"
+                      //@ts-ignore
+                      href={`/friends/${session?.user?.userId}`}
                       className="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
                     >
                       Friends
@@ -217,7 +201,8 @@ export default function NavBar() {
               <Disclosure.Button
                 as="a"
                 aria-label="see friends link"
-                href="/friends"
+                //@ts-ignore
+                href={`/friends/${session?.user?.userId}`}
                 className="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
               >
                 Friends

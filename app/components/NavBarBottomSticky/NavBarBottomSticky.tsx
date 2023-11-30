@@ -28,7 +28,8 @@ export default function NavBarBottomSticky() {
         </a>
         <a
           aria-label="Friends"
-          href="/friends"
+          //@ts-ignore
+          href={`/friends/${session?.user?.userId}`}
           className="inline-flex flex-col items-center justify-center px-2 py-2 hover:bg-gray-50 dark:hover:bg-gray-800 group"
         >
           <UserGroupIcon height={30} color={"rgb(107 114 128)"} />
