@@ -38,6 +38,7 @@ export const POST = async (req: Request) => {
           friend: isSender ? friendship.receiver : friendship.sender,
           status: friendship.status,
           friendshipId: friendship.id,
+          receiverId: friendship.receiverId,
         };
       });
 

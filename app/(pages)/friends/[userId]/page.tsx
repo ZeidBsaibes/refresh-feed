@@ -17,7 +17,7 @@ export default function Friends() {
 
   const params = useParams();
   const { userId } = params;
-
+  console.log("logged in user", userId);
   const statuses = ["approved", "pending"];
 
   const getAndSetFriends = async () => {
@@ -76,7 +76,7 @@ export default function Friends() {
         <div className="mx-auto max-w-7xl my-8 px-6 lg:px-8">
           <div className="mx-auto max-w-2xl lg:mx-0">
             <h1 className="text-xl sm:text-4xl my-4 font-bold tracking-tight italic text-gray-900 dark:text-white ">
-              Awaiting Your Approval
+              Pending
             </h1>
           </div>
           <ul
@@ -84,19 +84,25 @@ export default function Friends() {
             className="mx-auto mt-8 grid max-w-2xl grid-cols-2 gap-x-8 gap-y-16 text-center sm:grid-cols-3 md:grid-cols-4 lg:mx-0 lg:max-w-none lg:grid-cols-5 xl:grid-cols-6"
           >
             {friends.map(
-              ({ friend, status, friendshipId }) =>
+              ({ friend, status, friendshipId, receiverId }) =>
                 status === "pending" && (
                   <div key={friend.id} className="flex-col">
                     <FriendCard friend={friend} status={status} />
                     <div className="mt-6  items-center  gap-x-6">
                       <Button
-                        text={"Approve"}
-                        variant={"approve"}
+                        text={userId !== receiverId ? "Awaiting" : "Approve"}
+                        variant={
+                          userId !== receiverId ? "secondary" : "approve"
+                        }
                         size={"sm"}
                         type={"button"}
-                        onClick={() => {
-                          handleApprove(friendshipId, "approved");
-                        }}
+                        onClick={
+                          userId !== friend.id
+                            ? null
+                            : () => {
+                                handleApprove(friendshipId, "approved");
+                              }
+                        }
                       />
                     </div>
                   </div>
