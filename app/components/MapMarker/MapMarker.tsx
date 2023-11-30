@@ -13,7 +13,7 @@ export default function MapMarker({ location, color = "blue", onClick }) {
       anchor="bottom"
       onClick={handleClick}
     >
-      <FlagIcon height={40} color={color} />
+      <MapPinIcon height={40} color={color} />
     </Marker>
   );
 }
