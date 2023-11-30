@@ -210,14 +210,14 @@ export default function AboutPage() {
                     </span>
                   </h1>
                   <p className="relative mt-6 text-lg leading-8 text-gray-600 sm:max-w-md lg:max-w-none">
-                    At Refresh Feed, we believe that the best dining experiences
+                    {`At Refresh Feed, we believe that the best dining experiences
                     are those shared with friends. Our platform is dedicated to
                     bringing food enthusiasts together by showcasing your
-                    friends' favorite restaurants. We understand that a
+                    friends' favourite restaurants. We understand that a
                     restaurant recommendation from a friend is worth more than
                     any review you could read online. That's why we've created a
                     space where such gold-standard suggestions can thrive and
-                    easily be accessed.
+                    easily be accessed`}
                   </p>
                 </div>
                 <div className="mt-14 flex justify-end gap-8 sm:-mt-44 sm:justify-start sm:pl-20 lg:mt-0 lg:pl-0">
