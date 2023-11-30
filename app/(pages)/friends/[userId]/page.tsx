@@ -8,6 +8,7 @@ import { useParams } from "next/navigation";
 import Badge from "@/app/components/Badge/Badge";
 import FriendCard from "@/app/components/FriendCard/FriendCard";
 import Button from "@/app/components/Button/Button";
+import approveFriend from "@/scripts/utils/approveFriend";
 
 export default function Friends() {
   const [friends, setFriends] = useState(null);
@@ -22,6 +23,12 @@ export default function Friends() {
   const getAndSetFriends = async () => {
     const response = await getFriends(userId, statuses);
     setFriends(response);
+  };
+
+  const handleApprove = async (friendshipId, status) => {
+    console.log(`friendship id`, friendshipId);
+    const response = await approveFriend(friendshipId, status);
+    window.location.reload(true);
   };
 
   useEffect(() => {
@@ -88,7 +95,7 @@ export default function Friends() {
                         size={"sm"}
                         type={"button"}
                         onClick={() => {
-                          console.log(friendshipId);
+                          handleApprove(friendshipId, "approved");
                         }}
                       />
                     </div>

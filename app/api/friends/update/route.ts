@@ -7,15 +7,55 @@ const prisma = new PrismaClient();
 
 export const PATCH = async (req) => {
   if (req.method === "PATCH") {
-    const { friendshipId, status } = await req.json();
     const token = await getToken({ req });
+    const { friendshipId, status } = await req.json();
 
-    console.log(`friendShipId`, friendshipId);
-    console.log(`status`, status);
-    console.log(token, "token");
+    try {
+      if (!token) {
+        return NextResponse.json(
+          { message: `You must be logged in to do this` },
+          { status: 403 }
+        );
+      }
+      if (!friendshipId || !status) {
+        return NextResponse.json(
+          { message: `Missing friendship Id or Status` },
+          { status: 400 }
+        );
+      }
+
+      const friendship = await prisma.friendship.findUnique({
+        where: { id: friendshipId },
+      });
+
+      if (!friendship) {
+        return NextResponse.json(
+          { message: `Friendship does not exist to update ` },
+          { status: 400 }
+        );
+      }
+      console.log(`friendship is`, friendship);
+      console.log("token is ", { token });
+
+      if (friendship.receiverId !== token.userId) {
+        return NextResponse.json(
+          { message: `You are not allowed to approve this friendship ` },
+          { status: 403 }
+        );
+      }
+
+      const updatedFriendship = await prisma.friendship.update({
+        where: { id: friendshipId },
+        data: { status },
+      });
+
+      return NextResponse.json({ updatedFriendship }, { status: 200 });
+    } catch (error) {
+      console.error(error);
+    }
 
     return NextResponse.json(
-      { message: `this is the update endpoint, status is `, status },
+      { message: `friendship status updated` },
       { status: 200 }
     );
   }
