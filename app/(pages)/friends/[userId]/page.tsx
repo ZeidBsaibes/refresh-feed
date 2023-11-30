@@ -28,7 +28,7 @@ export default function Friends() {
   const handleApprove = async (friendshipId, status) => {
     console.log(`friendship id`, friendshipId);
     const response = await approveFriend(friendshipId, status);
-    window.location.reload(true);
+    window.location.reload();
   };
 
   useEffect(() => {
