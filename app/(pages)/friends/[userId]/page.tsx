@@ -97,7 +97,7 @@ export default function Friends() {
                         size={"sm"}
                         type={"button"}
                         onClick={
-                          userId !== friend.id
+                          userId !== receiverId
                             ? null
                             : () => {
                                 handleApprove(friendshipId, "approved");
