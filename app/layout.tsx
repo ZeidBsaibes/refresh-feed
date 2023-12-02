@@ -25,8 +25,8 @@ export const metadata: Metadata = {
     images: [
       {
         url: "https://refreshfeed.com/opengraph_image.png",
-        width: 2376,
-        height: 1708,
+        width: 1200,
+        height: 630,
       },
     ],
   },
