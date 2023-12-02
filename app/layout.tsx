@@ -17,6 +17,13 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "Refresh Feed",
   description: "Food and drink recommendations powered by your friends",
+  openGraph: {
+    title: "Refresh Feed",
+    description: "Food and drink recommendations powered by your friends",
+    url: "https://refreshfeed.com",
+    siteName: "Refresh Feed",
+    images: [{ url: "/opengraph_image.png", width: 2376, height: 1708 }],
+  },
 };
 
 export default async function RootLayout({

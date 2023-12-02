@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { Dialog } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
+import nextLogo from "../../../public/next-logo.svg";
 
 const navigation = [
   { name: "Product", href: "#" },
@@ -51,8 +52,7 @@ const team = [
   {
     name: "Michael Foster",
     role: "Co-Founder / CTO",
-    imageUrl:
-      "https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=1024&h=1024&q=80",
+    imageUrl: "eggs.jpg",
   },
   // More people...
 ];
@@ -200,7 +200,7 @@ export default function AboutPage() {
             />
           </div>
           <div className="overflow-hidden">
-            <div className="mx-auto max-w-7xl px-6 pb-32 pt-16 sm:pt-60 lg:px-8 lg:pt-32">
+            <div className="mx-auto max-w-7xl px-6 pt-16 sm:pt-60 lg:px-8 lg:pt-32">
               <div className="mx-auto max-w-2xl gap-x-14 lg:mx-0 lg:flex lg:max-w-none lg:items-center">
                 <div className="w-full max-w-xl lg:shrink-0 xl:max-w-2xl">
                   <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
@@ -224,7 +224,7 @@ export default function AboutPage() {
                   <div className="ml-auto w-44 flex-none space-y-8 pt-32 sm:ml-0 sm:pt-80 lg:order-last lg:pt-36 xl:order-none xl:pt-80">
                     <div className="relative">
                       <img
-                        src="https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&h=528&q=80"
+                        src="eggs.jpg"
                         alt=""
                         className="aspect-[2/3] w-full rounded-xl bg-gray-900/5 object-cover shadow-lg"
                       />
@@ -234,7 +234,7 @@ export default function AboutPage() {
                   <div className="mr-auto w-44 flex-none space-y-8 sm:mr-0 sm:pt-52 lg:pt-36">
                     <div className="relative">
                       <img
-                        src="https://images.unsplash.com/photo-1485217988980-11786ced9454?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&h=528&q=80"
+                        src="icecreams.jpg"
                         alt=""
                         className="aspect-[2/3] w-full rounded-xl bg-gray-900/5 object-cover shadow-lg"
                       />
@@ -242,7 +242,7 @@ export default function AboutPage() {
                     </div>
                     <div className="relative">
                       <img
-                        src="https://images.unsplash.com/photo-1559136555-9303baea8ebd?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&crop=focalpoint&fp-x=.4&w=396&h=528&q=80"
+                        src="pizza2.jpg"
                         alt=""
                         className="aspect-[2/3] w-full rounded-xl bg-gray-900/5 object-cover shadow-lg"
                       />
@@ -252,7 +252,7 @@ export default function AboutPage() {
                   <div className="w-44 flex-none space-y-8 pt-32 sm:pt-0">
                     <div className="relative">
                       <img
-                        src="https://images.unsplash.com/photo-1670272504528-790c24957dda?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&crop=left&w=400&h=528&q=80"
+                        src="table.jpg"
                         alt=""
                         className="aspect-[2/3] w-full rounded-xl bg-gray-900/5 object-cover shadow-lg"
                       />
@@ -260,7 +260,7 @@ export default function AboutPage() {
                     </div>
                     <div className="relative">
                       <img
-                        src="https://images.unsplash.com/photo-1670272505284-8faba1c31f7d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&h=528&q=80"
+                        src="paris.jpg"
                         alt=""
                         className="aspect-[2/3] w-full rounded-xl bg-gray-900/5 object-cover shadow-lg"
                       />
@@ -274,7 +274,7 @@ export default function AboutPage() {
         </div>
         {/* Content section */}
         {/* Values section */}
-        <div className="mx-auto max-w-7xl px-6 sm:mt-6 pb-16 lg:px-8">
+        <div className="mx-auto max-w-7xl px-6 sm:mt-6 lg:px-8">
           <div className="mx-auto max-w-2xl lg:mx-0">
             <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
               Built With
@@ -284,7 +284,7 @@ export default function AboutPage() {
               frameworks, tools and libaries.
             </p>
           </div>
-          <dl className="mx-auto mt-16 mb-32 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 text-base leading-7 sm:grid-cols-2 lg:mx-0 lg:max-w-none lg:grid-cols-3">
+          <dl className="mx-auto mt-16 mb-16 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 text-base leading-7 sm:grid-cols-2 lg:mx-0 lg:max-w-none lg:grid-cols-3">
             {values.map((value) => (
               <div key={value.name}>
                 <dt className="font-semibold text-gray-900">{value.name}</dt>
@@ -294,7 +294,7 @@ export default function AboutPage() {
           </dl>
         </div>
         {/* Logo cloud */}
-        {/* <div className="relative isolate -z-10 mt-32 sm:mt-48">
+        <div className="relative isolate -z-10 ">
           <div className="absolute inset-x-0 top-1/2 -z-10 flex -translate-y-1/2 justify-center overflow-hidden [mask-image:radial-gradient(50%_45%_at_50%_55%,white,transparent)]">
             <svg
               className="h-[40rem] w-[80rem] flex-none stroke-gray-200"
@@ -329,47 +329,82 @@ export default function AboutPage() {
           </div>
           <div className="mx-auto max-w-7xl px-6 lg:px-8">
             <h2 className="text-center text-lg font-semibold leading-8 text-gray-900">
-              Trusted by the world’s most innovative teams
+              Built with best-in-class frameworks, tools and technologies{" "}
             </h2>
             <div className="mx-auto mt-10 grid max-w-lg grid-cols-4 items-center gap-x-8 gap-y-10 sm:max-w-xl sm:grid-cols-6 sm:gap-x-10 lg:mx-0 lg:max-w-none lg:grid-cols-5">
               <img
                 className="col-span-2 max-h-12 w-full object-contain lg:col-span-1"
-                src="https://tailwindui.com/img/logos/158x48/transistor-logo-gray-900.svg"
-                alt="Transistor"
+                src="/next-logo.svg"
+                alt="Next.js Logo"
                 width={158}
                 height={48}
               />
               <img
                 className="col-span-2 max-h-12 w-full object-contain lg:col-span-1"
-                src="https://tailwindui.com/img/logos/158x48/reform-logo-gray-900.svg"
-                alt="Reform"
+                src="axios.svg"
+                alt="Axios Logo"
                 width={158}
                 height={48}
               />
               <img
                 className="col-span-2 max-h-12 w-full object-contain lg:col-span-1"
-                src="https://tailwindui.com/img/logos/158x48/tuple-logo-gray-900.svg"
-                alt="Tuple"
+                src="mapbox.svg"
+                alt="Mapbox Logo"
                 width={158}
                 height={48}
               />
               <img
-                className="col-span-2 max-h-12 w-full object-contain sm:col-start-2 lg:col-span-1"
-                src="https://tailwindui.com/img/logos/158x48/savvycal-logo-gray-900.svg"
-                alt="SavvyCal"
+                className="col-span-2 max-h-12 w-full object-contain lg:col-span-1"
+                src="tailwind.svg"
+                alt="Tailwind Logo"
                 width={158}
                 height={48}
               />
               <img
-                className="col-span-2 col-start-2 max-h-12 w-full object-contain sm:col-start-auto lg:col-span-1"
-                src="https://tailwindui.com/img/logos/158x48/statamic-logo-gray-900.svg"
-                alt="Statamic"
-                width={158}
-                height={48}
+                className="col-span-2 max-h-12 w-full object-contain lg:col-span-1"
+                src="next-auth.jpeg"
+                alt="Next Auth Logo"
+                width={500}
+                height={100}
+              />
+              <img
+                className="col-span-2 max-h-12 w-full object-contain lg:col-span-1"
+                src="prisma.svg"
+                alt="Prisma"
+                width={500}
+                height={100}
+              />
+              <img
+                className="col-span-2 max-h-12 w-full object-contain lg:col-span-1"
+                src="postgresql.svg"
+                alt="PostgreSQL Logo"
+                width={500}
+                height={100}
+              />
+              <img
+                className="col-span-2 max-h-12 w-full object-contain lg:col-span-1"
+                src="googlemaps.svg"
+                alt="Google Maps Logo"
+                width={500}
+                height={100}
+              />
+              <img
+                className="col-span-2 max-h-12 w-full object-contain lg:col-span-1"
+                src="vercel.svg"
+                alt="Vercel Logo"
+                width={500}
+                height={100}
+              />
+              <img
+                className="col-span-2 max-h-12 w-full object-contain lg:col-span-1"
+                src="react.svg"
+                alt="React Logo"
+                width={500}
+                height={100}
               />
             </div>
           </div>
-        </div> */}
+        </div>
         {/* Team section
         <div className="mx-auto mt-32 max-w-7xl px-6 sm:mt-48 lg:px-8">
           <div className="mx-auto max-w-2xl lg:mx-0">
