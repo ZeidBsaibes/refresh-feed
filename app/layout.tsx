@@ -22,7 +22,13 @@ export const metadata: Metadata = {
     description: "Food and drink recommendations powered by your friends",
     url: "https://refreshfeed.com",
     siteName: "Refresh Feed",
-    images: [{ url: "/opengraph_image.png", width: 2376, height: 1708 }],
+    images: [
+      {
+        url: "https://refreshfeed.com/opengraph_image.png",
+        width: 2376,
+        height: 1708,
+      },
+    ],
   },
 };
 
