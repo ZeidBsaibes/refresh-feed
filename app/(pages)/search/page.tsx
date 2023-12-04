@@ -45,7 +45,7 @@ export default function SearchPage() {
       <>
         <h1 className="mb-2 text-3xl mx-4 tracking-tight text-gray-900 dark:text-white">
           Your search: <span className="font-bold">{search}</span> had no
-          results from your friends' lists.
+          results from your friends.
         </h1>
         <LottieLoader animation={cup} />
       </>
