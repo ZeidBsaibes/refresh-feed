@@ -7,7 +7,6 @@ export default function InputWithIcon({ title, onInput, placeholder, icon }) {
   const [fieldValue, setFieldValue] = useState(null);
 
   const handleChange = (value) => {
-    console.log(value);
     setFieldValue(Number(value));
   };
 

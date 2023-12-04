@@ -34,8 +34,6 @@ export const PATCH = async (req) => {
           { status: 400 }
         );
       }
-      console.log(`friendship is`, friendship);
-      console.log("token is ", { token });
 
       if (friendship.receiverId !== token.userId) {
         return NextResponse.json(

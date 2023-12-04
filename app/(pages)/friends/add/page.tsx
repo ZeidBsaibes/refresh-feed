@@ -20,8 +20,6 @@ export default function AddFriend() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log(event.target.value);
-    console.log(userId);
 
     if (!email) {
       setMessage("Email cannot be empty");

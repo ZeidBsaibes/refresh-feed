@@ -131,7 +131,7 @@ export default function AddLocationForm() {
       setSubmitButtonDisabled(true);
       try {
         const response = await postLocation(inputtedData);
-        console.log("posted", inputtedData);
+
         setIsModalOpen(true);
       } catch (error) {
         console.error(error);

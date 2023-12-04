@@ -19,7 +19,6 @@ import searching from "../../../lib/lottie/cup-falling-orange.json";
 export default function ListAndMap({ type }) {
   const { data: session } = useSession();
   const params = useParams();
-  console.log(type);
 
   const { userId } = params;
 

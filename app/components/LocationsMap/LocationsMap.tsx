@@ -46,10 +46,8 @@ export default function LocationsMap({ data }) {
     return bounds;
   };
 
-  console.log(findBounds());
-
   const mapInfo = geoViewport.viewport(findBounds(), [600, 480]);
-  console.log(mapInfo);
+
   return (
     <Map
       mapboxAccessToken={process.env.NEXT_PUBLIC_MAPBOX_TOKEN}

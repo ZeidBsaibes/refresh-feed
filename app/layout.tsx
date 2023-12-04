@@ -7,14 +7,13 @@ import NavBar from "./components/NavBar/NavBar";
 import { getServerSession } from "next-auth/next";
 import { authOptions } from "../lib/auth";
 import Provider from "./context/context-provider";
-import Head from "next/head";
 import "mapbox-gl/dist/mapbox-gl.css";
-import Footer from "./components/Footer/Footer";
 import NavBarBottomSticky from "./components/NavBarBottomSticky/NavBarBottomSticky";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://localhost.com:3000"),
   title: "Refresh Feed",
   description: "Food and drink recommendations powered by your friends",
   openGraph: {

@@ -19,7 +19,6 @@ export const GET = async (req, { params }) => {
     }
     const { photos } = response.data.result;
 
-    console.log(photos);
     return NextResponse.json(photos);
   } catch (error) {
     console.error(error);

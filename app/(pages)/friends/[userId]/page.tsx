@@ -17,7 +17,7 @@ export default function Friends() {
 
   const params = useParams();
   const { userId } = params;
-  console.log("logged in user", userId);
+
   const statuses = ["approved", "pending"];
 
   const getAndSetFriends = async () => {
@@ -26,7 +26,6 @@ export default function Friends() {
   };
 
   const handleApprove = async (friendshipId, status) => {
-    console.log(`friendship id`, friendshipId);
     const response = await approveFriend(friendshipId, status);
     window.location.reload();
   };

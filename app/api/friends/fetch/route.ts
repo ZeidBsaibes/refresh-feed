@@ -6,8 +6,7 @@ const prisma = new PrismaClient();
 export const POST = async (req: Request) => {
   if (req.method === "POST") {
     const { userId, statuses } = await req.json();
-    console.log(userId);
-    console.log(statuses);
+
     try {
       const friends = await prisma.friendship.findMany({
         where: {

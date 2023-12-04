@@ -17,7 +17,6 @@ export default function SearchPage() {
   const getAndSetSearchResults = async () => {
     const results = await handleSearch(search);
     setSearchResults(results);
-    console.log(`search results are`, searchResults);
   };
 
   useEffect(() => {

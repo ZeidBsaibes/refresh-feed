@@ -17,8 +17,6 @@ export default function GoogleMapsAutoComplete({ apiKey, onInput }) {
   const mapCentre = { lat: 51.5072, lng: 0.1276 };
 
   const handlePlaceSelected = (place) => {
-    console.log(`place from google is`, place);
-
     if (typeof place?.place_id !== "undefined") {
       const placeAsObject = {
         placeName: place.name,
@@ -43,7 +41,6 @@ export default function GoogleMapsAutoComplete({ apiKey, onInput }) {
       };
 
       setPlaceObject(placeAsObject);
-      console.log(placeObject);
     }
   };
 

@@ -7,8 +7,6 @@ export const POST = async (req: Request) => {
   if (req.method === "POST") {
     const { senderId, email } = await req.json();
 
-    console.log(senderId, email);
-
     if (senderId && email) {
       try {
         // get receiverId from email sent by requester
@@ -20,7 +18,7 @@ export const POST = async (req: Request) => {
             id: true, // Only fetch the id
           },
         });
-        console.log(receiverId, senderId);
+
         if (!receiverId) {
           return NextResponse.json(
             {
