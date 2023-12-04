@@ -13,12 +13,13 @@ import NavBarBottomSticky from "./components/NavBarBottomSticky/NavBarBottomStic
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://localhost.com:3000"),
+  metadataBase: new URL(`${process.env.NEXTAUTH_URL}`),
   title: "Refresh Feed",
   description: "Food and drink recommendations powered by your friends",
   openGraph: {
     title: "Refresh Feed",
-    description: "Food and drink recommendations powered by your friends",
+    description:
+      "Refresh Food: Food and drink recommendations powered by your friends. Discover the Best in Food and Drink from the people you trust.",
     url: "https://refreshfeed.com",
     siteName: "Refresh Feed",
     images: [
