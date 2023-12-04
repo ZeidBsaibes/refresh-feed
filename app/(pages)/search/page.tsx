@@ -6,6 +6,7 @@ import LocationCardHoriz from "@/app/components/LocationCardHoriz/LocationCardHo
 import LocationsMap from "@/app/components/LocationsMap/LocationsMap";
 import LottieLoader from "@/app/components/LottieLoader/LottieLoader";
 import loading from "../../../lib/lottie/magnifying-glass-orange.json";
+import cup from "../../../lib/lottie/cup-falling-orange.json";
 
 export default function SearchPage() {
   const searchParams = useSearchParams();
@@ -41,9 +42,13 @@ export default function SearchPage() {
 
   if (searchResults && searchResults.results.length === 0) {
     return (
-      <h1 className="mb-2 text-3xl  tracking-tight text-gray-900 dark:text-white">
-        Your search: <span className="font-bold">{search}</span> had no results
-      </h1>
+      <>
+        <h1 className="mb-2 text-3xl mx-4 tracking-tight text-gray-900 dark:text-white">
+          Your search: <span className="font-bold">{search}</span> had no
+          results from your friends' lists.
+        </h1>
+        <LottieLoader animation={cup} />
+      </>
     );
   }
 
