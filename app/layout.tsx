@@ -9,6 +9,7 @@ import { authOptions } from "../lib/auth";
 import Provider from "./context/context-provider";
 import "mapbox-gl/dist/mapbox-gl.css";
 import NavBarBottomSticky from "./components/NavBarBottomSticky/NavBarBottomSticky";
+import { GoogleTagManager } from "@next/third-parties/google";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -42,6 +43,7 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
+        <GoogleTagManager gtmId="GTM-5SWSC4F2" />
         <Provider session={session}>
           <div className="h-screen justify-between">
             <NavBar />
